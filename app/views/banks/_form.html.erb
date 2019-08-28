@@ -1,0 +1,99 @@
+<!-- banks -->
+<%= form_for(bank) do |f| %>
+  <% if bank.errors.any? %>
+    <div id="error_explanation">
+      <h3><%= pluralize(bank.errors.count, "error") %>
+           prohibited this bank from being saved:</h3>
+      <ul>
+      <% bank.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group col-xs-4">
+    <%= f.label :user_id, 'User' %>
+    <%= f.text_field :user_id, value: @user_name, class: 'form-control', required: true %>
+  </div>
+
+  <div class="form-group col-xs-3">
+    <%= f.label :bank_id, 'CB' %>
+    <%= f.text_field :bank_id, class: 'form-control', required: true %>
+  </div>
+
+  <div class="form-group col-xs-5">
+    <% @bank.bank = @bank.bank_id == "1" ? "BanBogotá" : "" %>
+    <%= f.label :bank, 'Banco' %>
+    <%= f.text_field :bank, class: 'form-control', required: true %>
+  </div>
+
+
+  <div class="form-group col-xs-4">
+    <%= f.label :puc, 'Cuenta' %>
+    <%= f.text_field :puc, type: "number", class: 'form-control', required: true %>
+    <%= @puc_name %>
+  </div>
+
+  <div class="form-group col-xs-3">
+    <%= f.label :trans_type, 'Tipo' %>
+    <%= f.select_tag :trans_type, options_for_select(trans_types, @bank.trans_type),
+    { class: 'form-control', required: true } %>
+  </div>
+
+  <div class="form-group col-xs-5">
+    <%= f.label :balance, 'Saldo' %>
+    <%= f.text_field :balance, type: "number", class: 'form-control', required: true %>
+  </div>
+
+  <div class="clearfix"></div>
+
+  <hr width=92%>
+
+  <div class="form-group col-xs-12">
+    <%= f.label :detail, 'Detalle' %>
+    <%= f.text_area :detail, class: 'form-control', required: true %>
+  </div>
+
+  <div class="form-group col-xs-4">
+    <%= f.label :created_at, 'Fecha' %>
+    <%= f.date_field :created_at,
+    value: @bank.created_at.nil? ? Date.today : @bank.created_at,
+    class: 'form-control', required: true %>
+  </div>
+
+  <div class="form-group col-xs-3">
+    <%# = f.label :trans_hour, 'Hora' %>
+    <%# = f.text_field :trans_hour, class: 'form-control', required: true %>
+    <%= f.label :created_at, 'Hora' %>
+    <%= f.date_field :created_at,
+    value: @bank.created_at.nil? ? Date.today : @bank.created_at.strftime('%H:%M'),
+    class: 'form-control', required: true %>
+  </div>
+
+  <div class="form-group col-xs-4">
+    <%= f.label :trans_value, 'Valor' %>
+    <%= f.text_field :trans_value, type: "number", class: 'form-control', required: true %>
+  </div>
+
+  <div class="form-group col-xs-1">
+    <%= f.label :verified, 'Vrf' %>
+    <%= f.check_box :verified, class: 'form-control', required: true %>
+  </div>
+
+  <hr width=92%>
+  <div class="clearfix"></div>
+
+  <div class="actions text-center">
+    <%= f.button :submit, class: "btn btn-success" do %>
+      <i class='fa fa-plus'></i> Guardar
+    <% end %>
+
+    <%= link_to banks_path, class: "btn btn-warning" do %>
+      <i class='fa fa-arrow-left'></i> Regresar
+    <% end %>
+  </div>
+
+<% end %>
+
+<div class="clearfix"></div>

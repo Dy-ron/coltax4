@@ -1,0 +1,168 @@
+
+<nav class="header-reg">
+  <%= link_to 'Nuevo', new_movement_path %>
+  <%= link_to 'Día', movements_path %> <!-- Día, nuevo, consolidados -->
+
+  <%= link_to 'Balance', '#' %>   <!-- Cuentas de Balance General -->
+  <%= link_to 'Resultados', '#' %>   <!-- Cuentas de Resultados -->
+  <%= link_to 'De Orden', '#' %>   <!-- Cuentas de Orden y Orden por contra -->
+  <%= link_to 'PUC', pucs_path %>   <!-- Plan Único de Cuentas -->
+</nav>
+
+
+<div>
+  <center>
+  <h3 style="display: flex; justify-content: space-between; width: 100%;">
+    <span>Datos / Contabilidad </span> <%= link_to 'Back', data_path %>
+    <span>Coltax OnLine</span> </h3>
+  <h4> Contabilidad </h4>
+  </center>
+
+  <P><center><h4>Balance General</h4></center>
+  <table class="table table-hover table-striped datatable-plugin" border=1>
+    <thead>  <!-- Encabezados -->
+      <tr> <th>Débitos</th> <th>Créditos</th></tr>
+    </thead>
+
+  <tbody>
+      <tr><td>1 ACTIVOS</td>              <td>2 PASIVOS</td> </tr>
+      <tr><td>11 Disponible </td>         <td>21 Oblig_Financieras </td></tr>
+      <tr><td>1105 Caja </td>             <td>2105 Bancos Nacionales </td></tr>
+      <tr><td>1110 Bancos </td>           <td>2115 Corporaciones financ</td> </tr>
+      <tr><td>1125 Fondos </td>           <td>211515 Cartas de Crédito </td> </tr>
+      <tr><td>12 Inversiones </td>        <td>212515 Hipotecarias </td></tr>
+      <tr><td>1205 Acciones </td>         <td>2195 Otras Obligaciones </td></tr>
+      <tr><td>1295 Otras_Invers </td>     <td> </td></tr>
+      <tr><td>13 Deudores _ CxC </td>     <td>22 Proveedores </td></tr>
+      <tr><td> </td>                      <td>2205 Nacionales </td></tr>
+      <tr><td> <hr> </td>                 <td> </td></tr>
+      <tr><td>14 Inventarios</td>         <td> </td </tr>
+      <tr><td>1405 Materias Primas</td>   <td>23 Ctas x Pagar </td> </tr>
+      <tr><td>1410 Productos en Proceso </td> <td>2305 Ctas Ctes Ciales</td> </tr>
+      <tr><td>1420 Contratos en Ejecución</td><td>2335 Costos_Gastos x pagar </td> </tr>
+      <tr><td> </td>                      <td>233505 Gastos Financieros </td></tr>
+      <tr><td> </td>                      <td>233510 Gastos Legales </td></tr>
+      <tr><td> </td>                      <td>233520 Comisiones </td></tr>
+      <tr><td>15 Propiedades</td>         <td>233525 Honorarios </td></tr>
+      <tr><td>1504 Terrenos </td>         <td>233530 Servicios Técnicos </td></tr>
+      <tr><td>1516 Construc_Edific</td>   <td>233535 Serv_Mantenimiento </td></tr>
+      <tr><td></td>                       <td>233555 Seguros </td></tr>
+      <tr><td>1520 Maquinaria_Equipo</td> <td>233595 Otros </td> </tr>
+      <tr><td>1528 Eq Comput_Comunic</td> <td> </td> </tr>
+      <tr><td>1540 Flota_Equipo_Transporte</td> <td>2380 Acreedore Varios </td></tr>
+      <tr><td>154005 Autos, Camionetas</td> <td> </td> </tr>
+      <tr><td>154030 Motocicletas</td>    <td>24 Impuestos </td></tr>
+      <tr><td>1584 Semovientes </td>      <td>2404 De Renta_Complementarios </td></tr>
+      <tr><td>1599 Provisiones </td>      <td>2412 De Industria y Comercio </td> </tr>
+      <tr><td> </td>                      <td>2436 De Vehículos </td></tr>
+      <tr><td>16 Intangibles </td>        <td>243605 Vigencia Fiscal Corriente </td></tr>
+      <tr><td> </td>                      <td>243610 Vigencias Fiscales Anteriores </td></tr>
+      <tr><td> </td>                      <td>2495 Otros </td></tr>
+      <tr><td> </td>                      <td></td> </tr>
+      <tr><td>17 Diferidos </td>          <td>25 Oblig_Laborales </td> </tr>
+      <tr><td>1705 Gastos pag_x_antic</td><td>2505 Salarios por pagar </td></tr>
+      <tr><td>1710 Cargos Diferidos </td> <td> </td></tr>
+      <tr><td> </td>                      <td>26 Pas_Estimados_Provisiones </td></tr>
+      <tr><td> </td>                      <td> </td></tr>
+      <tr><td> </td>                      <td> </td></tr>
+      <tr><td> </td>               <td>28 Otros Pasivos </td></tr>
+      <tr><td> </td>               <td>2805 Anticipos_Avances_recibidos</td></tr>
+      <tr><td>1798 Amortización Acumulada </td> <td>2810 Depósitos Recibidos </td></tr>
+      <tr><td> </td>               <td> _______________</td></tr>
+      <tr><td>18 Otros Activos</td><td>3 PATRIMONIO </td></tr>
+      <tr><td>1895 Diversos </td>  <td>31 Capital </td> </tr>
+      <tr><td> </td>               <td>3105 Capital Suscrito_Pagado </td></tr>
+      <tr><td> </td>               <td> </td></tr>
+      <tr><td> </td>               <td> </td></tr>
+      <tr><td> </td>               <td> </td></tr>
+      <tr><td>1899 Provisiones</td><td>32 Superavit </td></tr>
+      <tr><td> </td>               <td>3210 Donaciones </td></tr>
+      <tr><td> </td>               <td>3215 Crédito Mercantil </td></tr>
+      <tr><td> </td>               <td>3220 Know How </td></tr>
+      <tr><td> </td>               <td> </td></tr>
+      <tr><td> </td>               <td>33 Reservas </td></tr>
+      <tr><td> </td>               <td>3305 Reservas Obligatorias </td></tr>
+      <tr><td> </td>               <td> </td></tr>
+      <tr><td>19 Diferidos </td>   <td>34 Revalorización </td></tr>
+      <tr><td> </td>               <td> </td></tr>
+      <tr><td> </td>               <td> </td></tr>
+      <tr><td>1905 De Inversiones </td> <td>35 Dividendos </td> </tr>
+      <tr><td>1910 De Prop, Planta y Equipo </td> <td> </td></tr>
+      <tr><td>191032 Flota_Equipo_transporte</td> <td> </td></tr>
+      <tr><td> </td>               <td>36 Resultados_Ejercicio </td></tr>
+      <tr><td> </td>               <td> </td></tr>
+      <tr><td> </td>               <td>37 Resultados_Ejerc_ants </td></tr>
+      <tr><td> </td>               <td> </td></tr>
+      <tr><td> </td>               <td>38 Superávit x Valorizaciones </td></tr>
+      <tr><td> </td>               <td> </td></tr>
+      <tr><td>Total Activos</td>   <td>Total Patrimonio</td></tr>
+      <tr><td>Sumas = Activos</td> <td>Sumas = Pasivos + Patrimonio </td></tr>
+
+  </tbody>
+  </table>
+
+  <P><center><h4> Resultados </h4></center>
+  <table class="table table-hover table-striped datatable-plugin" border=1>
+    <thead>  <!-- Encabezados -->
+      <tr> <th>4. Ingresos </th> <th>5. Egresos </th></tr>
+    </thead>
+
+  <tbody>
+      <tr><td>4 Ingresos </td>  <td>51. Costos</td> </tr>
+      <tr><td>41 Operacionales </td> <td>Ctas x Pagar</td></tr>
+      <tr><td>4135 Comercio_mayor_detal</td> <td> </td></tr>
+      <tr><td> </td>               <td> </td></tr>
+      <tr><td>4150 Actividad Financiera </td> <td> </td></tr>
+      <tr><td> </td>               <td> </td></tr>
+      <tr><td>4160 Enseñanza </td> <td> </td></tr>
+      <tr><td> </td>               <td> </td></tr>
+      <tr><td>42 No Operacionales </td> <td> </td></tr>
+      <tr><td>4205 Otras Ventas </td>   <td> </td></tr>
+      <tr><td> </td>               <td> </td></tr>
+      <tr><td>4210 Financieros </td><td> </td></tr>
+      <tr><td> </td>               <td> </td></tr>
+      <tr><td> </td>               <td> </td></tr>
+      <tr><td>4225 Comisiones </td><td> </td></tr>
+      <tr> <td> </td> <td> </td></tr>
+      <tr> <td> </td> <td> </td></tr>
+      <tr> <td> </td> <td> </td></tr>
+      <tr> <td> </td> <td> </td></tr>
+      <tr> <td> </td> <td> </td></tr>
+      <tr> <td> </td> <td> </td></tr>
+      <tr> <td> Total Activos </td>  <td>Total Patrimonio</td></tr>
+
+  </tbody>
+  </table>
+
+  <P><center><h4> Cuentas de Orden </h4></center>
+  <table class="table table-hover table-striped datatable-plugin" border=1>
+    <thead>  <!-- Encabezados -->
+      <tr> <th>6. Ctas de Orden </th> <th>7. Ctas Orden x Contra </th></tr>
+    </thead>
+
+  <tbody>
+      <tr> <td>Activos</td>  <td>Pasivos</td> </tr>
+      <tr> <td> Caja </td>   <td>Ctas x Pagar</td></tr>
+      <tr> <td> Bancos </td> <td>Ctas x Pagar2</td></tr>
+      <tr> <td> Inversiones  <td></td></td> </tr>
+      <tr> <td> Otros </td>  <td>Patrimonio</td></tr>
+      <tr> <td> Otros </td>  <td>nn</td></tr>
+      <tr> <td> 4. Ingresos </td>  <td>Superavit</td></tr>
+      <tr> <td> Otros </td>  <td>Ganancias Ocas.</td></tr>
+      <tr> <td> Total Activos </td>  <td>Total Patrimonio</td></tr>
+
+  </tbody>
+  </table>
+
+
+  <P>
+  <nav>
+    <ul>
+        <li> Contab 1 </li>
+        <li> Contab 2 </li>
+        <li> ----------------- </li>
+
+    </ul>
+  </nav>
+
+</div>

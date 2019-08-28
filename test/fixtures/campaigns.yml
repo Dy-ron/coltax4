@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  color_theme: MyString
+  color_buttons: MyString
+  coupon_mailer_title: MyString
+  coupon_mailer_subtitle: MyString
+  coupon_mailer_description: MyText
+  coupon_mailer_terms_and_conditions: MyText
+  slug: MyString
+  terms_and_conditions: MyText
+  cities: 
+  background_image: 
+  description_image: 
+  coupon_mailer_image: 
+
+two:
+  title: MyString
+  color_theme: MyString
+  color_buttons: MyString
+  coupon_mailer_title: MyString
+  coupon_mailer_subtitle: MyString
+  coupon_mailer_description: MyText
+  coupon_mailer_terms_and_conditions: MyText
+  slug: MyString
+  terms_and_conditions: MyText
+  cities: 
+  background_image: 
+  description_image: 
+  coupon_mailer_image: 

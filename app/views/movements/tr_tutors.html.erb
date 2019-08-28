@@ -1,0 +1,116 @@
+
+<nav class="header-reg">
+  <%= link_to 'Nuevo', new_movement_path %>
+  <%= link_to 'Día', movements_path %> <!-- Día, nuevo, consolidados -->
+
+
+</nav>
+
+<!-- <hr class="separator"> -->
+<div style="background-color: yellow; ">
+  <a href=""> ► Manuales</a><br>
+  <a href=""> ► Tutoriales</a>
+</div>
+
+
+<div style = "color: white"; >  <center>
+  <h3 style="display: flex; justify-content: space-between; width: 100%;">
+    <span> Otros </span>  <span>Coltax OnLine</span>  </h3>
+  <h4> Mecánica Automotriz </h4>
+</center>
+
+  <br>
+  <nav>
+    <ul><li> Autocab </li>
+        <li> Cursos </li>
+        <li>   </li>
+        <li> Manuales </li>
+        <li> Tutoriales </li>
+        <li>   </li>
+        <li> Talleres Medellín </li>
+    </ul>
+  </nav>
+
+
+  <br>  <!-- <hr class="separator"> -->
+  <div class="celeste">
+    <h5 class="yellow"><a href=""> ► Ayudas </a></h5>
+    <h6 class="red"><a href=""> ► Repuestos </a></h6>
+  </div>
+
+
+  <!-- <%= Time.now.strftime("%a") %> <%= Time.now.strftime("%j") %>  -->
+
+    <center><H4> Formato Fechas </h4> </center>
+    <nav>
+      <ul class="green"><li> Sm_N°  Produc     Combust   Liquid   Neto</li>
+          <li>_____________________________________________________</li>
+          <li> A -> <%= Time.now.strftime("%A") %> -> Día actual completo English</li>
+          <li> a -> <%= Time.now.strftime("%a") %> -> Día actual corto</li>
+          <li> B -> <%= Time.now.strftime("%B") %> -> Mes actual </li>
+          <li> b -> <%= Time.now.strftime("%b") %> -> Mes actual corto</li>
+          <li>_____________________________________________________</li>
+          <li> C -> <%= Time.now.strftime("%C") %> -> Centuria </li>
+          <li> c -> <%= Time.now.strftime("%c") %> -> <br> NDia Mes #dia_act Hora Año </li>
+          <li> D -> <%= Time.now.strftime("%D") %> -> Mes/dia/##año </li>
+          <li> d -> <%= Time.now.strftime("%d") %> -> Dia - Año? </li>
+          <li>_____________________________________________________</li>
+          <li> E -> <%= Time.now.strftime("%E") %> -> E [?] </li>
+          <li> e -> <%= Time.now.strftime("%e") %> -> Día - año ? </li>
+          <li> F -> <%= Time.now.strftime("%F") %> -> Año-Mes-Día </li>
+          <li> f -> <%= Time.now.strftime("%f") %> ->  </li>
+          <li>_____________________________________________________</li>
+          <li> G -> <%= Time.now.strftime("%G") %> -> Año ####</li>
+          <li> g -> <%= Time.now.strftime("%g") %> -> Año ## </li>
+          <li> H -> <%= Time.now.strftime("%H") %> -> Hora actual [24] </li>
+          <li> h -> <%= Time.now.strftime("%h") %> -> Mes - ncorto </li>
+          <li>_____________________________________________________</li>
+          <li> I -> <%= Time.now.strftime("%I") %> -> Hora actual [12] </li>
+          <li> i -> <%= Time.now.strftime("%i") %> ->  </li>
+          <li> J -> <%= Time.now.strftime("%J") %> ->  </li>
+          <li> j -> <%= Time.now.strftime("%j") %> -> Día # en el año </li>
+          <li>_____________________________________________________</li>
+          <li> K -> <%= Time.now.strftime("%K") %> ->  </li>
+          <li> k -> <%= Time.now.strftime("%k") %> -> Hora actual [24] </li>
+          <li> L -> <%= Time.now.strftime("%L") %> -> Milésima de segundo ### </li>
+          <li> l -> <%= Time.now.strftime("%l") %> -> Hora actual [12] </li>
+          <li>_____________________________________________________</li>
+          <li> N -> <%= Time.now.strftime("%N") %> -> Milésima de segundo completo </li>
+          <li> n -> <%= Time.now.strftime("%n") %> ->  </li>
+          <li> Ñ -> <%= Time.now.strftime("%Ñ") %> ->  </li>
+          <li> ñ -> <%= Time.now.strftime("%ñ") %> ->  </li>
+          <li>_____________________________________________________</li>
+          <li> O -> <%= Time.now.strftime("%O") %> ->  </li>
+          <li> o -> <%= Time.now.strftime("%o") %> ->  </li>
+          <li> P -> <%= Time.now.strftime("%P") %> -> pm </li>
+          <li> p -> <%= Time.now.strftime("%p") %> -> PM </li>
+          <li>_____________________________________________________</li>
+          <li> Q -> <%= Time.now.strftime("%Q") %> ->  </li>
+          <li> q -> <%= Time.now.strftime("%q") %> ->  </li>
+          <li> R -> <%= Time.now.strftime("%R") %> -> Hora:segundos [actual_24] </li>
+          <li> r -> <%= Time.now.strftime("%r") %> -> Hora:segundos [actual_12] </li>
+          <li>_____________________________________________________</li>
+          <li> S -> <%= Time.now.strftime("%S") %> -> Segundo actual </li>
+          <li> s -> <%= Time.now.strftime("%s") %> -> diez números? </li>
+          <li> T -> <%= Time.now.strftime("%T") %> ->  </li>
+          <li> t -> <%= Time.now.strftime("%t") %> -> Año-Mes-Día </li>
+          <li>_____________________________________________________</li>
+          <li> U -> <%= Time.now.strftime("%U") %> -> Semana actual </li>
+          <li> u -> <%= Time.now.strftime("%u") %> -> UTC +7? </li>
+          <li> V -> <%= Time.now.strftime("%V") %> -> Semana actual </li>
+          <li> v -> <%= Time.now.strftime("%v") %> -> Día-Mes-Año </li>
+          <li>_____________________________________________________</li>
+          <li> W -> <%= Time.now.strftime("%W") %> -> Semana actual </li>
+          <li> w -> <%= Time.now.strftime("%w") %> -> UTC +7? </li>
+          <li> X -> <%= Time.now.strftime("%X") %> -> Hora:min:seg </li>
+          <li> x -> <%= Time.now.strftime("%x") %> -> Mes-Día-Año </li>
+          <li>_____________________________________________________</li>
+          <li> Y -> <%= Time.now.strftime("%Y") %> -> Año ####</li>
+          <li> y -> <%= Time.now.strftime("%y") %> -> Año ## </li>
+          <li> Z -> <%= Time.now.strftime("%Z") %> -> Hora Global - Hora Est Pac Sudam</li>
+          <li> z -> <%= Time.now.strftime("%z") %> -> 0500 </li>
+          <li>_____________________________________________________</li>
+        </ul>
+    </nav>
+
+</div>

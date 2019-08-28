@@ -1,0 +1,111 @@
+
+<%= form_for(movement) do |f| %>
+  <% if movement.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(movement.errors.count, "error") %>
+          prohibited this movement from being saved:</h2>
+      <ul>
+      <% movement.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="form-group col-xs-6">
+    <%= f.label :mov_date, 'Fecha' %>
+    <%= f.date_field :mov_date, value: @movement.mov_date.nil? ? Date.today : @movement.mov_date,
+    class: 'form-control', required: true %>
+  </div>
+
+  <div class="form-group col-xs-6">
+    <%= f.label :mov_hour, 'Hora' %>
+    <%= f.text_field :mov_hour, class: 'form-control', required: true %>
+  </div>
+
+  <div class="form-group col-xs-12">
+    <%= f.text_area :description, class: 'form-control', required: true %>
+  </div>
+
+  <div class="form-group col-xs-6">
+    <%= f.label :mov_type, 'Tipo' %>
+    <%= f.select_tag :mov_type, options_for_select(mov_types, @movement.mov_type),
+    { include_blank: 'Selección', class: 'form-control' } %>
+
+
+    <%# <%= f.label :description, 'Descripción' %> %>
+
+    <!-- opciones PUC
+    <div class="nuevo">
+      <div class="ingresos">
+        11010101 D Caja1
+        41010101 C Ingresos en efect
+        <%= link_to 'Carreras', '#' %>
+
+        11010102 D Caja2
+        41010102 C Ingresos con vales
+        <%= link_to 'Con Vales', '#' %>
+
+        11010103 D Caja3
+        41010103 C Ingresos x Contr
+        <%= link_to 'Contratos',  '#' %>
+
+        11010104 D Caja4
+        41010104 C Ingresos varios
+        <%= link_to 'Otros', '#' %>
+      </div>
+      -->
+
+      <!-- Costos de operación
+      <div class="costos">
+        <%= link_to 'Combustible', '#' %>
+        <%= link_to 'Aceites_advs', '#' %>
+        <%= link_to '', '#' %>
+        <%= link_to 'Otros', '#' %>
+      </div>
+
+      <div class="gastos">
+        <%= link_to 'Combustible', '#' %>
+        <%= link_to '', '#' %>
+        <%= link_to '', '#' %>
+        <%= link_to 'Otros', '#' %>
+      </div>
+
+      <div class="gastos_pers">
+        <%= link_to 'Combustible', '#' %>
+        <%= link_to 'Aceites_advs', '#' %>
+        <%= link_to '', '#' %>
+        <%= link_to 'Otros', '#' %>
+      </div>
+
+      <div class="costos_taller_mant">
+        <%= link_to 'aceites_advs', '#' %>
+        <%= link_to 'filtros', '#' %>
+        <%= link_to 'frenos-pastas', '#' %>
+        <%= link_to 'electricos', '#' %>
+      </div>
+
+    </div>
+    -->
+
+  </div>
+
+  <div class="form-group col-xs-6">
+    <%= f.label :price, 'Valor' %>
+    <%= f.number_field :price, class: 'form-control', required: true %>
+  </div>
+
+  <div class="clearfix"></div>
+
+  <div class="actions text-right">
+    <%= f.button :submit, class: "btn btn-success" do %>
+      <i class='fa fa-plus'></i> Guardar
+    <% end %>
+
+    <%= link_to movements_path, class: "btn btn-warning" do %>
+      <i class='fa fa-arrow-left'></i> Regresar
+    <% end %>
+  </div>
+
+<% end %>

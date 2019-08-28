@@ -1,0 +1,36 @@
+
+<nav class="header-reg">
+  <%= link_to 'Nuevo', new_movement_path %>
+  <%= link_to 'Día', movements_path %>  <!-- Díario, consolidados -->
+
+  <%= link_to 'Normas', normas_path %> <!-- Normatividad Legal -->
+  <%= link_to 'Sites', '#' %>   <!-- ... -->
+
+  <%= link_to 'Runt', n_runt_path %>  <!-- Pagos x infracciones  -->
+  <%= link_to 'Simit', '#' %>    <!-- Simit -->
+  <%= link_to 'P&P', movm_pp_path %>  <!-- Pico y Placa Med -->
+</nav>
+
+<div> <center>
+  <h6 style="display: flex; justify-content: space-between; width: 100%;">
+    <span> ♦ Index </span> <%= link_to '◄', movements_path %>
+    <%= link_to '►', normas_path %> <span> Normas • </span> </h6>
+  <H4> Movilidad Medellín </h4> </center>
+
+  <P>
+  <nav>
+    <ul><li> ABC... </li>
+
+        <li> Trámites </li>
+        <li> Pico y Placa </li>
+
+        <li> Fotomultas </li>
+
+        <li> Taquilla </li>
+
+
+        <li> Otros </li>
+    </ul>
+  </nav>
+
+</div>

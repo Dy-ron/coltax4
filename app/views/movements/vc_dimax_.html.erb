@@ -1,0 +1,59 @@
+
+<nav class="header-reg">
+  <%= link_to 'Nuevo', new_movement_path %>
+  <%= link_to 'Día', movements_path %> <!-- Día, nuevo, consolidados -->
+
+  <%= link_to 'Contratos', vc_dmx_contratos_path %>   <!-- ... -->
+  <%= link_to 'Otros', rs_agenda_path %>   <!-- ... -->
+  <%= link_to 'Notas', rs_notas_path %>   <!-- ... -->
+
+  <%= link_to '?', '#' %>   <!-- ... -->
+  <%= link_to '?', '#' %>   <!-- ... -->
+
+</nav>
+
+
+<div>  <center>
+  <h3 style="display: flex; justify-content: space-between; width: 100%;">
+    <span>Autos</span>  <span>Coltax OnLine</span>  </h3>
+    <h4> Coltrans - Dimax </h4>
+  </center>
+
+<h6> Operación Nacional </h6>
+<hr>
+
+<br><br><br><br><br><br><br><br><br><br>
+
+<hr class="separator">
+<h6 style="display: flex; justify-content: space-between; width: 100%;">
+  <span> ♦ Coltrans </span> <%= link_to '◄', tr_coltrans_path %>
+  <%= link_to '►', contab_path %> <span> Contab ♦ </span> </h6>
+<hr class="separator">
+
+<center>
+  <h3 style="display: flex; justify-content: space-between; width: 100%;">
+    <span> Dimax </span>
+    <%= link_to 'Back', movements_path %>
+    <span> Coltrans </span> </h3>
+</center>
+
+  <nav class='blue1'>
+    <ul><li> Ingetrans </li>
+        <li> Contratos </li>
+        <li> Contactos </li>
+        <li> ----------------- </li>
+        <li> Pólizas </li>
+        <li> Mintransporte </li>
+
+    </ul>
+  </nav>
+
+  <center>
+    <h3 style="display: flex; justify-content: space-between; width: 100%;">
+      <span> Operación Nacional </span>
+      <%= link_to 'Back', movements_path %>
+      <span>Coltax OnLine</span> </h3>
+  </center>
+  <hr>
+
+</div>

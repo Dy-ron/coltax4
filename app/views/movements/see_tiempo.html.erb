@@ -1,0 +1,1690 @@
+
+<nav class="header-reg">
+  <%= link_to 'Nuevo', new_movement_path %>
+  <%= link_to 'Día', movements_path %> <!-- Día, nuevo, consolidados -->
+
+  <%= link_to 'Total', '#' %>   <!-- Día, sems, mes, total_año -->
+  <%= link_to '?', '#' %>   <!-- Anterior día, sem, mes -->
+  <%= link_to '?', '#' %>   <!-- Estados, Informs, imprs -->
+</nav>
+
+<center> <h3 style="display: flex; justify-content: space-between; width: 100%;">
+  <span>Ver / Períodos </span> <%= link_to 'Back', see_all_path %>
+  <span>Coltax OnLine</span> </h3>
+<h4> Períodos </h4> </center>
+<hr class="separator">
+
+<!-- ***********************************************************************  -->
+
+<!-- Mostrar Estados Trimestrales-->
+<hr class="separator">
+<h6 style="display: flex; justify-content: space-between; width: 100%;">
+  <span> ♦ Ver </span> <%= link_to '◄', movements_path %>
+  <%= link_to '►', contab_path %> <span> Trim 4_2018 ♦ </span> </h6>
+<hr class="separator">
+
+<!-- Trim#3 _Jn16_Jl15 / Ag15 / Spt15 //2018 -->
+<P>  <!-- Mostrar Estados diarios-->
+<div class="row">
+  <div class="col-xs-2 blue0"><h6>2018_4T</h6></div>
+  <div class="col-xs-2 blue0"><h6>Oct15</h6></div>
+  <div class="col-xs-2 blue0"><h6>Nov15</h6></div>
+  <div class="col-xs-2 blue0"><h6>Dic15</h6></div>
+  <div class="col-xs-3 blue0"><h6>Oct_Dic</h6></div>
+  <div class="col-xs-1 blue0"><h6><%= to_currency(@nn_n ) %></h6></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">I</span>ngresos</h6></div>
+  <div class="col-xs-2 fuchs4"><h6><%= to_currency(@a10m_in) %></h6></div>
+  <div class="col-xs-2 glima4"><h6><%= to_currency(@a11m_in) %></h6></div>
+  <div class="col-xs-2 marin4"><h6><%= to_currency(@a12m_in) %></h6></div>
+  <div class="col-xs-3 blue2 "><h6><%= to_currency(@a012in) %></h6></div>
+  <div class="col-xs-1 blue  "><h5><%= to_currency(@nn_n  ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">E</span>gresos</h6></div>
+  <div class="col-xs-2 fuchs3"><h6><%= to_currency(@a10m_eg) %></h6></div>
+  <div class="col-xs-2 glima3"><h6><%= to_currency(@a11m_eg) %></h6></div>
+  <div class="col-xs-2 marin3"><h6><%= to_currency(@a12m_eg) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a012eg) %></h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">G</span>ts_Oper.</h6></div>
+  <div class="col-xs-2 fuchs2"><h6><%= to_currency(@a10m_pj) %></h6></div>
+  <div class="col-xs-2 glima2"><h6><%= to_currency(@a11m_pj) %></h6></div>
+  <div class="col-xs-2 marin2"><h6><%= to_currency(@a12m_pj) %></h6></div>
+  <div class="col-xs-3 blue0 "><h6><%= to_currency(@a012pj) %></h6></div>
+  <div class="col-xs-1 blue  "><h6><%= to_currency(@nn_n ) %></h6></div>
+</div> <p>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">A</span>ndaluz</h6></div>
+  <div class="col-xs-2 fuchs1"><h6><%= to_currency(@a10m_an) %></h6></div>
+  <div class="col-xs-2 glima1"><h6><%= to_currency(@a11m_an) %></h6></div>
+  <div class="col-xs-2 marin1"><h6><%= to_currency(@a12m_an) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a012an) %></h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n  ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black">Mó<span class="blue_f">v</span>il_Éxito</h6></div>
+  <div class="col-xs-2 fuchs1"><h6><%= to_currency(@a10m_dt) %></h6></div>
+  <div class="col-xs-2 glima1"><h6><%= to_currency(@a11m_dt) %></h6></div>
+  <div class="col-xs-2 marin1"><h6><%= to_currency(@a12m_dt) %></h6></div>
+  <div class="col-xs-3 blue0 "><h6><%= to_currency(@a012dt) %></h6></div>
+  <div class="col-xs-1 blue  "><h5><%= to_currency(@nn_n  ) %></h5></div>
+</div>
+
+<div class="row" border=1>
+  <div class="col-xs-2 marina"><h6 class="white text-center">Nt_Op¹</h6></div>
+  <div class="col-xs-2 marina"><h6><%= to_currency(@a10m_ea) %></h6></div>
+  <div class="col-xs-2 marina"><h6><%= to_currency(@a11m_ea) %></h6></div>
+  <div class="col-xs-2 marina"><h6><%= to_currency(@a12m_ea) %></h6></div>
+  <div class="col-xs-3 blue0 "><h6><%= to_currency(@a012ea) %></h6></div>
+  <div class="col-xs-1 blue1 "><h6><%= to_currency(@a456av) %></h6></div>
+</div> <p>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black">S<span class="blue_f">O</span>AT</h6></div>
+  <div class="col-xs-2 fuchs0"><h6><%= to_currency(@a10m_so) %></h6></div>
+  <div class="col-xs-2 glima0"><h6><%= to_currency(@a11m_so) %></h6></div>
+  <div class="col-xs-2 marin0"><h6><%= to_currency(@a12m_so) %></h6></div>
+  <div class="col-xs-3 blue2 "><h6><%= to_currency(@a012so) %></h6></div>
+  <div class="col-xs-1 blue  "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">T</span>arjet_Oper</h6></div>
+  <div class="col-xs-2 fuchs0"><h6><%= to_currency(@a10m_to) %></h6></div>
+  <div class="col-xs-2 glima0"><h6><%= to_currency(@a11m_to) %></h6></div>
+  <div class="col-xs-2 marin0"><h6><%= to_currency(@a12m_to) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a012to) %></h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black">Ta<span class="blue_f">x</span>ímetro</h6></div>
+  <div class="col-xs-2 fuchs0"><h6><%= to_currency(@a10m_tx) %></h6></div>
+  <div class="col-xs-2 glima0"><h6><%= to_currency(@a11m_tx) %></h6></div>
+  <div class="col-xs-2 marin0"><h6><%= to_currency(@a12m_tx) %></h6></div>
+  <div class="col-xs-3 blue0 "><h6><%= to_currency(@a012tx) %></h6></div>
+  <div class="col-xs-1 blue  "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black">Téc_<span class="blue_f">M</span>ec</h6></div>
+  <div class="col-xs-2 fuchs0"><h6><%= to_currency(@a10m_tm) %></h6></div>
+  <div class="col-xs-2 glima0"><h6><%= to_currency(@a11m_tm) %></h6></div>
+  <div class="col-xs-2 marin0"><h6><%= to_currency(@a12m_tm) %></h6></div>
+  <div class="col-xs-3 blue0 "><h6><%= to_currency(@a012tm) %></h6></div>
+  <div class="col-xs-1 blue1 "><h6><%= to_currency(@nn_n ) %></h6></div>
+</div> <p>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">T</span>aller</h6></div>
+  <div class="col-xs-2 fuchsi"><h6><%= to_currency(@a10m_tr) %></h6></div>
+  <div class="col-xs-2 glima "><h6><%= to_currency(@a11m_tr) %></h6></div>
+  <div class="col-xs-2 marina"><h6><%= to_currency(@a12m_tr) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a012tr) %></h6></div>
+  <div class="col-xs-1 blue  "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">V</span>arios</h6></div>
+  <div class="col-xs-2 fuchsi"><h6><%= to_currency(@a10m_vr) %></h6></div>
+  <div class="col-xs-2 glima "><h6><%= to_currency(@a11m_vr) %></h6></div>
+  <div class="col-xs-2 marina"><h6><%= to_currency(@a12m_vr) %></h6></div>
+  <div class="col-xs-3 blue0 "><h6><%= to_currency(@a012vr) %></h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+
+<div class="row" border=1>
+  <div class="col-xs-2 blue1 "><h6>Neto²</h6></div>
+  <div class="col-xs-2 blue1 "><h6><%= to_currency(@a10m_na) %></h6></div>
+  <div class="col-xs-2 blue1 "><h6><%= to_currency(@a11m_na) %></h6></div>
+  <div class="col-xs-2 blue1 "><h6><%= to_currency(@a12m_na) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a012na) %></h6></div>
+  <div class="col-xs-1 blue  "><h6><%= to_currency(@nn_n ) %></h6></div>
+</div> <p>
+
+<!-- Financiera -->
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">F</span>inanciera</h6></div>
+  <div class="col-xs-2 fuchs1"><h6><%= to_currency(@a10m_fn) %></h6></div>
+  <div class="col-xs-2 glima1"><h6><%= to_currency(@a11m_fn) %></h6></div>
+  <div class="col-xs-2 marin1"><h6><%= to_currency(@a12m_fn) %></h6></div>
+  <div class="col-xs-3 blue  "><h6><%= to_currency(@a012fn) %></h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">I</span>nters_Mr</h6></div>
+  <div class="col-xs-2 fuchs1"><h6><%= to_currency(@a10m_fi) %></h6></div>
+  <div class="col-xs-2 glima1"><h6><%= to_currency(@a11m_fi) %></h6></div>
+  <div class="col-xs-2 marin1"><h6><%= to_currency(@a12m_fi) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a012fi) %></h6></div>
+  <div class="col-xs-1 blue  "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">S</span>eg_Mr</h6></div>
+  <div class="col-xs-2 fuchs1"><h6><%= to_currency(@a10m_fs) %></h6></div>
+  <div class="col-xs-2 glima1"><h6><%= to_currency(@a11m_fs) %></h6></div>
+  <div class="col-xs-2 marin1"><h6><%= to_currency(@a12m_fs) %></h6></div>
+  <div class="col-xs-3 blue0 "><h6><%= to_currency(@a012fs) %></h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n  ) %></h5></div>
+</div>
+
+<div class="row" border=1>
+  <div class="col-xs-2 blue0"><h6>Total</h6></div>
+  <div class="col-xs-2 blue0"><h6><%= to_currency(@a10m_nf) %></h6></div>
+  <div class="col-xs-2 blue0"><h6><%= to_currency(@a11m_nf) %></h6></div>
+  <div class="col-xs-2 blue0"><h6><%= to_currency(@a12m_nf) %></h6></div>
+  <div class="col-xs-3 navy "><h6><%= to_currency(@a012nf) %></h6></div>
+  <div class="col-xs-1 blue0"><h6><%= to_currency(@nn_n ) %></h6></div>
+</div> <p>
+
+<hr class="separator">
+<h6 style="display: flex; justify-content: space-between; width: 100%;">
+  <span> ♦ Index </span> <%= link_to '◄', movements_path %>
+  <%= link_to '►', contab_path %> <span> Contab T4 / 2018 ♦ </span> </h6>
+<hr class="separator">
+
+<div class="row">
+  <div class="col-xs-2 blue0"><h6>Contab</h6></div>
+  <div class="col-xs-2 blue0"><h6>Oct15</h6></div>
+  <div class="col-xs-2 blue0"><h6>Nov15</h6></div>
+  <div class="col-xs-2 blue0"><h6>Dic15</h6></div>
+  <div class="col-xs-3 blue0"><h6>Oct_Dic</h6></div>
+  <div class="col-xs-1 blue0"><h6><%= to_currency(@nn_n ) %></h6></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black">Caja_<span class="blue_f">D</span></h6></div>
+  <div class="col-xs-2 fuchs2"><h6><%= to_currency(@a10m_cd) %></h6></div>
+  <div class="col-xs-2 glima2"><h6><%= to_currency(@a11m_cd) %></h6></div>
+  <div class="col-xs-2 marin2"><h6><%= to_currency(@a12m_cd) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a012cd) %></h6></div>
+  <div class="col-xs-1 blue0 "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black">Caja_<span class="blue_f">C</span></h6></div>
+  <div class="col-xs-2 fuchs2"><h6><%= to_currency(@a10m_cr) %></h6></div>
+  <div class="col-xs-2 glima2"><h6><%= to_currency(@a11m_cr) %></h6></div>
+  <div class="col-xs-2 marin2"><h6><%= to_currency(@a12m_cr) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a012cr) %></h6></div>
+  <div class="col-xs-1 blue0 "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div> <p>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">P</span>réstamos</h6></div>
+  <div class="col-xs-2 fuchs0"><h6><%= to_currency(@a10m_pr) %></h6></div>
+  <div class="col-xs-2 glima0"><h6><%= to_currency(@a11m_pr) %></h6></div>
+  <div class="col-xs-2 marin0"><h6><%= to_currency(@a12m_pr) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a012pr) %></h6></div>
+  <div class="col-xs-1 blue0 "><h5><%= to_currency(@nn_n  ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">P</span>agos</h6></div>
+  <div class="col-xs-2 fuchs0"><h6><%= to_currency(@a10m_pg) %></h6></div>
+  <div class="col-xs-2 glima0"><h6><%= to_currency(@a11m_pg) %></h6></div>
+  <div class="col-xs-2 marin0"><h6><%= to_currency(@a12m_pg) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a012pg) %></h6></div>
+  <div class="col-xs-1 blue0 "><h5><%= to_currency(@nn_n  ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">I</span>ntereses</h6></div>
+  <div class="col-xs-2 fuchs0"><h6><%= to_currency(@a10m_pi) %></h6></div>
+  <div class="col-xs-2 glima0"><h6><%= to_currency(@a11m_pi) %></h6></div>
+  <div class="col-xs-2 marin0"><h6><%= to_currency(@a12m_pi) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a012pi) %></h6></div>
+  <div class="col-xs-1 blue0 "><h5><%= to_currency(@nn_n  ) %></h5></div>
+</div> <p>
+
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">I</span>mpuestos</h6></div>
+  <div class="col-xs-2 fuchs1"><h6><%= to_currency(@a10m_im) %></h6></div>
+  <div class="col-xs-2 glima1"><h6><%= to_currency(@a11m_im) %></h6></div>
+  <div class="col-xs-2 marin1"><h6><%= to_currency(@a12m_im) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a012im) %></h6></div>
+  <div class="col-xs-1 blue0 "><h5><%= to_currency(@nn_n  ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">L</span>egal</h6></div>
+  <div class="col-xs-2 fuchs1"><h6><%= to_currency(@a10m_lg) %></h6></div>
+  <div class="col-xs-2 glima1"><h6><%= to_currency(@a11m_lg) %></h6></div>
+  <div class="col-xs-2 marin1"><h6><%= to_currency(@a12m_lg) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a012lg) %></h6></div>
+  <div class="col-xs-1 blue0 "><h5><%= to_currency(@nn_n  ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">O</span>tros</h6></div>
+  <div class="col-xs-2 fuchs0"><h6><%= to_currency(@a10m_ot) %></h6></div>
+  <div class="col-xs-2 glima0"><h6><%= to_currency(@a11m_ot) %></h6></div>
+  <div class="col-xs-2 marin0"><h6><%= to_currency(@a12m_ot) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a012ot) %></h6></div>
+  <div class="col-xs-1 blue0 "><h6><%= to_currency(@nn_n  ) %></h6></div>
+</div>  <p>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">H</span>ome</h6></div>
+  <div class="col-xs-2 fuchsi"><h6><%= to_currency(@a10m_hm) %></h6></div>
+  <div class="col-xs-2 glima "><h6><%= to_currency(@a11m_hm) %></h6></div>
+  <div class="col-xs-2 marina"><h6><%= to_currency(@a12m_hm) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a012hm) %></h6></div>
+  <div class="col-xs-1 blue0 "><h5><%= to_currency(@nn_n  ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">P</span>ersonal</h6></div>
+  <div class="col-xs-2 fuchsi"><h6><%= to_currency(@a10m_ps) %></h6></div>
+  <div class="col-xs-2 glima "><h6><%= to_currency(@a11m_ps) %></h6></div>
+  <div class="col-xs-2 marina"><h6><%= to_currency(@a12m_ps) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a012ps) %></h6></div>
+  <div class="col-xs-1 blue0 "><h5><%= to_currency(@nn_n  ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">S</span>eguro_Social</h6></div>
+  <div class="col-xs-2 fuchsi"><h6><%= to_currency(@a10m_ss) %></h6></div>
+  <div class="col-xs-2 glima "><h6><%= to_currency(@a11m_ss) %></h6></div>
+  <div class="col-xs-2 marina"><h6><%= to_currency(@a12m_ss) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a012ss) %></h6></div>
+  <div class="col-xs-1 blue0 "><h5><%= to_currency(@nn_n  ) %></h5></div>
+</div>
+
+<div class="row" border=1>
+  <div class="col-xs-2 blue1"><h6>T18_2</h6></div>
+  <div class="col-xs-2 blue1"><h6><%= to_currency(@a10m_nc) %></h6></div>
+  <div class="col-xs-2 blue1"><h6><%= to_currency(@a11m_nc) %></h6></div>
+  <div class="col-xs-2 blue1"><h6><%= to_currency(@a12m_nc) %></h6></div>
+  <div class="col-xs-3 blue1"><h6><%= to_currency(@a012nc) %></h6></div>
+  <div class="col-xs-1 blue1"><h5><%= to_currency(@nn_n  ) %></h5></div>
+</div>
+
+<div class="row" border=1>
+  <div class="col-xs-2 blue0"><h6>Total</h6></div>
+  <div class="col-xs-2 blue0"><h6><%= to_currency(@a10m_tt) %></h6></div>
+  <div class="col-xs-2 blue0"><h6><%= to_currency(@a11m_tt) %></h6></div>
+  <div class="col-xs-2 blue0"><h6><%= to_currency(@a12m_tt) %></h6></div>
+  <div class="col-xs-3 blue0"><h6><%= to_currency(@a012tt) %></h6></div>
+  <div class="col-xs-1 blue0"><h6><%= to_currency(@nn_n  ) %></h6></div>
+</div>
+
+<hr class="separator">
+<h6 style="display: flex; justify-content: space-between; width: 100%;">
+  <span> ♦ Ver </span> <%= link_to '◄', movements_path %>
+  <%= link_to '►', banks_path %> <span> Bancos T4 / 2018 ♦ </span> </h6>
+<hr class="separator">
+
+<!-- Estados Bancarios -->
+<div class="row">
+  <div class="col-xs-2 blue0"><h6>Bancos</h6></div>
+  <div class="col-xs-2 blue0"><h6>Dia</h6></div>
+  <div class="col-xs-2 blue0"><h6>Sem</h6></div>
+  <div class="col-xs-2 blue0"><h6>Mes</h6></div>
+  <div class="col-xs-3 blue0"><h6>Año</h6></div>
+  <div class="col-xs-1 blue0"><h6> % </h6></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black">Bank<span class="blue_f">¹</span>_bd</h6></div>
+  <div class="col-xs-2 fuchs4"><h6><%= to_currency(@a10m_bd) %></h6></div>
+  <div class="col-xs-2 glima4"><h6><%= to_currency(@a11m_bd) %></h6></div>
+  <div class="col-xs-2 marin4"><h6><%= to_currency(@a12m_bd) %></h6></div>
+  <div class="col-xs-3 marin3"><h6><%= to_currency(@a012bd) %></h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n) %></h5></div>
+</div>
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black">Bank<span class="blue_f">²</span>_br</h6></div>
+  <div class="col-xs-2 fuchs2"><h6><%= to_currency(@a10m_br) %></h6></div>
+  <div class="col-xs-2 glima2"><h6><%= to_currency(@a11m_br) %></h6></div>
+  <div class="col-xs-2 marin2"><h6><%= to_currency(@a12m_br) %></h6></div>
+  <div class="col-xs-3 marin1"><h6><%= to_currency(@a012br) %></h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black">Bank<span class="blue_f">³</span>_bp</h6></div>
+  <div class="col-xs-2 fuchs1"><h6><%= to_currency(@a10m_bc) %></h6></div>
+  <div class="col-xs-2 glima1"><h6><%= to_currency(@a11m_bc) %></h6></div>
+  <div class="col-xs-2 marin1"><h6><%= to_currency(@a12m_bc) %></h6></div>
+  <div class="col-xs-3 marin0"><h6><%= to_currency(@a012bc) %></h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black">Bank<span class="blue_f">°</span>_cb</h6></div>
+  <div class="col-xs-2 fuchsi"><h6><%= to_currency(@a10m_bo) %></h6></div>
+  <div class="col-xs-2 glima "><h6><%= to_currency(@a11m_bo) %></h6></div>
+  <div class="col-xs-2 marin0"><h6><%= to_currency(@a12m_bo) %></h6></div>
+  <div class="col-xs-3 marina"><h6><%= to_currency(@a012bo) %></h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+
+<div class="row" border=1>
+  <div class="col-xs-2 blue0"><h6 class="white text-center">Estado</h6></div>
+  <div class="col-xs-2 blue0"><h6><%= to_currency(@a10m_nb) %></h6></div>
+  <div class="col-xs-2 blue0"><h6><%= to_currency(@a11m_nb) %></h6></div>
+  <div class="col-xs-2 blue0"><h6><%= to_currency(@a12m_nb) %></h6></div>
+  <div class="col-xs-3 blue0"><h6><%= to_currency(@a012nb) %></h6></div>
+  <div class="col-xs-1 blue0"><h6><%= to_currency(@nn_n ) %></h6></div>
+</div>
+
+
+<!-- Trim 2018-3  -  Mostrar Estados diarios-->
+<hr class="separator">  <br><hr class="separator">
+<h6 style="display: flex; justify-content: space-between; width: 100%;">
+  <span> ♦ Ver </span> <%= link_to '◄', movements_path %>
+  <%= link_to '►', contab_path %> <span> Trimestre 3 ♦ </span> </h6>
+<hr class="separator">
+
+<!-- Trim#3 _Jn16_Jl15 / Ag15 / Spt15 //2018 -->
+<P>  <!-- Mostrar Estados diarios-->
+<div class="row">
+  <div class="col-xs-2 blue0"><h6>T18_3</h6></div>
+  <div class="col-xs-2 blue0"><h6>Jl15</h6></div>
+  <div class="col-xs-2 blue0"><h6>Ag15</h6></div>
+  <div class="col-xs-2 blue0"><h6>Sp15</h6></div>
+  <div class="col-xs-3 blue0"><h6>Jun_Spt</h6></div>
+  <div class="col-xs-1 blue0"><h6><%= to_currency(@nn_n ) %></h6></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">I</span>ngresos</h6></div>
+  <div class="col-xs-2 fuchs4"><h6><%= to_currency(@a7m_in) %></h6></div>
+  <div class="col-xs-2 glima4"><h6><%= to_currency(@a8m_in) %></h6></div>
+  <div class="col-xs-2 marin4"><h6><%= to_currency(@a9m_in) %></h6></div>
+  <div class="col-xs-3 blue2 "><h6><%= to_currency(@a789in) %></h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n  ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">E</span>gresos</h6></div>
+  <div class="col-xs-2 fuchs3"><h6><%= to_currency(@a7m_eg) %></h6></div>
+  <div class="col-xs-2 glima3"><h6><%= to_currency(@a8m_eg) %></h6></div>
+  <div class="col-xs-2 marin3"><h6><%= to_currency(@a9m_eg) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a789eg) %></h6></div>
+  <div class="col-xs-1 blue0 "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">G</span>ts_Oper.</h6></div>
+  <div class="col-xs-2 fuchs2"><h6><%= to_currency(@a7m_pj) %></h6></div>
+  <div class="col-xs-2 glima2"><h6><%= to_currency(@a8m_pj) %></h6></div>
+  <div class="col-xs-2 marin2"><h6><%= to_currency(@a9m_pj) %></h6></div>
+  <div class="col-xs-3 blue0 "><h6><%= to_currency(@a789pj) %></h6></div>
+  <div class="col-xs-1 blue1 "><h6><%= to_currency(@nn_n ) %></h6></div>
+</div> <p>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">A</span>ndaluz</h6></div>
+  <div class="col-xs-2 fuchs1"><h6><%= to_currency(@a7m_an) %></h6></div>
+  <div class="col-xs-2 glima1"><h6><%= to_currency(@a8m_an) %></h6></div>
+  <div class="col-xs-2 marin1"><h6><%= to_currency(@a9m_an) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a789an) %></h6></div>
+  <div class="col-xs-1 blue0 "><h5><%= to_currency(@nn_n  ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black">Mó<span class="blue_f">v</span>il_Éxito</h6></div>
+  <div class="col-xs-2 fuchs1"><h6><%= to_currency(@a7m_dt) %></h6></div>
+  <div class="col-xs-2 glima1"><h6><%= to_currency(@a8m_dt) %></h6></div>
+  <div class="col-xs-2 marin1"><h6><%= to_currency(@a9m_dt) %></h6></div>
+  <div class="col-xs-3 blue0 "><h6><%= to_currency(@a789dt) %></h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n  ) %></h5></div>
+</div>
+
+<div class="row" border=1>
+  <div class="col-xs-2 marina"><h6 class="white text-center">Nt_Op¹</h6></div>
+  <div class="col-xs-2 marina"><h6><%= to_currency(@a7m_ea) %></h6></div>
+  <div class="col-xs-2 marina"><h6><%= to_currency(@a8m_ea) %></h6></div>
+  <div class="col-xs-2 marina"><h6><%= to_currency(@a9m_ea) %></h6></div>
+  <div class="col-xs-3 blue0 "><h6><%= to_currency(@a789ea) %></h6></div>
+  <div class="col-xs-1 blue0 "><h6><%= to_currency(@a456av) %></h6></div>
+</div> <p>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black">S<span class="blue_f">O</span>AT</h6></div>
+  <div class="col-xs-2 fuchs0"><h6><%= to_currency(@a7m_so) %></h6></div>
+  <div class="col-xs-2 glima0"><h6><%= to_currency(@a8m_so) %></h6></div>
+  <div class="col-xs-2 marin0"><h6><%= to_currency(@a9m_so) %></h6></div>
+  <div class="col-xs-3 blue2 "><h6><%= to_currency(@a789so) %></h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">T</span>arjet_Oper</h6></div>
+  <div class="col-xs-2 fuchs0"><h6><%= to_currency(@a7m_to) %></h6></div>
+  <div class="col-xs-2 glima0"><h6><%= to_currency(@a8m_to) %></h6></div>
+  <div class="col-xs-2 marin0"><h6><%= to_currency(@a9m_to) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a789to) %></h6></div>
+  <div class="col-xs-1 blue0 "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black">Ta<span class="blue_f">x</span>ímetro</h6></div>
+  <div class="col-xs-2 fuchs0"><h6><%= to_currency(@a7m_tx) %></h6></div>
+  <div class="col-xs-2 glima0"><h6><%= to_currency(@a8m_tx) %></h6></div>
+  <div class="col-xs-2 marin0"><h6><%= to_currency(@a9m_tx) %></h6></div>
+  <div class="col-xs-3 blue0 "><h6><%= to_currency(@a789tx) %></h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black">Téc_<span class="blue_f">M</span>ec</h6></div>
+  <div class="col-xs-2 fuchs0"><h6><%= to_currency(@a7m_tm) %></h6></div>
+  <div class="col-xs-2 glima0"><h6><%= to_currency(@a8m_tm) %></h6></div>
+  <div class="col-xs-2 marin0"><h6><%= to_currency(@a9m_tm) %></h6></div>
+  <div class="col-xs-3 blue0 "><h6><%= to_currency(@a789tm) %></h6></div>
+  <div class="col-xs-1 blue0 "><h6><%= to_currency(@nn_n ) %></h6></div>
+</div> <p>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">T</span>aller</h6></div>
+  <div class="col-xs-2 fuchsi"><h6><%= to_currency(@a7m_tr) %></h6></div>
+  <div class="col-xs-2 glima "><h6><%= to_currency(@a8m_tr) %></h6></div>
+  <div class="col-xs-2 marina"><h6><%= to_currency(@a9m_tr) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a789tr) %></h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">V</span>arios</h6></div>
+  <div class="col-xs-2 fuchsi"><h6><%= to_currency(@a7m_vr) %></h6></div>
+  <div class="col-xs-2 glima "><h6><%= to_currency(@a8m_vr) %></h6></div>
+  <div class="col-xs-2 marina"><h6><%= to_currency(@a9m_vr) %></h6></div>
+  <div class="col-xs-3 blue0 "><h6><%= to_currency(@a789vr) %></h6></div>
+  <div class="col-xs-1 blue0 "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+
+<div class="row" border=1>
+  <div class="col-xs-2 blue1 "><h6>Neto²</h6></div>
+  <div class="col-xs-2 blue1 "><h6><%= to_currency(@a7m_na) %></h6></div>
+  <div class="col-xs-2 blue1 "><h6><%= to_currency(@a8m_na) %></h6></div>
+  <div class="col-xs-2 blue1 "><h6><%= to_currency(@a9m_na) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a789na) %></h6></div>
+  <div class="col-xs-1 blue1 "><h6><%= to_currency(@nn_n ) %></h6></div>
+</div> <p>
+
+<!-- Financiera -->
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">F</span>inanciera</h6></div>
+  <div class="col-xs-2 fuchs1"><h6><%= to_currency(@a7m_fn) %></h6></div>
+  <div class="col-xs-2 glima1"><h6><%= to_currency(@a8m_fn) %></h6></div>
+  <div class="col-xs-2 marin1"><h6><%= to_currency(@a9m_fn) %></h6></div>
+  <div class="col-xs-3 blue  "><h6><%= to_currency(@a789fn) %></h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">I</span>nters_Mr</h6></div>
+  <div class="col-xs-2 fuchs1"><h6><%= to_currency(@a7m_fi) %></h6></div>
+  <div class="col-xs-2 glima1"><h6><%= to_currency(@a8m_fi) %></h6></div>
+  <div class="col-xs-2 marin1"><h6><%= to_currency(@a9m_fi) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a789fi) %></h6></div>
+  <div class="col-xs-1 blue0 "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">S</span>eg_Mr</h6></div>
+  <div class="col-xs-2 fuchs1"><h6><%= to_currency(@a7m_fs) %></h6></div>
+  <div class="col-xs-2 glima1"><h6><%= to_currency(@a8m_fs) %></h6></div>
+  <div class="col-xs-2 marin1"><h6><%= to_currency(@a9m_fs) %></h6></div>
+  <div class="col-xs-3 blue0 "><h6><%= to_currency(@a789fs) %></h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n  ) %></h5></div>
+</div>
+
+<div class="row" border=1>
+  <div class="col-xs-2 blue0"><h6>Total</h6></div>
+  <div class="col-xs-2 blue0"><h6><%= to_currency(@a7m_nf) %></h6></div>
+  <div class="col-xs-2 blue0"><h6><%= to_currency(@a8m_nf) %></h6></div>
+  <div class="col-xs-2 blue0"><h6><%= to_currency(@a9m_nf) %></h6></div>
+  <div class="col-xs-3 navy "><h6><%= to_currency(@a789nf) %></h6></div>
+  <div class="col-xs-1 blue0"><h6><%= to_currency(@nn_n ) %></h6></div>
+</div> <p>
+
+<hr class="separator">
+<h6 style="display: flex; justify-content: space-between; width: 100%;">
+  <span> ♦ Index </span> <%= link_to '◄', movements_path %>
+  <%= link_to '►', contab_path %> <span> Contab T3 / 2018 ♦ </span> </h6>
+<hr class="separator">
+
+<div class="row">
+  <div class="col-xs-2 blue0"><h6>Contab</h6></div>
+  <div class="col-xs-2 blue0"><h6>Jl15</h6></div>
+  <div class="col-xs-2 blue0"><h6>Ag15</h6></div>
+  <div class="col-xs-2 blue0"><h6>Sp15</h6></div>
+  <div class="col-xs-3 blue0"><h6>Jul_Sep</h6></div>
+  <div class="col-xs-1 blue0"><h6><%= to_currency(@nn_n ) %></h6></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black">Caja_<span class="blue_f">D</span></h6></div>
+  <div class="col-xs-2 fuchs2"><h6><%= to_currency(@a7m_cd) %></h6></div>
+  <div class="col-xs-2 glima2"><h6><%= to_currency(@a8m_cd) %></h6></div>
+  <div class="col-xs-2 marin2"><h6><%= to_currency(@a9m_cd) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a789cd) %></h6></div>
+  <div class="col-xs-1 blue0 "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black">Caja_<span class="blue_f">C</span></h6></div>
+  <div class="col-xs-2 fuchs2"><h6><%= to_currency(@a7m_cr) %></h6></div>
+  <div class="col-xs-2 glima2"><h6><%= to_currency(@a8m_cr) %></h6></div>
+  <div class="col-xs-2 marin2"><h6><%= to_currency(@a9m_cr) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a789cr) %></h6></div>
+  <div class="col-xs-1 blue0 "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div> <p>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">P</span>réstamos</h6></div>
+  <div class="col-xs-2 fuchs0"><h6><%= to_currency(@a7m_pr) %></h6></div>
+  <div class="col-xs-2 glima0"><h6><%= to_currency(@a8m_pr) %></h6></div>
+  <div class="col-xs-2 marin0"><h6><%= to_currency(@a9m_pr) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a789pr) %></h6></div>
+  <div class="col-xs-1 blue0 "><h5><%= to_currency(@nn_n  ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">P</span>agos</h6></div>
+  <div class="col-xs-2 fuchs0"><h6><%= to_currency(@a7m_pg) %></h6></div>
+  <div class="col-xs-2 glima0"><h6><%= to_currency(@a8m_pg) %></h6></div>
+  <div class="col-xs-2 marin0"><h6><%= to_currency(@a9m_pg) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a789pg) %></h6></div>
+  <div class="col-xs-1 blue0 "><h5><%= to_currency(@nn_n  ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">I</span>ntereses</h6></div>
+  <div class="col-xs-2 fuchs0"><h6><%= to_currency(@a7m_pi) %></h6></div>
+  <div class="col-xs-2 glima0"><h6><%= to_currency(@a8m_pi) %></h6></div>
+  <div class="col-xs-2 marin0"><h6><%= to_currency(@a9m_pi) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a789pi) %></h6></div>
+  <div class="col-xs-1 blue0 "><h5><%= to_currency(@nn_n  ) %></h5></div>
+</div> <p>
+
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">I</span>mpuestos</h6></div>
+  <div class="col-xs-2 fuchs1"><h6><%= to_currency(@a7m_im) %></h6></div>
+  <div class="col-xs-2 glima1"><h6><%= to_currency(@a8m_im) %></h6></div>
+  <div class="col-xs-2 marin1"><h6><%= to_currency(@a9m_im) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a789im) %></h6></div>
+  <div class="col-xs-1 blue0 "><h5><%= to_currency(@nn_n  ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">L</span>egal</h6></div>
+  <div class="col-xs-2 fuchs1"><h6><%= to_currency(@a7m_lg) %></h6></div>
+  <div class="col-xs-2 glima1"><h6><%= to_currency(@a8m_lg) %></h6></div>
+  <div class="col-xs-2 marin1"><h6><%= to_currency(@a9m_lg) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a789lg) %></h6></div>
+  <div class="col-xs-1 blue0 "><h5><%= to_currency(@nn_n  ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">O</span>tros</h6></div>
+  <div class="col-xs-2 fuchs0"><h6><%= to_currency(@a7m_ot) %></h6></div>
+  <div class="col-xs-2 glima0"><h6><%= to_currency(@a8m_ot) %></h6></div>
+  <div class="col-xs-2 marin0"><h6><%= to_currency(@a9m_ot) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a789ot) %></h6></div>
+  <div class="col-xs-1 blue0 "><h6><%= to_currency(@nn_n  ) %></h6></div>
+</div>  <p>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">H</span>ome</h6></div>
+  <div class="col-xs-2 fuchsi"><h6><%= to_currency(@a7m_hm) %></h6></div>
+  <div class="col-xs-2 glima "><h6><%= to_currency(@a8m_hm) %></h6></div>
+  <div class="col-xs-2 marina"><h6><%= to_currency(@a9m_hm) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a789hm) %></h6></div>
+  <div class="col-xs-1 blue0 "><h5><%= to_currency(@nn_n  ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">P</span>ersonal</h6></div>
+  <div class="col-xs-2 fuchsi"><h6><%= to_currency(@a7m_ps) %></h6></div>
+  <div class="col-xs-2 glima "><h6><%= to_currency(@a8m_ps) %></h6></div>
+  <div class="col-xs-2 marina"><h6><%= to_currency(@a9m_ps) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a789ps) %></h6></div>
+  <div class="col-xs-1 blue0 "><h5><%= to_currency(@nn_n  ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">S</span>eguro_Social</h6></div>
+  <div class="col-xs-2 fuchsi"><h6><%= to_currency(@a7m_ss) %></h6></div>
+  <div class="col-xs-2 glima "><h6><%= to_currency(@a8m_ss) %></h6></div>
+  <div class="col-xs-2 marina"><h6><%= to_currency(@a9m_ss) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a789ss) %></h6></div>
+  <div class="col-xs-1 blue0 "><h5><%= to_currency(@nn_n  ) %></h5></div>
+</div>
+
+<div class="row" border=1>
+  <div class="col-xs-2 blue1"><h6>T18_2</h6></div>
+  <div class="col-xs-2 blue1"><h6><%= to_currency(@a7m_nc) %></h6></div>
+  <div class="col-xs-2 blue1"><h6><%= to_currency(@a8m_nc) %></h6></div>
+  <div class="col-xs-2 blue1"><h6><%= to_currency(@a9m_nc) %></h6></div>
+  <div class="col-xs-3 blue1"><h6><%= to_currency(@a789nc) %></h6></div>
+  <div class="col-xs-1 blue1"><h5><%= to_currency(@nn_n  ) %></h5></div>
+</div>
+
+<div class="row" border=1>
+  <div class="col-xs-2 blue0"><h6>Total</h6></div>
+  <div class="col-xs-2 blue0"><h6><%= to_currency(@a7m_tt) %></h6></div>
+  <div class="col-xs-2 blue0"><h6><%= to_currency(@a8m_tt) %></h6></div>
+  <div class="col-xs-2 blue0"><h6><%= to_currency(@a9m_tt) %></h6></div>
+  <div class="col-xs-3 blue0"><h6><%= to_currency(@a789tt) %></h6></div>
+  <div class="col-xs-1 blue0"><h6><%= to_currency(@nn_n  ) %></h6></div>
+</div>
+
+<hr class="separator">
+<h6 style="display: flex; justify-content: space-between; width: 100%;">
+  <span> ♦ Ver </span> <%= link_to '◄', movements_path %>
+  <%= link_to '►', banks_path %> <span> Bancos T3 / 2018 ♦ </span> </h6>
+<hr class="separator">
+
+<!-- Estados Bancarios -->
+<div class="row">
+  <div class="col-xs-2 blue0"><h6>Bancos</h6></div>
+  <div class="col-xs-2 blue0"><h6>Dia</h6></div>
+  <div class="col-xs-2 blue0"><h6>Sem</h6></div>
+  <div class="col-xs-2 blue0"><h6>Mes</h6></div>
+  <div class="col-xs-3 blue0"><h6>Año</h6></div>
+  <div class="col-xs-1 blue0"><h6> % </h6></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black">Bank<span class="blue_f">¹</span>_bd</h6></div>
+  <div class="col-xs-2 fuchs4"><h6><%= to_currency(@a7m_bd) %></h6></div>
+  <div class="col-xs-2 glima4"><h6><%= to_currency(@a8m_bd) %></h6></div>
+  <div class="col-xs-2 marin4"><h6><%= to_currency(@a9m_bd) %></h6></div>
+  <div class="col-xs-3 marin3"><h6><%= to_currency(@a789bd) %></h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n) %></h5></div>
+</div>
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black">Bank<span class="blue_f">²</span>_br</h6></div>
+  <div class="col-xs-2 fuchs2"><h6><%= to_currency(@a7m_br) %></h6></div>
+  <div class="col-xs-2 glima2"><h6><%= to_currency(@a8m_br) %></h6></div>
+  <div class="col-xs-2 marin2"><h6><%= to_currency(@a9m_br) %></h6></div>
+  <div class="col-xs-3 marin1"><h6><%= to_currency(@a789br) %></h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black">Bank<span class="blue_f">³</span>_bp</h6></div>
+  <div class="col-xs-2 fuchs1"><h6><%= to_currency(@a7m_bc) %></h6></div>
+  <div class="col-xs-2 glima1"><h6><%= to_currency(@a8m_bc) %></h6></div>
+  <div class="col-xs-2 marin1"><h6><%= to_currency(@a9m_bc) %></h6></div>
+  <div class="col-xs-3 marin0"><h6><%= to_currency(@a789bc) %></h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black">Bank<span class="blue_f">°</span>_cb</h6></div>
+  <div class="col-xs-2 fuchsi"><h6><%= to_currency(@a7m_bo) %></h6></div>
+  <div class="col-xs-2 glima "><h6><%= to_currency(@a8m_bo) %></h6></div>
+  <div class="col-xs-2 marin0"><h6><%= to_currency(@a9m_bo) %></h6></div>
+  <div class="col-xs-3 marina"><h6><%= to_currency(@a789bo) %></h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+
+<div class="row" border=1>
+  <div class="col-xs-2 blue0"><h6 class="white text-center">Estado</h6></div>
+  <div class="col-xs-2 blue0"><h6><%= to_currency(@a7m_nb) %></h6></div>
+  <div class="col-xs-2 blue0"><h6><%= to_currency(@a8m_nb) %></h6></div>
+  <div class="col-xs-2 blue0"><h6><%= to_currency(@a9m_nb) %></h6></div>
+  <div class="col-xs-3 blue0"><h6><%= to_currency(@a789nb) %></h6></div>
+  <div class="col-xs-1 blue0"><h6><%= to_currency(@nn_n ) %></h6></div>
+</div>
+
+
+<!-- Mostrar Estados diarios-->
+<hr class="separator">  <br> <hr class="separator">
+<h6 style="display: flex; justify-content: space-between; width: 100%;">
+  <span> ♦ Ver </span> <%= link_to '◄', movements_path %>
+  <%= link_to '►', contab_path %> <span> Trimestre 2 ♦ </span> </h6>
+<hr class="separator">
+
+<!-- Trim#2 _Mz16_Ab15 / My15 / Jn152 //2018 -->
+<P>  <!-- Mostrar Estados diarios-->
+<div class="row">
+  <div class="col-xs-2 blue0"><h6>T18_2</h6></div>
+  <div class="col-xs-2 blue0"><h6>Ab15</h6></div>
+  <div class="col-xs-2 blue0"><h6>My15</h6></div>
+  <div class="col-xs-2 blue0"><h6>Jn15</h6></div>
+  <div class="col-xs-3 blue0"><h6>Mar_Jun</h6></div>
+  <div class="col-xs-1 blue0"><h6><%= to_currency(@nn_n ) %></h6></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">I</span>ngresos</h6></div>
+  <div class="col-xs-2 fuchs4"><h6><%= to_currency(@a4m_in) %></h6></div>
+  <div class="col-xs-2 glima4"><h6><%= to_currency(@a5m_in) %></h6></div>
+  <div class="col-xs-2 marin4"><h6><%= to_currency(@a6m_in) %></h6></div>
+  <div class="col-xs-3 blue2 "><h6><%= to_currency(@a456in) %></h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n  ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">E</span>gresos</h6></div>
+  <div class="col-xs-2 fuchs3"><h6><%= to_currency(@a4m_eg) %></h6></div>
+  <div class="col-xs-2 glima3"><h6><%= to_currency(@a5m_eg) %></h6></div>
+  <div class="col-xs-2 marin3"><h6><%= to_currency(@a6m_eg) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a456eg) %></h6></div>
+  <div class="col-xs-1 blue0 "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">G</span>ts_Oper.</h6></div>
+  <div class="col-xs-2 fuchs2"><h6><%= to_currency(@a4m_pj) %></h6></div>
+  <div class="col-xs-2 glima2"><h6><%= to_currency(@a5m_pj) %></h6></div>
+  <div class="col-xs-2 marin2"><h6><%= to_currency(@a6m_pj) %></h6></div>
+  <div class="col-xs-3 blue0 "><h6><%= to_currency(@a456pj) %></h6></div>
+  <div class="col-xs-1 blue1 "><h6><%= to_currency(@nn_n ) %></h6></div>
+</div> <p>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">A</span>ndaluz</h6></div>
+  <div class="col-xs-2 fuchs1"><h6><%= to_currency(@a4m_an) %></h6></div>
+  <div class="col-xs-2 glima1"><h6><%= to_currency(@a5m_an) %></h6></div>
+  <div class="col-xs-2 marin1"><h6><%= to_currency(@a6m_an) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a456an) %></h6></div>
+  <div class="col-xs-1 blue0 "><h5><%= to_currency(@nn_n  ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black">Mó<span class="blue_f">v</span>il_Éxito</h6></div>
+  <div class="col-xs-2 fuchs1"><h6><%= to_currency(@a4m_dt) %></h6></div>
+  <div class="col-xs-2 glima1"><h6><%= to_currency(@a5m_dt) %></h6></div>
+  <div class="col-xs-2 marin1"><h6><%= to_currency(@a6m_dt) %></h6></div>
+  <div class="col-xs-3 blue0 "><h6><%= to_currency(@a456dt) %></h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n  ) %></h5></div>
+</div>
+
+<div class="row" border=1>
+  <div class="col-xs-2 marina"><h6 class="white text-center">Nt_Op¹</h6></div>
+  <div class="col-xs-2 marina"><h6><%= to_currency(@a4m_ea) %></h6></div>
+  <div class="col-xs-2 marina"><h6><%= to_currency(@a5m_ea) %></h6></div>
+  <div class="col-xs-2 marina"><h6><%= to_currency(@a6m_ea) %></h6></div>
+  <div class="col-xs-3 blue0 "><h6><%= to_currency(@a456ea) %></h6></div>
+  <div class="col-xs-1 blue0 "><h6><%= to_currency(@a456av) %></h6></div>
+</div> <p>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black">S<span class="blue_f">O</span>AT</h6></div>
+  <div class="col-xs-2 fuchs0"><h6><%= to_currency(@a4m_so) %></h6></div>
+  <div class="col-xs-2 glima0"><h6><%= to_currency(@a5m_so) %></h6></div>
+  <div class="col-xs-2 marin0"><h6><%= to_currency(@a6m_so) %></h6></div>
+  <div class="col-xs-3 blue2 "><h6><%= to_currency(@a456so) %></h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">T</span>arjet_Oper</h6></div>
+  <div class="col-xs-2 fuchs0"><h6><%= to_currency(@a4m_to) %></h6></div>
+  <div class="col-xs-2 glima0"><h6><%= to_currency(@a5m_to) %></h6></div>
+  <div class="col-xs-2 marin0"><h6><%= to_currency(@a6m_to) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a456to) %></h6></div>
+  <div class="col-xs-1 blue0 "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black">Ta<span class="blue_f">x</span>ímetro</h6></div>
+  <div class="col-xs-2 fuchs0"><h6><%= to_currency(@a4m_tx) %></h6></div>
+  <div class="col-xs-2 glima0"><h6><%= to_currency(@a5m_tx) %></h6></div>
+  <div class="col-xs-2 marin0"><h6><%= to_currency(@a6m_tx) %></h6></div>
+  <div class="col-xs-3 blue0 "><h6><%= to_currency(@a456tx) %></h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black">Téc_<span class="blue_f">M</span>ec</h6></div>
+  <div class="col-xs-2 fuchs0"><h6><%= to_currency(@a4m_tm) %></h6></div>
+  <div class="col-xs-2 glima0"><h6><%= to_currency(@a5m_tm) %></h6></div>
+  <div class="col-xs-2 marin0"><h6><%= to_currency(@a6m_tm) %></h6></div>
+  <div class="col-xs-3 blue0 "><h6><%= to_currency(@a456tm) %></h6></div>
+  <div class="col-xs-1 blue0 "><h6><%= to_currency(@nn_n ) %></h6></div>
+</div> <p>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">T</span>aller</h6></div>
+  <div class="col-xs-2 fuchsi"><h6><%= to_currency(@a4m_tr) %></h6></div>
+  <div class="col-xs-2 glima "><h6><%= to_currency(@a5m_tr) %></h6></div>
+  <div class="col-xs-2 marina"><h6><%= to_currency(@a6m_tr) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a456tr) %></h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">V</span>arios</h6></div>
+  <div class="col-xs-2 fuchsi"><h6><%= to_currency(@a4m_vr) %></h6></div>
+  <div class="col-xs-2 glima "><h6><%= to_currency(@a5m_vr) %></h6></div>
+  <div class="col-xs-2 marina"><h6><%= to_currency(@a6m_vr) %></h6></div>
+  <div class="col-xs-3 blue0 "><h6><%= to_currency(@a456vr) %></h6></div>
+  <div class="col-xs-1 blue0 "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+
+<div class="row" border=1>
+  <div class="col-xs-2 blue1 "><h6>Neto²</h6></div>
+  <div class="col-xs-2 blue1 "><h6><%= to_currency(@a4m_na) %></h6></div>
+  <div class="col-xs-2 blue1 "><h6><%= to_currency(@a5m_na) %></h6></div>
+  <div class="col-xs-2 blue1 "><h6><%= to_currency(@a6m_na) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a456na) %></h6></div>
+  <div class="col-xs-1 blue1 "><h6><%= to_currency(@nn_n ) %></h6></div>
+</div> <p>
+
+<!-- Financiera -->
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">F</span>inanciera</h6></div>
+  <div class="col-xs-2 fuchs1"><h6><%= to_currency(@a4m_fn) %></h6></div>
+  <div class="col-xs-2 glima1"><h6><%= to_currency(@a5m_fn) %></h6></div>
+  <div class="col-xs-2 marin1"><h6><%= to_currency(@a6m_fn) %></h6></div>
+  <div class="col-xs-3 blue  "><h6><%= to_currency(@a456fn) %></h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">I</span>nters_Mr</h6></div>
+  <div class="col-xs-2 fuchs1"><h6><%= to_currency(@a4m_fi) %></h6></div>
+  <div class="col-xs-2 glima1"><h6><%= to_currency(@a5m_fi) %></h6></div>
+  <div class="col-xs-2 marin1"><h6><%= to_currency(@a6m_fi) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a456fi) %></h6></div>
+  <div class="col-xs-1 blue0 "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">S</span>eg_Mr</h6></div>
+  <div class="col-xs-2 fuchs1"><h6><%= to_currency(@a4m_fs) %></h6></div>
+  <div class="col-xs-2 glima1"><h6><%= to_currency(@a5m_fs) %></h6></div>
+  <div class="col-xs-2 marin1"><h6><%= to_currency(@a6m_fs) %></h6></div>
+  <div class="col-xs-3 blue0 "><h6><%= to_currency(@a456fs) %></h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n  ) %></h5></div>
+</div>
+
+<div class="row" border=1>
+  <div class="col-xs-2 blue0"><h6>Total</h6></div>
+  <div class="col-xs-2 blue0"><h6><%= to_currency(@a4m_nf) %></h6></div>
+  <div class="col-xs-2 blue0"><h6><%= to_currency(@a5m_nf) %></h6></div>
+  <div class="col-xs-2 blue0"><h6><%= to_currency(@a6m_nf) %></h6></div>
+  <div class="col-xs-3 navy "><h6><%= to_currency(@a456nf) %></h6></div>
+  <div class="col-xs-1 blue0"><h6><%= to_currency(@nn_n ) %></h6></div>
+</div> <p>
+
+<hr class="separator">
+<h6 style="display: flex; justify-content: space-between; width: 100%;">
+  <span> ♦ Ver </span> <%= link_to '◄', movements_path %>
+  <%= link_to '►', contab_path %> <span> Contab T2 / 2018 ♦ </span> </h6>
+<hr class="separator">
+
+<div class="row">
+  <div class="col-xs-2 blue0"><h6>Contab</h6></div>
+  <div class="col-xs-2 blue0"><h6>Ab15</h6></div>
+  <div class="col-xs-2 blue0"><h6>My15</h6></div>
+  <div class="col-xs-2 blue0"><h6>Jn15</h6></div>
+  <div class="col-xs-3 blue0"><h6>Mar_Jun</h6></div>
+  <div class="col-xs-1 blue0"><h6><%= to_currency(@nn_n ) %></h6></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black">Caja_<span class="blue_f">D</span></h6></div>
+  <div class="col-xs-2 fuchs2"><h6><%= to_currency(@a4m_cd) %></h6></div>
+  <div class="col-xs-2 glima2"><h6><%= to_currency(@a5m_cd) %></h6></div>
+  <div class="col-xs-2 marin2"><h6><%= to_currency(@a6m_cd) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a456cd) %></h6></div>
+  <div class="col-xs-1 blue0 "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black">Caja_<span class="blue_f">C</span></h6></div>
+  <div class="col-xs-2 fuchs2"><h6><%= to_currency(@a4m_cr) %></h6></div>
+  <div class="col-xs-2 glima2"><h6><%= to_currency(@a5m_cr) %></h6></div>
+  <div class="col-xs-2 marin2"><h6><%= to_currency(@a6m_cr) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a456cr) %></h6></div>
+  <div class="col-xs-1 blue0 "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div> <p>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">P</span>réstamos</h6></div>
+  <div class="col-xs-2 fuchs0"><h6><%= to_currency(@a4m_pr) %></h6></div>
+  <div class="col-xs-2 glima0"><h6><%= to_currency(@a5m_pr) %></h6></div>
+  <div class="col-xs-2 marin0"><h6><%= to_currency(@a6m_pr) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a456pr) %></h6></div>
+  <div class="col-xs-1 blue0 "><h5><%= to_currency(@nn_n  ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">P</span>agos</h6></div>
+  <div class="col-xs-2 fuchs0"><h6><%= to_currency(@a4m_pg) %></h6></div>
+  <div class="col-xs-2 glima0"><h6><%= to_currency(@a5m_pg) %></h6></div>
+  <div class="col-xs-2 marin0"><h6><%= to_currency(@a6m_pg) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a456pg) %></h6></div>
+  <div class="col-xs-1 blue0 "><h5><%= to_currency(@nn_n  ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">I</span>ntereses</h6></div>
+  <div class="col-xs-2 fuchs0"><h6><%= to_currency(@a4m_pi) %></h6></div>
+  <div class="col-xs-2 glima0"><h6><%= to_currency(@a5m_pi) %></h6></div>
+  <div class="col-xs-2 marin0"><h6><%= to_currency(@a6m_pi) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a456pi) %></h6></div>
+  <div class="col-xs-1 blue0 "><h5><%= to_currency(@nn_n  ) %></h5></div>
+</div> <p>
+
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">I</span>mpuestos</h6></div>
+  <div class="col-xs-2 fuchs1"><h6><%= to_currency(@a4m_im) %></h6></div>
+  <div class="col-xs-2 glima1"><h6><%= to_currency(@a5m_im) %></h6></div>
+  <div class="col-xs-2 marin1"><h6><%= to_currency(@a6m_im) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a456im) %></h6></div>
+  <div class="col-xs-1 blue0 "><h5><%= to_currency(@nn_n  ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">L</span>egal</h6></div>
+  <div class="col-xs-2 fuchs1"><h6><%= to_currency(@a4m_lg) %></h6></div>
+  <div class="col-xs-2 glima1"><h6><%= to_currency(@a5m_lg) %></h6></div>
+  <div class="col-xs-2 marin1"><h6><%= to_currency(@a6m_lg) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a456lg) %></h6></div>
+  <div class="col-xs-1 blue0 "><h5><%= to_currency(@nn_n  ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">O</span>tros</h6></div>
+  <div class="col-xs-2 fuchs0"><h6><%= to_currency(@a4m_ot) %></h6></div>
+  <div class="col-xs-2 glima0"><h6><%= to_currency(@a5m_ot) %></h6></div>
+  <div class="col-xs-2 marin0"><h6><%= to_currency(@a6m_ot) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a456ot) %></h6></div>
+  <div class="col-xs-1 blue0 "><h6><%= to_currency(@nn_n  ) %></h6></div>
+</div>  <p>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">H</span>ome</h6></div>
+  <div class="col-xs-2 fuchsi"><h6><%= to_currency(@a4m_hm) %></h6></div>
+  <div class="col-xs-2 glima "><h6><%= to_currency(@a5m_hm) %></h6></div>
+  <div class="col-xs-2 marina"><h6><%= to_currency(@a6m_hm) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a456hm) %></h6></div>
+  <div class="col-xs-1 blue0 "><h5><%= to_currency(@nn_n  ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">P</span>ersonal</h6></div>
+  <div class="col-xs-2 fuchsi"><h6><%= to_currency(@a4m_ps) %></h6></div>
+  <div class="col-xs-2 glima "><h6><%= to_currency(@a5m_ps) %></h6></div>
+  <div class="col-xs-2 marina"><h6><%= to_currency(@a6m_ps) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a456ps) %></h6></div>
+  <div class="col-xs-1 blue0 "><h5><%= to_currency(@nn_n  ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">S</span>eguro_Social</h6></div>
+  <div class="col-xs-2 fuchsi"><h6><%= to_currency(@a4m_ss) %></h6></div>
+  <div class="col-xs-2 glima "><h6><%= to_currency(@a5m_ss) %></h6></div>
+  <div class="col-xs-2 marina"><h6><%= to_currency(@a6m_ss) %></h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@a456ss) %></h6></div>
+  <div class="col-xs-1 blue0 "><h5><%= to_currency(@nn_n  ) %></h5></div>
+</div>
+
+<div class="row" border=1>
+  <div class="col-xs-2 blue1"><h6>T18_2</h6></div>
+  <div class="col-xs-2 blue1"><h6><%= to_currency(@a4m_nc) %></h6></div>
+  <div class="col-xs-2 blue1"><h6><%= to_currency(@a5m_nc) %></h6></div>
+  <div class="col-xs-2 blue1"><h6><%= to_currency(@a6m_nc) %></h6></div>
+  <div class="col-xs-3 blue1"><h6><%= to_currency(@a456nc) %></h6></div>
+  <div class="col-xs-1 blue1"><h5><%= to_currency(@nn_n  ) %></h5></div>
+</div>
+
+<div class="row" border=1>
+  <div class="col-xs-2 blue0"><h6>Total</h6></div>
+  <div class="col-xs-2 blue0"><h6><%= to_currency(@a4m_tt) %></h6></div>
+  <div class="col-xs-2 blue0"><h6><%= to_currency(@a5m_tt) %></h6></div>
+  <div class="col-xs-2 blue0"><h6><%= to_currency(@a6m_tt) %></h6></div>
+  <div class="col-xs-3 blue0"><h6><%= to_currency(@a456tt) %></h6></div>
+  <div class="col-xs-1 blue0"><h6><%= to_currency(@nn_n  ) %></h6></div>
+</div>
+
+<hr class="separator">
+<h6 style="display: flex; justify-content: space-between; width: 100%;">
+  <span> ♦ Ver </span> <%= link_to '◄', movements_path %>
+  <%= link_to '►', banks_path %> <span> Bancos T2 / 2018 ♦ </span> </h6>
+<hr class="separator">
+
+<!-- Estados Bancarios -->
+<div class="row">
+  <div class="col-xs-2 blue0"><h6>Bancos</h6></div>
+  <div class="col-xs-2 blue0"><h6>Dia</h6></div>
+  <div class="col-xs-2 blue0"><h6>Sem</h6></div>
+  <div class="col-xs-2 blue0"><h6>Mes</h6></div>
+  <div class="col-xs-3 blue0"><h6>Año</h6></div>
+  <div class="col-xs-1 blue0"><h6> % </h6></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black">Bank<span class="blue_f">¹</span>_bd</h6></div>
+  <div class="col-xs-2 fuchs4"><h6><%= to_currency(@a4m_bd) %></h6></div>
+  <div class="col-xs-2 glima4"><h6><%= to_currency(@a5m_bd) %></h6></div>
+  <div class="col-xs-2 marin4"><h6><%= to_currency(@a6m_bd) %></h6></div>
+  <div class="col-xs-3 marin3"><h6><%= to_currency(@a456bd) %></h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n) %></h5></div>
+</div>
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black">Bank<span class="blue_f">²</span>_br</h6></div>
+  <div class="col-xs-2 fuchs2"><h6><%= to_currency(@a4m_br) %></h6></div>
+  <div class="col-xs-2 glima2"><h6><%= to_currency(@a5m_br) %></h6></div>
+  <div class="col-xs-2 marin2"><h6><%= to_currency(@a6m_br) %></h6></div>
+  <div class="col-xs-3 marin1"><h6><%= to_currency(@a456br) %></h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black">Bank<span class="blue_f">³</span>_bp</h6></div>
+  <div class="col-xs-2 fuchs1"><h6><%= to_currency(@a4m_bc) %></h6></div>
+  <div class="col-xs-2 glima1"><h6><%= to_currency(@a5m_bc) %></h6></div>
+  <div class="col-xs-2 marin1"><h6><%= to_currency(@a6m_bc) %></h6></div>
+  <div class="col-xs-3 marin0"><h6><%= to_currency(@a456bc) %></h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black">Bank<span class="blue_f">°</span>_cb</h6></div>
+  <div class="col-xs-2 fuchsi"><h6><%= to_currency(@a4m_bo) %></h6></div>
+  <div class="col-xs-2 glima "><h6><%= to_currency(@a5m_bo) %></h6></div>
+  <div class="col-xs-2 marin0"><h6><%= to_currency(@a6m_bo) %></h6></div>
+  <div class="col-xs-3 marina"><h6><%= to_currency(@a456bo) %></h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+
+<div class="row" border=1>
+  <div class="col-xs-2 blue0"><h6 class="white text-center">Estado</h6></div>
+  <div class="col-xs-2 blue0"><h6><%= to_currency(@a4m_nb) %></h6></div>
+  <div class="col-xs-2 blue0"><h6><%= to_currency(@a5m_nb) %></h6></div>
+  <div class="col-xs-2 blue0"><h6><%= to_currency(@a6m_nb) %></h6></div>
+  <div class="col-xs-3 blue0"><h6><%= to_currency(@a456nb) %></h6></div>
+  <div class="col-xs-1 blue0"><h6><%= to_currency(@nn_n ) %></h6></div>
+</div>
+
+<hr class="separator">  <br> <hr class="separator">
+<!-- T#1 _Dc13/17 - En12_Fb12_Mz12/2018 -->
+<h6 style="display: flex; justify-content: space-between; width: 100%;">
+  <span> ♦ Ver </span> <%= link_to '◄', movements_path %>
+  <%= link_to '►', contab_path %> <span> Trim_1 / 2018 ♦ </span> </h6>
+<hr class="separator">
+
+<!-- Mostrar Estados diarios-->
+<div class="row">
+  <div class="col-xs-2 blue0"><h6> T18_1 </h6></div>
+  <div class="col-xs-2 blue0"><h6>En12</h6></div>
+  <div class="col-xs-2 blue0"><h6>Fb15</h6></div>
+  <div class="col-xs-2 blue0"><h6>Mz15</h6></div>
+  <div class="col-xs-3 blue0"><h6>Trimestre_1</h6></div>
+  <div class="col-xs-1 blue0"><h5>%</h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">I</span>ngresos</h6></div>
+  <div class="col-xs-2 fuchs4"><h6><%= to_currency(@a1m_in) %></h6></div>
+  <div class="col-xs-2 glima4"><h6><%= to_currency(@a2m_in) %></h6></div>
+  <div class="col-xs-2 marin4"><h6><%= to_currency(@a3m_in) %></h6></div>
+  <div class="col-xs-3 marin3"><h6><%= to_currency(@a123in) %></h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">E</span>gresos</h6></div>
+  <div class="col-xs-2 fuchs3"><h6><%= to_currency(@a1m_eg) %></h6></div>
+  <div class="col-xs-2 glima3"><h6><%= to_currency(@a2m_eg) %></h6></div>
+  <div class="col-xs-2 marin3"><h6><%= to_currency(@a3m_eg) %></h6></div>
+  <div class="col-xs-3 marin2"><h6><%= to_currency(@a123eg) %></h6></div>
+  <div class="col-xs-1 blue0 "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">G</span>astos</h6></div>
+  <div class="col-xs-2 fuchs2"><h6><%= to_currency(@a1m_pj) %></h6></div>
+  <div class="col-xs-2 glima2"><h6><%= to_currency(@a2m_pj) %></h6></div>
+  <div class="col-xs-2 marin3"><h6><%= to_currency(@a3m_pj) %></h6></div>
+  <div class="col-xs-3 marin2"><h6><%= to_currency(@a123pj) %></h6></div>
+  <div class="col-xs-1 blue1 "><h6><%= to_currency(@nn_n ) %></h6></div>
+</div> <P>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">A</span>ndaluz</h6></div>
+  <div class="col-xs-2 fuchs1"><h6><%= to_currency(@a1m_an) %></h6></div>
+  <div class="col-xs-2 glima1"><h6><%= to_currency(@a2m_an) %></h6></div>
+  <div class="col-xs-2 marin2"><h6><%= to_currency(@a3m_an) %></h6></div>
+  <div class="col-xs-3 marin1"><h6><%= to_currency(@a123an) %></h6></div>
+  <div class="col-xs-1 blue0 "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black">Mó<span class="blue_f">v</span>il_Éxito</h6></div>
+  <div class="col-xs-2 fuchs1"><h6><%= to_currency(@a1m_dt) %></h6></div>
+  <div class="col-xs-2 glima1"><h6><%= to_currency(@a2m_dt) %></h6></div>
+  <div class="col-xs-2 marin2"><h6><%= to_currency(@a3m_dt) %></h6></div>
+  <div class="col-xs-3 marin1"><h6><%= to_currency(@a123dt) %></h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+
+<div class="row" border=1>
+  <div class="col-xs-2 marina"><h6 class="white text-center">Neto¹</h6></div>
+  <div class="col-xs-2 marina"><h6><%= to_currency(@a1m_ea) %></h6></div>
+  <div class="col-xs-2 marina"><h6><%= to_currency(@a2m_ea) %></h6></div>
+  <div class="col-xs-2 marina"><h6><%= to_currency(@a3m_ea) %></h6></div>
+  <div class="col-xs-3 marina"><h6><%= to_currency(@a123ea) %></h6></div>
+  <div class="col-xs-1 blue0 "><h6><%= to_currency(@a123av) %></h6></div>
+</div> <p>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black">S<span class="blue_f">O</span>AT</h6></div>
+  <div class="col-xs-2 fuchs0"><h6><%= to_currency(@a1m_so) %></h6></div>
+  <div class="col-xs-2 glima0"><h6><%= to_currency(@a2m_so) %></h6></div>
+  <div class="col-xs-2 marin1"><h6><%= to_currency(@a3m_so) %></h6></div>
+  <div class="col-xs-3 marin0"><h6><%= to_currency(@a123so) %></h6></div>
+  <div class="col-xs-1 blue1  "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">T</span>arjet_Oper</h6></div>
+  <div class="col-xs-2 fuchs0"><h6><%= to_currency(@a1m_to) %></h6></div>
+  <div class="col-xs-2 glima0"><h6><%= to_currency(@a2m_to) %></h6></div>
+  <div class="col-xs-2 marin0"><h6><%= to_currency(@a3m_to) %></h6></div>
+  <div class="col-xs-3 marina"><h6><%= to_currency(@a123to) %></h6></div>
+  <div class="col-xs-1 blue0 "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black">Ta<span class="blue_f">x</span>ímetro</h6></div>
+  <div class="col-xs-2 fuchs0"><h6><%= to_currency(@a1m_tx) %></h6></div>
+  <div class="col-xs-2 glima0"><h6><%= to_currency(@a2m_tx) %></h6></div>
+  <div class="col-xs-2 marin1"><h6><%= to_currency(@a3m_tx) %></h6></div>
+  <div class="col-xs-3 marin0"><h6><%= to_currency(@a123tx) %></h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black">Téc_<span class="blue_f">M</span>ec</h6></div>
+  <div class="col-xs-2 fuchs0"><h6><%= to_currency(@a1m_tm) %></h6></div>
+  <div class="col-xs-2 glima0"><h6><%= to_currency(@a2m_tm) %></h6></div>
+  <div class="col-xs-2 marin1"><h6><%= to_currency(@a3m_tm) %></h6></div>
+  <div class="col-xs-3 marin0"><h6><%= to_currency(@a123tm) %></h6></div>
+  <div class="col-xs-1 blue0 "><h6><%= to_currency(@nn_n ) %></h6></div>
+</div> <p>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">T</span>aller</h6></div>
+  <div class="col-xs-2 fuchsi"><h6><%= to_currency(@a1m_tr) %></h6></div>
+  <div class="col-xs-2 glima "><h6><%= to_currency(@a2m_tr) %></h6></div>
+  <div class="col-xs-2 marin0"><h6><%= to_currency(@a3m_tr) %></h6></div>
+  <div class="col-xs-3 marina"><h6><%= to_currency(@a123tr) %></h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">V</span>arios</h6></div>
+  <div class="col-xs-2 fuchsi"><h6><%= to_currency(@a1m_vr) %></h6></div>
+  <div class="col-xs-2 glima "><h6><%= to_currency(@a2m_vr) %></h6></div>
+  <div class="col-xs-2 marin0"><h6><%= to_currency(@a3m_vr) %></h6></div>
+  <div class="col-xs-3 marina"><h6><%= to_currency(@a123vr) %></h6></div>
+  <div class="col-xs-1 blue0 "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 blue1"><h6>NetO</h6></div>
+  <div class="col-xs-2 blue1"><h6><%= to_currency(@a1m_na) %></h6></div>
+  <div class="col-xs-2 blue1"><h6><%= to_currency(@a2m_na) %></h6></div>
+  <div class="col-xs-2 blue1"><h6><%= to_currency(@a3m_na) %></h6></div>
+  <div class="col-xs-3 blue1"><h6><%= to_currency(@a123na) %></h6></div>
+  <div class="col-xs-1 blue1"><h6><%= to_currency(@nn_n ) %></h6></div>
+</div> <p>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">F</span>inanciera</h6></div>
+  <div class="col-xs-2 fuchs1"><h6><%= to_currency(@a1m_fn) %></h6></div>
+  <div class="col-xs-2 glima2"><h6><%= to_currency(@a2m_fn) %></h6></div>
+  <div class="col-xs-2 marin1"><h6><%= to_currency(@a3m_fn) %></h6></div>
+  <div class="col-xs-3 marin0"><h6><%= to_currency(@a123fn) %></h6></div>
+  <div class="col-xs-1 blue0 "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">I</span>nters_Mr</h6></div>
+  <div class="col-xs-2 fuchs1"><h6><%= to_currency(@a1m_fi) %></h6></div>
+  <div class="col-xs-2 glima1"><h6><%= to_currency(@a2m_fi) %></h6></div>
+  <div class="col-xs-2 marin1"><h6><%= to_currency(@a3m_fi) %></h6></div>
+  <div class="col-xs-3 marin1"><h6><%= to_currency(@a123fi) %></h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">S</span>eg_Crd</h6></div>
+  <div class="col-xs-2 fuchs0"><h6><%= to_currency(@a1m_fs) %></h6></div>
+  <div class="col-xs-2 glima1"><h6><%= to_currency(@a2m_fs) %></h6></div>
+  <div class="col-xs-2 marin1"><h6><%= to_currency(@a3m_fs) %></h6></div>
+  <div class="col-xs-3 marin0"><h6><%= to_currency(@a123fs) %></h6></div>
+  <div class="col-xs-1 blue0 "><h6><%= to_currency(@nn_n ) %></h6></div>
+</div>
+
+<div class="row" border=1>
+  <div class="col-xs-2 blue0"><h6 class="white text-center">Neto</h6></div>
+  <div class="col-xs-2 blue0"><h6><%= to_currency(@a1m_nf) %></h6></div>
+  <div class="col-xs-2 blue0"><h6><%= to_currency(@a2m_nf) %></h6></div>
+  <div class="col-xs-2 blue0"><h6><%= to_currency(@a3m_nf) %></h6></div>
+  <div class="col-xs-3 blue0"><h6><%= to_currency(@a123nf) %></h6></div>
+  <div class="col-xs-1 blue0"><h6><%= to_currency(@nn_n  ) %></h6></div>
+</div>
+
+
+<hr class="separator">
+<h6 style="display: flex; justify-content: space-between; width: 100%;">
+  <span> ♦ Ver </span> <%= link_to '◄', movements_path %>
+  <%= link_to '►', contab_path %> <span> Contab T1 / 2018 ♦ </span> </h6>
+<hr class="separator">
+
+<div class="row">
+  <div class="col-xs-2 blue0"><h6>Contab</h6></div>
+  <div class="col-xs-2 blue0"><h6>Ene12</h6></div>
+  <div class="col-xs-2 blue0"><h6>Feb12</h6></div>
+  <div class="col-xs-2 blue0"><h6>Mar15</h6></div>
+  <div class="col-xs-3 blue0"><h6>DC¹²_Mar</h6></div>
+  <div class="col-xs-1 blue0"><h6><%= to_currency(@nn_n ) %></h6></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black">Caja_<span class="blue_f">D</span></h6></div>
+  <div class="col-xs-2 fuchs2"><h6><%= to_currency(@a1m_cd) %></h6></div>
+  <div class="col-xs-2 glima2"><h6><%= to_currency(@a2m_cd) %></h6></div>
+  <div class="col-xs-2 marin2"><h6><%= to_currency(@a3m_cd) %></h6></div>
+  <div class="col-xs-3 marin1"><h6><%= to_currency(@a123cd) %></h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black">Caja_<span class="blue_f">C</span></h6></div>
+  <div class="col-xs-2 fuchs2"><h6><%= to_currency(@a1m_cr) %></h6></div>
+  <div class="col-xs-2 glima2"><h6><%= to_currency(@a2m_cr) %></h6></div>
+  <div class="col-xs-2 marin2"><h6><%= to_currency(@a3m_cr) %></h6></div>
+  <div class="col-xs-3 marin1"><h6><%= to_currency(@a123cr) %></h6></div>
+  <div class="col-xs-1 blue0 "><h6><%= to_currency(@nn_n ) %></h6></div>
+</div> <p>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">P</span>réstamos</h6></div>
+  <div class="col-xs-2 fuchs1"><h6><%= to_currency(@a1m_pr) %></h6></div>
+  <div class="col-xs-2 glima1"><h6><%= to_currency(@a2m_pr) %></h6></div>
+  <div class="col-xs-2 marin1"><h6><%= to_currency(@a3m_pr) %></h6></div>
+  <div class="col-xs-3 marin0"><h6><%= to_currency(@a123pr) %></h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n  ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">P</span>agos</h6></div>
+  <div class="col-xs-2 fuchs0"><h6><%= to_currency(@a1m_pg) %></h6></div>
+  <div class="col-xs-2 glima0"><h6><%= to_currency(@a2m_pg) %></h6></div>
+  <div class="col-xs-2 marin0"><h6><%= to_currency(@a3m_pg) %></h6></div>
+  <div class="col-xs-3 marina"><h6><%= to_currency(@a123pg) %></h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n  ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">I</span>ntereses</h6></div>
+  <div class="col-xs-2 fuchs0"><h6><%= to_currency(@a1m_pi) %></h6></div>
+  <div class="col-xs-2 glima0"><h6><%= to_currency(@a2m_pi) %></h6></div>
+  <div class="col-xs-2 marin0"><h6><%= to_currency(@a3m_pi) %></h6></div>
+  <div class="col-xs-3 marina"><h6><%= to_currency(@a123pi) %></h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n  ) %></h5></div>
+</div> <p>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">I</span>mpuestos</h6></div>
+  <div class="col-xs-2 fuchs1"><h6><%= to_currency(@a1m_im) %></h6></div>
+  <div class="col-xs-2 glima1"><h6><%= to_currency(@a2m_im) %></h6></div>
+  <div class="col-xs-2 marin1"><h6><%= to_currency(@a3m_im) %></h6></div>
+  <div class="col-xs-3 marin0"><h6><%= to_currency(@a123im) %></h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n  ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">L</span>egal</h6></div>
+  <div class="col-xs-2 fuchs1"><h6><%= to_currency(@a1m_lg) %></h6></div>
+  <div class="col-xs-2 glima1"><h6><%= to_currency(@a2m_lg) %></h6></div>
+  <div class="col-xs-2 marin1"><h6><%= to_currency(@a3m_lg) %></h6></div>
+  <div class="col-xs-3 marin0"><h6><%= to_currency(@a123lg) %></h6></div>
+  <div class="col-xs-1 blue0 "><h5><%= to_currency(@nn_n  ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">O</span>tros</h6></div>
+  <div class="col-xs-2 fuchs0"><h6><%= to_currency(@a1m_ot) %></h6></div>
+  <div class="col-xs-2 glima0"><h6><%= to_currency(@a2m_ot) %></h6></div>
+  <div class="col-xs-2 marin0"><h6><%= to_currency(@a3m_ot) %></h6></div>
+  <div class="col-xs-3 marina"><h6><%= to_currency(@a123ot) %></h6></div>
+  <div class="col-xs-1 blue0 "><h6><%= to_currency(@nn_n  ) %></h6></div>
+</div>  <p>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">H</span>ome</h6></div>
+  <div class="col-xs-2 fuchsi"><h6><%= to_currency(@a1m_hm) %></h6></div>
+  <div class="col-xs-2 glima "><h6><%= to_currency(@a2m_hm) %></h6></div>
+  <div class="col-xs-2 marin0"><h6><%= to_currency(@a3m_hm) %></h6></div>
+  <div class="col-xs-3 marina"><h6><%= to_currency(@a123hm) %></h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n  ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">P</span>ersonal</h6></div>
+  <div class="col-xs-2 fuchsi"><h6><%= to_currency(@a1m_ps) %></h6></div>
+  <div class="col-xs-2 glima "><h6><%= to_currency(@a2m_ps) %></h6></div>
+  <div class="col-xs-2 marin0"><h6><%= to_currency(@a3m_ps) %></h6></div>
+  <div class="col-xs-3 marina"><h6><%= to_currency(@a123ps) %></h6></div>
+  <div class="col-xs-1 blue0 "><h5><%= to_currency(@nn_n  ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">S</span>eg_Soc</h6></div>
+  <div class="col-xs-2 fuchsi"><h6><%= to_currency(@a1m_ss) %></h6></div>
+  <div class="col-xs-2 glima "><h6><%= to_currency(@a2m_ss) %></h6></div>
+  <div class="col-xs-2 marin0"><h6><%= to_currency(@a3m_ss) %></h6></div>
+  <div class="col-xs-3 marina"><h6><%= to_currency(@a123ss) %></h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n  ) %></h5></div>
+</div>
+
+<div class="row" border=1>
+  <div class="col-xs-2 blue1"><h6>T18_1</h6></div>
+  <div class="col-xs-2 blue1"><h6><%= to_currency(@a1m_nc) %></h6></div>
+  <div class="col-xs-2 blue1"><h6><%= to_currency(@a2m_nc) %></h6></div>
+  <div class="col-xs-2 blue1"><h6><%= to_currency(@a3m_nc) %></h6></div>
+  <div class="col-xs-3 blue1"><h6><%= to_currency(@a123nc) %></h6></div>
+  <div class="col-xs-1 blue1"><h5><%= to_currency(@nn_n  ) %></h5></div>
+</div>
+
+<div class="row" border=1>
+  <div class="col-xs-2 blue0"><h6>Total</h6></div>
+  <div class="col-xs-2 blue0"><h6><%= to_currency(@a1m_tt) %></h6></div>
+  <div class="col-xs-2 blue0"><h6><%= to_currency(@a2m_tt) %></h6></div>
+  <div class="col-xs-2 blue0"><h6><%= to_currency(@a3m_tt) %></h6></div>
+  <div class="col-xs-3 blue0"><h6><%= to_currency(@a123tt) %></h6></div>
+  <div class="col-xs-1 blue0"><h6><%= to_currency(@nn_n  ) %></h6></div>
+</div>
+
+<hr class="separator">
+<h6 style="display: flex; justify-content: space-between; width: 100%;">
+  <span> ♦ Ver </span> <%= link_to '◄', movements_path %>
+  <%= link_to '►', banks_path %> <span> Bancos T1 / 2018 ♦ </span> </h6>
+<hr class="separator">
+
+<!-- Estados Bancarios -->
+<div class="row">
+  <div class="col-xs-2 blue0"><h6>Bancos</h6></div>
+  <div class="col-xs-2 blue0"><h6>Dia</h6></div>
+  <div class="col-xs-2 blue0"><h6>Sem</h6></div>
+  <div class="col-xs-2 blue0"><h6>Mes</h6></div>
+  <div class="col-xs-3 blue0"><h6>Año</h6></div>
+  <div class="col-xs-1 blue0"><h6> % </h6></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black">Bank<span class="blue_f">¹</span>_dp</h6></div>
+  <div class="col-xs-2 fuchs4"><h6><%= to_currency(@a4m_bd) %></h6></div>
+  <div class="col-xs-2 glima4"><h6><%= to_currency(@a5m_bd) %></h6></div>
+  <div class="col-xs-2 marin4"><h6><%= to_currency(@a6m_bd) %></h6></div>
+  <div class="col-xs-3 marin3"><h6><%= to_currency(@a456bd) %></h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black">Bank<span class="blue_f">²</span>_rt</h6></div>
+  <div class="col-xs-2 fuchs3"><h6><%= to_currency(@a4m_br) %></h6></div>
+  <div class="col-xs-2 glima3"><h6><%= to_currency(@a5m_br) %></h6></div>
+  <div class="col-xs-2 marin3"><h6><%= to_currency(@a6m_br) %></h6></div>
+  <div class="col-xs-3 marin2"><h6><%= to_currency(@a456br) %></h6></div>
+  <div class="col-xs-1 blue0 "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black">Bank<span class="blue_f">³</span>_pg</h6></div>
+  <div class="col-xs-2 fuchs2"><h6><%= to_currency(@a4m_bc) %></h6></div>
+  <div class="col-xs-2 glima2"><h6><%= to_currency(@a5m_bc) %></h6></div>
+  <div class="col-xs-2 marin2"><h6><%= to_currency(@a6m_bc) %></h6></div>
+  <div class="col-xs-3 marin1"><h6><%= to_currency(@a456bc) %></h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n ) %></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black">Bank<span class="blue_f">³</span>_cb</h6></div>
+  <div class="col-xs-2 fuchs1"><h6><%= to_currency(@a4m_bo) %></h6></div>
+  <div class="col-xs-2 glima1"><h6><%= to_currency(@a5m_bo) %></h6></div>
+  <div class="col-xs-2 marin1"><h6><%= to_currency(@a6m_bo) %></h6></div>
+  <div class="col-xs-3 marin1"><h6><%= to_currency(@a456bo) %></h6></div>
+  <div class="col-xs-1 blue0 "><h6><%= to_currency(@nn_n ) %></h6></div>
+</div>
+
+<div class="row" border=1>
+  <div class="col-xs-2 blue0"><h6 class="white text-center">Neto</h6></div>
+  <div class="col-xs-2 blue0"><h6><%= to_currency(@ad_nb) %></h6></div>
+  <div class="col-xs-2 blue0"><h6><%= to_currency(@aw_nb) %></h6></div>
+  <div class="col-xs-2 blue0"><h6><%= to_currency(@am_nb) %></h6></div>
+  <div class="col-xs-3 blue0"><h6><%= to_currency(@ay_nb) %></h6></div>
+  <div class="col-xs-1 marina"><h6><%= to_currency(@nn_n ) %></h6></div>
+</div>
+
+<hr class="separator">  <br> <hr class="separator">
+<h6 style="display: flex; justify-content: space-between; width: 100%;">
+  <span> ♦ Andaluz </span> <%= link_to '◄', vx_andaluz_path %>
+  <%= link_to '►', vx_athos_path %> <span> STW313 ♦ </span>  </h6>
+<hr class="separator">
+
+<!-- Mostrar Estados Consolidados-->
+<div class="row">  <!-- Actual / Títulos -->
+  <div class="col-xs-2 blue0"><h6><%= Time.now.strftime("%Y") %></h6></div>
+  <div class="col-xs-3 blue0"><h6>Prod°</h6></div>
+  <div class="col-xs-2 blue0"><h6>Comb</h6></div>
+  <div class="col-xs-2 blue0"><h6>G_Oper.</h6></div>
+  <div class="col-xs-3 blue0"><h6>Neto</h6></div>
+</div>
+
+<div class="row">  <!-- Noviembre /18 -->
+  <div class="col-xs-2 yellow"><h6 class="black"> ♦<%= Time.now.strftime("%b")+"!" %> </h6></div>
+  <div class="col-xs-3 green3"><h6><%= to_currency(@en19_in) %></h6></div>
+  <div class="col-xs-2 green1"><h6><%= to_currency(@en19_eg) %></h6></div>
+  <div class="col-xs-2 green0"><h6><%= to_currency(@en19_pj) %></h6></div>
+  <div class="col-xs-3 green "><h6><%= to_currency(@en19_in-(@en19_eg+@en19_pj)) %></h6></div>
+</div> <hr class="separator">
+
+<div class="row">  <!-- Diciembre /18 -->
+  <div class="col-xs-2 yellow"><h6 class="black"> Dic </h6></div>
+  <div class="col-xs-3 olive3"><h6><%= to_currency(@dc18_in) %></h6></div>
+  <div class="col-xs-2 olive2"><h6><%= to_currency(@dc18_eg) %></h6></div>
+  <div class="col-xs-2 olive1"><h6><%= to_currency(@dc18_pj) %></h6></div>
+  <div class="col-xs-3 olive0"><h5><%= to_currency(@dc18_in-(@dc18_eg+@dc18_pj) ) %></h5></div>
+</div>
+
+<div class="row">  <!-- Noviembre /18 -->
+  <div class="col-xs-2 yellow"><h6 class="black"> Nov </h6></div>
+  <div class="col-xs-3 green3"><h6><%= to_currency(@nv18_in) %></h6></div>
+  <div class="col-xs-2 green1"><h6><%= to_currency(@nv18_eg) %></h6></div>
+  <div class="col-xs-2 green0"><h6><%= to_currency(@nv18_pj) %></h6></div>
+  <div class="col-xs-3 green "><h5><%= to_currency(@nv18_in-(@nv18_eg+@nv18_pj)) %></h5></div>
+</div>
+
+<div class="row">  <!-- Octubre /18 -->
+  <div class="col-xs-2 yellow"><h6 class="black">Oct</h6></div>
+  <div class="col-xs-3 olive3"><h6><%= to_currency(@oc18_in) %></h6></div>
+  <div class="col-xs-2 olive2"><h6><%= to_currency(@oc18_eg) %></h6></div>
+  <div class="col-xs-2 olive1"><h6><%= to_currency(@oc18_pj) %></h6></div>
+  <div class="col-xs-3 olive0"><h5><%= to_currency(@oc18_in-(@oc18_eg+@oc18_pj) ) %></h5></div>
+</div>
+
+<div class="row">  <!-- Septbre /18 -->
+  <div class="col-xs-2 yellow"><h6 class="black"> Sep </h6></div>
+  <div class="col-xs-3 green3"><h6><%= to_currency(@sp18_in) %></h6></div>
+  <div class="col-xs-2 green1"><h6><%= to_currency(@sp18_eg) %></h6></div>
+  <div class="col-xs-2 green0"><h6><%= to_currency(@sp18_pj) %></h6></div>
+  <div class="col-xs-3 green "><h5><%= to_currency(@sp18_in-(@sp18_eg+@sp18_pj)) %></h5></div>
+</div>
+
+<div class="row">  <!-- Agosto /18 -->
+  <div class="col-xs-2 yellow"><h6 class="black">Ago</h6></div>
+  <div class="col-xs-3 olive3"><h6><%= to_currency(@ag18_in) %></h6></div>
+  <div class="col-xs-2 olive2"><h6><%= to_currency(@ag18_eg) %></h6></div>
+  <div class="col-xs-2 olive1"><h6><%= to_currency(@ag18_pj) %></h6></div>
+  <div class="col-xs-3 olive0"><h5><%= to_currency(@ag18_in-(@ag18_eg+@ag18_pj) ) %></h5></div>
+</div>
+
+<div class="row">  <!-- Julio /18 -->
+  <div class="col-xs-2 yellow"><h6 class="black"> Jul </h6></div>
+  <div class="col-xs-3 green3"><h6><%= to_currency(@jl18_in) %></h6></div>
+  <div class="col-xs-2 green1"><h6><%= to_currency(@jl18_eg) %></h6></div>
+  <div class="col-xs-2 green0"><h6><%= to_currency(@jl18_pj) %></h6></div>
+  <div class="col-xs-3 green "><h6><%= to_currency(@jl18_in-(@jl18_eg+@jl18_pj)) %></h6></div>
+</div> <hr class="separator">
+
+<div class="row">  <!-- Junio /18 -->
+  <div class="col-xs-2 yellow"><h6 class="black"> Jun </h6></div>
+  <div class="col-xs-3 olive3"><h6><%= to_currency(@jn18_in) %></h6></div>
+  <div class="col-xs-2 olive2"><h6><%= to_currency(@jn18_eg) %></h6></div>
+  <div class="col-xs-2 olive1"><h6><%= to_currency(@jn18_pj) %></h6></div>
+  <div class="col-xs-3 olive0"><h5><%= to_currency(@jn18_in-(@jn18_eg+@jn18_pj) ) %></h5></div>
+</div>
+
+<div class="row">  <!-- Mayo /18 -->
+  <div class="col-xs-2 yellow"><h6 class="black"> May </h6></div>
+  <div class="col-xs-3 green3"><h6><%= to_currency(@my18_in) %></h6></div>
+  <div class="col-xs-2 green1"><h6><%= to_currency(@my18_eg) %></h6></div>
+  <div class="col-xs-2 green0"><h6><%= to_currency(@my18_pj) %></h6></div>
+  <div class="col-xs-3 green "><h5><%= to_currency(@my18_in-(@my18_eg+@my18_pj)) %></h5></div>
+</div>
+
+<div class="row">  <!-- Abril /18 -->
+  <div class="col-xs-2 yellow"><h6 class="black"> Abr </h6></div>
+  <div class="col-xs-3 olive3"><h6><%= to_currency(@ab18_in) %></h6></div>
+  <div class="col-xs-2 olive2"><h6><%= to_currency(@ab18_eg) %></h6></div>
+  <div class="col-xs-2 olive1"><h6><%= to_currency(@ab18_pj) %></h6></div>
+  <div class="col-xs-3 olive0"><h5><%= to_currency(@ab18_in-(@ab18_eg+@ab18_pj) ) %></h5></div>
+</div>
+
+<div class="row">  <!-- Marzo /18 -->
+  <div class="col-xs-2 yellow"><h6 class="black"> Mar </h6></div>
+  <div class="col-xs-3 green3"><h6><%= to_currency(@mz18_in) %></h6></div>
+  <div class="col-xs-2 green1"><h6><%= to_currency(@mz18_eg) %></h6></div>
+  <div class="col-xs-2 green0"><h6><%= to_currency(@mz18_pj) %></h6></div>
+  <div class="col-xs-3 green "><h5><%= to_currency(@mz18_in-(@mz18_eg+@mz18_pj)) %></h5></div>
+</div>
+
+<div class="row">  <!-- Febrero /18 -->
+  <div class="col-xs-2 yellow"><h6 class="black">Feb</h6></div>
+  <div class="col-xs-3 olive3"><h6><%= to_currency(@fb18_in) %></h6></div>
+  <div class="col-xs-2 olive2"><h6><%= to_currency(@fb18_eg) %></h6></div>
+  <div class="col-xs-2 olive1"><h6><%= to_currency(@fb18_pj) %></h6></div>
+  <div class="col-xs-3 olive0"><h5><%= to_currency(@fb18_in-(@fb18_eg+@fb18_pj) ) %></h5></div>
+</div>
+
+<div class="row">  <!-- Enero /18 -->
+  <div class="col-xs-2 yellow"><h6 class="black"> Ene </h6></div>
+  <div class="col-xs-3 green3"><h6><%= to_currency(@en18_in) %></h6></div>
+  <div class="col-xs-2 green1"><h6><%= to_currency(@en18_eg) %></h6></div>
+  <div class="col-xs-2 green0"><h6><%= to_currency(@en18_pj) %></h6></div>
+  <div class="col-xs-3 green "><h6><%= to_currency(@en18_in-(@en18_eg+@en18_pj)) %></h6></div>
+</div> <hr class="separator">
+
+<div class="row">  <!-- 2017 / Dic // S3 -->
+  <div class="col-xs-2 yellow"><h6 class="black"> Dc_3 </h6></div>
+  <div class="col-xs-3 olive3"><h6><%= to_currency(@m12_in) %></h6></div>
+  <div class="col-xs-2 olive2"><h6><%= to_currency(@m12_eg) %></h6></div>
+  <div class="col-xs-2 olive1"><h6><%= to_currency(@m12_pj) %></h6></div>
+  <div class="col-xs-3 olive0"><h6><%= to_currency(@m12_in-(@m12_eg+@m12_pj)) %></h6></div>
+</div>
+
+<div class="row" border=1>  <!-- Total 2017-8 / Dic - hoy // S3 -->
+  <div class="col-xs-2 blue0"><h6>2018</h6></div>
+  <div class="col-xs-3 blue0"><h6><%= to_currency(@tt_in3) %></h6></div>
+  <div class="col-xs-2 blue0"><h6><%= to_currency(@tt_eg3) %></h6></div>
+  <div class="col-xs-2 blue0"><h6><%= to_currency(@tt_pj3) %></h6></div>
+  <div class="col-xs-3 blue0"><h6><%= to_currency(@tt_in3-(@tt_eg3+@tt_pj3)) %></h6></div>
+</div>
+
+<hr class="separator">
+<h6 style="display: flex; justify-content: space-between; width: 100%;">
+  <span> ♦ Andaluz </span> <%= link_to '◄', vx_andaluz_path %>
+  <%= link_to '►', vx_athos_path %> <span> Athos STU379 ♦ </span>  </h6>
+<hr class="separator">
+
+<!-- STU379 // Mostrar Estados Consolidados -->
+<div class="row">  <!-- Actual / Títulos -->
+  <div class="col-xs-2 blue0"><h6>2017</h6></div>
+  <div class="col-xs-3 blue0"><h6>Prod</h6></div>
+  <div class="col-xs-2 blue0"><h6>Comb</h6></div>
+  <div class="col-xs-2 blue0"><h6>Cuot.</h6></div>
+  <div class="col-xs-3 blue0"><h6>Neto</h6></div>
+</div>
+
+<div class="row">  <!-- 2017 / Dic // S9 -->
+  <div class="col-xs-2 yellow"><h6 class="black"> Dc_9 </h6></div>
+  <div class="col-xs-3 green1"><h6><%= to_currency(@m12_i9) %></h6></div>
+  <div class="col-xs-2 green0"><h6><%= to_currency(@m12_e9) %></h6></div>
+  <div class="col-xs-2 green "><h6><%= to_currency(@m12_c9) %></h6></div>
+  <div class="col-xs-3 darkgreen"><h5><%= to_currency(@m12_i9-@m12_e9) %></h5></div>
+</div>
+
+<div class="row">  <!-- 2017 / Nov // S9 -->
+  <div class="col-xs-2 yellow"><h6 class="black">Nov</h6></div>
+  <div class="col-xs-3 olive3"><h6><%= to_currency(@m11_in) %></h6></div>
+  <div class="col-xs-2 olive2"><h6><%= to_currency(@m11_eg) %></h6></div>
+  <div class="col-xs-2 olive1"><h6><%= to_currency(@m11_ct) %></h6></div>
+  <div class="col-xs-3 olive0"><h5><%= to_currency(@m11_in-@m11_eg) %></h5></div>
+</div>
+
+<div class="row">  <!-- 2017 / Oct // S9 -->
+  <div class="col-xs-2 yellow"><h6 class="black">Oct</h6></div>
+  <div class="col-xs-3 green1"><h6><%= to_currency(@m10_in) %></h6></div>
+  <div class="col-xs-2 green2"><h6><%= to_currency(@m10_eg) %></h6></div>
+  <div class="col-xs-2 green "><h6><%= to_currency(@m10_ct) %></h6></div>
+  <div class="col-xs-3 darkgreen"><h6><%= to_currency(@m10_in-@m10_eg) %></h6></div>
+</div> <hr class="separator">
+
+<div class="row">  <!-- 2017 / Sept // S9 -->
+  <div class="col-xs-2 yellow"><h6 class="black">Sept</h6></div>
+  <div class="col-xs-3 olive3"><h6><%= to_currency(@m9_in) %></h6></div>
+  <div class="col-xs-2 olive2"><h6><%= to_currency(@m9_eg) %></h6></div>
+  <div class="col-xs-2 olive1"><h6><%= to_currency(@m9_ct) %></h6></div>
+  <div class="col-xs-3 olive0 "><h5><%= to_currency(@m9_in-@m9_eg) %></h5></div>
+</div>
+
+<div class="row">  <!-- 2017 / Ago // S9 -->
+  <div class="col-xs-2 yellow"><h6 class=" black">Ago</h6></div>
+  <div class="col-xs-3 green1"><h6><%= to_currency(@m8_in) %></h6></div>
+  <div class="col-xs-2 green2"><h6><%= to_currency(@m8_eg) %></h6></div>
+  <div class="col-xs-2 green "><h6><%= to_currency(@m8_ct) %></h6></div>
+  <div class="col-xs-3 darkgreen"><h5><%= to_currency(@m8_in-@m8_eg) %></h5></div>
+</div>
+
+<div class="row">  <!-- 2017 / Jul // S9 -->
+  <div class="col-xs-2 yellow"><h6 class=" black">Julio</h6></div>
+  <div class="col-xs-3 olive3"><h6><%= to_currency(@m7_in) %></h6></div>
+  <div class="col-xs-2 olive2"><h6><%= to_currency(@m7_eg) %></h6></div>
+  <div class="col-xs-2 olive1"><h6><%= to_currency(@m7_ct) %></h6></div>
+  <div class="col-xs-3 olive0"><h6><%= to_currency(@m7_in-@m7_eg) %></h6></div>
+</div>  <hr class="separator">
+
+<div class="row">  <!-- 2017 / Jun // S9 -->
+  <div class="col-xs-2 yellow"><h6 class=" black">Junio</h6></div>
+  <div class="col-xs-3 green1"><h6><%= to_currency(@m6_in) %></h6></div>
+  <div class="col-xs-2 green0"><h6><%= to_currency(@m6_eg) %></h6></div>
+  <div class="col-xs-2 green "><h6><%= to_currency(@m6_ct) %></h6></div>
+  <div class="col-xs-3 darkgreen"><h6><%= to_currency(@m6_in-@m6_eg) %></h6></div>
+</div>
+
+<div class="row" border=1>  <!-- Total 2017 / STW9 -->
+  <div class="col-xs-2 blue"><h6>2017</h6></div>
+  <div class="col-xs-3 blue"><h6><%= to_currency(@tt_in9) %></h6></div>
+  <div class="col-xs-2 blue"><h6><%= to_currency(@tt_eg9) %></h6></div>
+  <div class="col-xs-2 blue"><h6><%= to_currency(@tt_ct9) %></h6></div>
+  <div class="col-xs-3 blue"><h6><%= to_currency(@tt_in9-@tt_eg9) %></h6></div>
+</div>
+
+<div class="row" border=1>  <!-- Total 2017-8 / S9 & S3 -->
+  <div class="col-xs-2 blue0"><h6>2017/8</h6></div>
+  <div class="col-xs-3 blue0"><h6><%= to_currency(@tt_in) %></h6></div>
+  <div class="col-xs-2 blue0"><h6><%= to_currency(@tt_eg) %></h6></div>
+  <div class="col-xs-2 blue0"><h6><%= to_currency(@tt_ct9) %></h6></div>
+  <div class="col-xs-3 blue0"><h6><%= to_currency(@tt_in-@tt_eg) %></h6></div>
+</div>
+
+<hr class="separator">

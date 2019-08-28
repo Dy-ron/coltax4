@@ -1,0 +1,124 @@
+
+<nav class="header-reg">
+  <%= link_to 'Día', movements_path %> | <!-- Día, nuevo, consolidados -->
+
+  <%= link_to 'Nuevo_', new_bank_path %>
+  <%= link_to 'Ban-Col', '#' %>   <!-- Actividades programadas -->
+  <%= link_to 'Conavi', '#' %> <!-- Eventos, Estadio, Macarena, TT, JPII... -->
+  <%= link_to 'BIC', '#' %>  <!-- Agenda -->
+  <%= link_to 'Credit', credit_path %>  <!-- Creditos, Financiaciones, .. -->
+</nav>
+
+<!-- _____________________________________________ -->
+
+<div> <center>
+  <h3 style="display: flex; justify-content: space-between; width: 100%;">
+    <span> Datos / Bancos / Bancolombia </span> <%= link_to 'Back', banks_path %>
+    <span> Coltax OnLine </span> </h3>
+  <h4> Bancolombia </h4> </center>
+</div>
+
+<table class="table table-hover table-striped datatable-plugin">
+  <thead>
+    <tr>
+      <th>Nº</th>
+      <th>Fecha</th>
+      <th>Hora</th>
+      <th>Detalle</th>
+      <th>Cuenta</th>
+      <th>Tipo</th>
+      <th>Valor</th>
+      <th>CB</th>
+      <th>Banco</th>
+      <th>Balance</th>
+      <!-- <th>Users</th> -->
+      <th>Vf</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @banks.each_with_index do |bank, index| %>
+      <tr>
+        <td><%= index + 1 %></td>
+        <td><%= bank.created_at.strftime('%m/%d') %></td>
+        <td><% unless bank.created_at.nil? %>
+              <%= bank.created_at.strftime('%H:%M') %>
+              <!--  + ' ' + bank.created_at_hour -->
+            <% end %> </td>
+        <td><%= bank.detail %></td>
+        <td><%= bank.puc %></td>
+        <td><%= bank.trans_type %></td>
+        <td><%= bank.trans_value %></th>
+
+        <td><%= bank.bank_id %></td>
+        <td><%= bank.bank %></td>
+        <td><%= bank.balance  %></th>
+        <td><%= bank.verified %></td>
+
+        <!-- <td><%= link_to 'Show', bank %></td> -->
+        <td><%= link_to 'Edit', edit_bank_path(bank) %></td>
+        <td><%= link_to 'Delete', bank, method: :delete, data: { confirm: 'Estás seguro?' } %></td>
+      </tr>
+    <% end %>
+
+  </tbody>
+
+</table>
+
+  <h3 style="display: flex; justify-content: space-between; width: 100%;">
+    <span>  Bancos </span> <%= link_to 'Back', finanzas_path %> <span>/ Coltax </span> </h3>
+
+<table width=100%>
+  <tr>
+      <td class="olive3">
+          <nav class="header-reg">
+            <ul><li> Bancol </li>
+                <li> Ban_Colombia </li>
+                <li> BIC </li>
+                <li> Conavi </li>
+                <li> BCH </li>
+                <li> Colmena </li>
+            </ul>
+          </nav>
+      </td>
+
+      <td class="green2">
+          <nav class="header-reg">
+            <ul><li> Bogotá Md </li>
+                <li> Bogotá Ap </li>
+                <li> Ban_Agrario </li>
+                <li> Cial_Antioqueño </li>
+                <li> Davivienda </li>
+                <li> Ganadero </li>
+            </ul>
+          </nav>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="blue1" colspan=2>
+          <nav class="header-reg">
+            <ul><li> Citi Bank </li>
+            </ul>
+          </nav>
+      </td>
+  </tr>
+
+  <tr>
+      <td class="darkgreen" colspan=2>
+          <nav class="header-reg green">
+            <ul><li> Cooperativa de Ahorros de Antioquia </li>
+            </ul>
+          </nav>
+      </td>
+  </tr>
+</table>
+
+
+<br><h3.blue>Footer</h3><br><br>
+
+
+
+
+<span><%= link_to 'Return Finances', finanzas_path %></span>

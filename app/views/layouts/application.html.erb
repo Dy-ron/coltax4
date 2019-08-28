@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+      <title> Coltax Medellín </title>
+      <%= csrf_meta_tags %>
+      <%= stylesheet_link_tag 'application', media: 'all' %>
+      <%= javascript_include_tag 'application' %>
+
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+
+  <body>
+      <div class="app-popup-alert"> <!-- Nav_var ppl - Logo -->
+          <%= render :partial => 'flash_messages', :flash => flash %>
+      </div>
+
+      <div class="wrapper"> <!-- Nav_var ppl - Opciones -->
+          <%= render partial: 'superadmin_header' if user_signed_in? %>
+          <%= yield %>
+          <div class="push"> <br><br>devise/confirmations/new [ ♥ ♥ ♥ ] </div>
+      </div>
+
+      <!-- <script>
+        alert('Hola');
+      </script> -->
+  </body>
+
+</html>

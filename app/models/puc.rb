@@ -1,0 +1,2 @@
+class Puc < ApplicationRecord
+end

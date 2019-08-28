@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  code: MyString
+  referred_code: MyString
+  name: MyString
+  identification: MyString
+  email: MyString
+  phone: MyString
+  birthday: 2017-01-23 17:09:35
+  bill_value: 1
+  redeemed: false
+  redemption_date: 2017-01-23 17:09:35
+  city: one
+  shop: one
+  user: one
+  campaign: one
+
+two:
+  code: MyString
+  referred_code: MyString
+  name: MyString
+  identification: MyString
+  email: MyString
+  phone: MyString
+  birthday: 2017-01-23 17:09:35
+  bill_value: 1
+  redeemed: false
+  redemption_date: 2017-01-23 17:09:35
+  city: two
+  shop: two
+  user: two
+  campaign: two

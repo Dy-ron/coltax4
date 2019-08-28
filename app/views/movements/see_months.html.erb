@@ -1,0 +1,1557 @@
+
+<nav class="header-reg">
+  <%= link_to 'Nuevo', new_movement_path %>
+  <%= link_to 'Ver', see_all_path %>    <!-- Día, sems, mes, total_año -->
+
+  <%= link_to 'Día', movements_path %>  <!-- Día, nuevo, consolidados -->
+  <%= link_to 'Sems', see_weeks_path %>   <!-- Estados, Informs, imprs -->
+  <%= link_to 'Time', see_tiempo_path %>
+
+  <%= link_to 'Chat', rs_chat_path %>  <!-- Enlaces online -->
+  <%= link_to '?', '#' %>   <!--  -->
+</nav>
+
+<div>
+  <center> <h3 style="display: flex; justify-content: space-between; width: 100%;">
+    <span>♦ Ver</span> <%= link_to '◄ ◄', see_all_path %>
+    <%= link_to '► ►', movements_path %> <span>Coltax OnLine ♦</span></h3> </center>
+
+
+  <!-- Mes actual y Estados semanales -->
+  <div class="row">
+    <div class="col-xs-2 darkgreen"><h6> <%= Time.now.strftime("♦ %b%W")%></h6></div>
+    <div class="col-xs-3 darkgreen"><h6>Prod</h6></div>
+    <div class="col-xs-2 darkgreen"><h6>Comb</h6></div>
+    <div class="col-xs-2 darkgreen"><h6>Oper.</h6></div>
+    <div class="col-xs-3 darkgreen"><h6>Neto ♣ </h6></div>
+  </div>
+
+  <!-- <h6 class="celeste"> Diciembre 2019 ♦ </h6>
+
+
+  <hr class="separator">
+
+  <h6 class="celeste"> Noviembre 2019 ♦ </h6>
+
+
+  <hr class="separator">
+
+  <h6 class="celeste"> Octubre 2019 ♦ </h6>
+
+
+  <hr class="separator">
+
+  <h6 class="celeste"> Septiembre 2019 ♦ </h6>
+
+
+  <hr class="separator"> -->
+
+  <hr class="separator">
+  <h6 class="celeste"> Agosto 2019 ♦ </h6>
+  <div class="row">  <!-- A19/M08, Sem 35 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Ago_35 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a19_35_in) %> </h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a19_35_eg) %> </h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a19_35_pj) %> </h6></div>
+    <div class="col-xs-3 darkgreen"><h5><%= to_currency(@a19_35_in-(@a19_35_eg+@a19_35_pj)) %> </h5></div>
+  </div>
+
+  <div class="row">  <!-- A19/M08, Sem 34 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Ago_34 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a19_34_in) %> </h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a19_34_eg) %> </h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a19_34_pj) %> </h6></div>
+    <div class="col-xs-3 olive0"><h5><%= to_currency(@a19_34_in-(@a19_34_eg+@a19_34_pj)) %> </h5></div>
+  </div>
+
+  <div class="row">  <!-- A19/M08, Sem 33 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Ago_33 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a19_33_in) %> </h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a19_33_eg) %> </h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a19_33_pj) %> </h6></div>
+    <div class="col-xs-3 darkgreen"><h5><%= to_currency(@a19_33_in-(@a19_33_eg+@a19_33_pj)) %> </h5></div>
+  </div>
+
+  <div class="row">  <!-- A19/M08, Sem 32 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Ago_32 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a19_32_in) %> </h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a19_32_eg) %> </h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a19_32_pj) %> </h6></div>
+    <div class="col-xs-3 olive0"><h5><%= to_currency(@a19_32_in-(@a19_32_eg+@a19_32_pj)) %> </h5></div>
+  </div>
+
+  <div class="row">  <!-- A19/M08, Sem 31 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Ago_31 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a19_31_08in) %> </h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a19_31_08eg) %> </h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a19_31_08pj) %> </h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a19_31_08in-(@a19_31_08eg+@a19_31_08pj)) %> </h6></div>
+  </div>  <hr class="separator">
+
+  <h6 class="celeste"> Julio 2019 ♦ </h6>
+  <div class="row">  <!-- A19/M07, Sem 18 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Jul_31 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a19_31_07in) %> </h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a19_31_07eg) %> </h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a19_31_07pj) %> </h6></div>
+    <div class="col-xs-3 olive0"><h5><%= to_currency(@a19_31_07in-(@a19_31_07eg+@a19_31_07pj)) %> </h5></div>
+  </div>
+
+  <div class="row">  <!-- A19/M07, Sem 30 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Jul_30 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a19_30_in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a19_30_eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a19_30_pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h5><%= to_currency(@a19_30_in-(@a19_30_eg+@a19_30_pj)) %></h5></div>
+  </div>
+
+  <div class="row">  <!-- A19/M07, Sem 29 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Jul_29 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a19_29_in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a19_29_eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a19_29_pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h5><%= to_currency(@a19_29_in-(@a19_29_eg+@a19_29_pj)) %></h5></div>
+  </div>
+
+  <div class="row">  <!-- A19/M07, Sem 28 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Jul_28 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a19_28_in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a19_28_eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a19_28_pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h5><%= to_currency(@a19_28_in-(@a19_28_eg+@a19_28_pj)) %></h5></div>
+  </div>
+
+  <div class="row">  <!-- A19/M07, Sem 27 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Jul_27 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a19_27_07in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a19_27_07eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a19_27_07pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a19_27_07in-(@a19_27_07eg+@a19_27_07pj)) %></h6></div>
+  </div> <hr class="separator"> <hr class="separator">
+
+
+  <h6 class="celeste"> Junio 2019 ♦ </h6>
+  <div class="row">  <!-- A19/M06, Sem 27 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Jun_27 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a19_27_06in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a19_27_06eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a19_27_06pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h5><%= to_currency(@a19_27_06in-(@a19_27_06eg+@a19_27_06pj)) %></h5></div>
+  </div>
+
+  <div class="row">  <!-- A19/M06, Sem 26 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Jun_26 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a19_26_in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a19_26_eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a19_26_pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h5><%= to_currency(@a19_26_in-(@a19_26_eg+@a19_26_pj)) %></h5></div>
+  </div>
+
+  <div class="row">  <!-- A19/M06, Sem 25 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Jun_25 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a19_25_in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a19_25_eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a19_25_pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h5><%= to_currency(@a19_25_in-(@a19_25_eg+@a19_25_pj)) %></h5></div>
+  </div>
+
+  <div class="row">  <!-- A19/M06, Sem 24 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Jun_24 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a19_24_in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a19_24_eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a19_24_pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h5><%= to_currency(@a19_24_in-(@a19_24_eg+@a19_24_pj)) %></h5></div>
+  </div>
+
+  <div class="row">  <!-- A19/M06, Sem 23 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Jun_23 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a19_23_in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a19_23_eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a19_23_pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h5><%= to_currency(@a19_23_in-(@a19_23_eg+@a19_23_pj)) %></h5></div>
+  </div>
+
+  <div class="row">  <!-- A19/M06, Sem 22 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Jun_22 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a19_22_06in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a19_22_06eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a19_22_06pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a19_22_06in-(@a19_22_06eg+@a19_22_06pj)) %></h6></div>
+  </div> <hr class="separator">
+
+
+  <h6 class="celeste"> Mayo 2019 ♦ </h6>
+  <div class="row">  <!-- A19/M05, Sem 22 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> May_22 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a19_22_05in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a19_22_05eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a19_22_05pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h5><%= to_currency(@a19_22_05in-(@a19_22_05eg+@a19_22_05pj)) %></h5></div>
+  </div>
+
+  <div class="row">  <!-- A19/M05, Sem 21 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> May_21 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a19_21_in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a19_21_eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a19_21_pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h5><%= to_currency(@a19_21_in-(@a19_21_eg+@a19_21_pj)) %></h5></div>
+  </div>
+
+  <div class="row">  <!-- A19/M05, Sem 20 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> May_20 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a19_20_in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a19_20_eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a19_20_pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h5><%= to_currency(@a19_20_in-(@a19_20_eg+@a19_20_pj)) %></h5></div>
+  </div>
+
+  <div class="row">  <!-- A19/M05, Sem 19 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> May_19 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a19_19_in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a19_19_eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a19_19_pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h5><%= to_currency(@a19_19_in-(@a19_19_eg+@a19_19_pj)) %></h5></div>
+  </div>
+
+  <div class="row">  <!-- A19/M045 Sem 18 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> May_18</h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a19_18_05in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a19_18_05eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a19_18_05pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a19_18_05in-(@a19_18_05eg+@a19_18_05pj)) %></h6></div>
+  </div>  <hr class="separator">
+
+
+  <h6 class="celeste"> Abril 2019 ♦ </h6>
+  <div class="row">  <!-- A19/M04, Sem 18 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Abr_18 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a19_18_04in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a19_18_04eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a19_18_04pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h5><%= to_currency(@a19_18_04in-(@a19_18_04eg+@a19_18_04pj)) %></h5></div>
+  </div>
+
+  <div class="row">  <!-- A19/M04, Sem 17 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Abr_17 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a19_17_in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a19_17_eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a19_17_pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h5><%= to_currency(@a19_17_in-(@a19_17_eg+@a19_17_pj)) %></h5></div>
+  </div>
+
+  <div class="row">  <!-- A19/M04, Sem 16 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Abr_16 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a19_16_in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a19_16_eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a19_16_pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h5><%= to_currency(@a19_16_in-(@a19_16_eg+@a19_16_pj)) %></h5></div>
+  </div>
+
+  <div class="row">  <!-- A19/M04, Sem 15 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Abr_15 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a19_15_in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a19_15_eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a19_15_pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h5><%= to_currency(@a19_15_in-(@a19_15_eg+@a19_15_pj)) %></h5></div>
+  </div>
+
+  <div class="row">  <!-- A19/M04, Sem 14 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Ab_14 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a19_14_04in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a19_14_04eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a19_14_04pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a19_14_04in-(@a19_14_04eg+@a19_14_04pj)) %></h6></div>
+  </div> <hr class="separator">
+
+
+  <h6 class="celeste"> Marzo 2019 ♦ </h6>
+  <div class="row">  <!-- A19/M03, Sem 14 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Mz_14 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a19_14_03in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a19_14_03eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a19_14_03pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h5><%= to_currency(@a19_14_03in-(@a19_14_03eg+@a19_14_03pj)) %></h5></div>
+  </div>
+
+  <div class="row">  <!-- A19/M03, Sem 13 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Mz_13 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a19_13_in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a19_13_eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a19_13_pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h5><%= to_currency(@a19_13_in-(@a19_13_eg+@a19_13_pj)) %></h5></div>
+  </div>
+
+  <div class="row">  <!-- A19/M03, Sem 12 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Mz_12 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a19_12_in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a19_12_eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a19_12_pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h5><%= to_currency(@a19_12_in-(@a19_12_eg+@a19_12_pj)) %></h5></div>
+  </div>
+
+  <div class="row">  <!-- A19/M03, Sem 11 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Mz_11 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a19_11_in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a19_11_eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a19_11_pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h5><%= to_currency(@a19_11_in-(@a19_11_eg+@a19_11_pj)) %></h5></div>
+  </div>
+
+  <div class="row">  <!-- A19/M03, Sem 10 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Mz_10 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a19_10_in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a19_10_eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a19_10_pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h5><%= to_currency(@a19_10_in-(@a19_10_eg+@a19_10_pj)) %></h5></div>
+  </div>
+
+  <div class="row">  <!-- A19/M03, Sem 09 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Mz_09 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a19_09_03in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a19_09_03eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a19_09_03pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a19_09_03in-(@a19_09_03eg+@a19_09_03pj)) %></h6></div>
+  </div> <hr class="separator">
+
+  <h6 class="celeste"> Febero 2019 ♦ </h6>
+  <div class="row">  <!-- A19/M02, Sem 09 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> FB_09 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a19_09_02in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a19_09_02eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a19_09_02pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h5><%= to_currency(@a19_09_02in-(@a19_09_02eg+@a19_09_02pj)) %></h5></div>
+  </div>
+
+  <div class="row">  <!-- A19/M02, Sem 08 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> FB_08 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a19_08_in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a19_08_eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a19_08_pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h5><%= to_currency(@a19_08_in-(@a19_08_eg+@a19_08_pj)) %></h5></div>
+  </div>
+
+  <div class="row">  <!-- A19/M02, Sem 07 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> FB_07 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a19_07_in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a19_07_eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a19_07_pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h5><%= to_currency(@a19_07_in-(@a19_07_eg+@a19_07_pj)) %></h5></div>
+  </div>
+
+  <div class="row">  <!-- A19/M02, Sem 06 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> FB_06 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a19_06_in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a19_06_eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a19_06_pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h5><%= to_currency(@a19_06_in-(@a19_06_eg+@a19_06_pj)) %></h5></div>
+  </div>
+
+  <div class="row">  <!-- A19/M02, Sem 06 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> FB_05 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a19_05_02in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a19_05_02eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a19_05_02pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a19_05_02in-(@a19_05_02eg+@a19_05_02pj)) %></h6></div>
+  </div> <hr class="separator">
+
+  <h6 class="celeste"> Enero 2019 ♦ </h6>
+  <div class="row">  <!-- A19/M01, Sem 05 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> EN_05 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a19_05_01in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a19_05_01eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a19_05_01pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h5><%= to_currency(@a19_05_01in-(@a19_05_01eg+@a19_05_01pj)) %></h5></div>
+  </div>
+
+  <div class="row">  <!-- A19/M01, Sem 04 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> EN_04 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a19_04_in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a19_04_eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a19_04_pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h5><%= to_currency(@a19_04_in-(@a19_04_eg+@a19_04_pj)) %></h5></div>
+  </div>
+
+  <div class="row">  <!-- A19/M01, Sem 03 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> EN_03 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a19_03_in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a19_03_eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a19_03_pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h5><%= to_currency(@a19_03_in-(@a19_03_eg+@a19_03_pj)) %></h5></div>
+  </div>
+
+  <div class="row">  <!-- A19/M01, Sem 02 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> EN_02 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a19_02_in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a19_02_eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a19_02_pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h5><%= to_currency(@a19_02_in-(@a19_02_eg+@a19_02_pj)) %></h5></div>
+  </div>
+
+  <div class="row">  <!-- A19/M01, Sem 01 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> EN_01 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a19_01_in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a19_01_eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a19_01_pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a19_01_in-(@a19_01_eg+@a19_01_pj)) %></h6></div>
+  </div>
+  <hr class="separator"> <hr class="separator">
+
+
+  <h6 class="celeste"> Diciembre 2018 ♦ </h6>
+  <div class="row">  <!-- A18/M12, Sem 53 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Dic_53 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a18_53_in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a18_53_eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a18_53_pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a18_53_in-(@a18_53_eg+@a18_53_pj)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- A18/M12, Sem 52 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Dic_52 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a18_52_in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a18_52_eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a18_52_pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a18_52_in-(@a18_52_eg+@a18_52_pj)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- A18/M12, Sem 51 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Dic_51 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a18_51_in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a18_51_eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a18_51_pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a18_51_in-(@a18_51_eg+@a18_51_pj)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- A18/M12, Sem 50 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Dic_50 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a18_50_in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a18_50_eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a18_50_pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a18_50_in-(@a18_50_eg+@a18_50_pj)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- A18/M12, Sem 49 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Dic_49 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a18_49_in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a18_49_eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a18_49_pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a18_49_in-(@a18_49_eg+@a18_49_pj)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- A18/M12, Sem 48 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Dic_48 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a18_48_12in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a18_48_12eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a18_48_12pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a18_48_12in-(@a18_48_12eg+@a18_48_12pj)) %></h6></div>
+  </div> <hr class="separator">
+
+
+  <h6 class="celeste"> Novbre 2018 ♦ </h6>
+  <div class="row">  <!-- A18/M11, Sem 48 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Nov_48 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a18_48_11in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a18_48_11eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a18_48_11pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a18_48_11in-(@a18_48_11eg+@a18_48_11pj)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- A18/M11, Sem 47 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Nov_47 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a18_47_in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a18_47_eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a18_47_pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a18_47_in-(@a18_47_eg+@a18_47_pj)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- A18/M11, Sem 46 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Nov_46 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a18_46_in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a18_46_eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a18_46_pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a18_46_in-(@a18_46_eg+@a18_46_pj)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- A18/M11, Sem 45 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Nov_45 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a18_45_in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a18_45_eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a18_45_pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a18_45_in-(@a18_45_eg+@a18_45_pj)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- A18/M11, Sem 44 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Nov_44 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a18_44_11in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a18_44_11eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a18_44_11pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a18_44_11in-(@a18_44_11eg+@a18_44_11pj)) %></h6></div>
+  </div> <hr class="separator">
+
+
+  <h6 class="celeste"> Octubre 2018 ♦ </h6>
+  <div class="row">  <!-- A18/M10, Sem 44 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Oct_44 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a18_44_10in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a18_44_10eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a18_44_10pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a18_44_10in-(@a18_44_10eg+@a18_44_10pj)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- A18/M10, Sem 43 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Oct_43 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a18_43_in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a18_43_eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a18_43_pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a18_43_in-(@a18_43_eg+@a18_43_pj)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- A18/M10, Sem 42 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Oct_42 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a18_42_in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a18_42_eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a18_42_pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a18_42_in-(@a18_42_eg+@a18_42_pj)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- A18/M10, Sem 41 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Oct_41 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a18_41_in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a18_41_eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a18_41_pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a18_41_in-(@a18_41_eg+@a18_41_pj)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- A18/M10, Sem 40 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Oct_40 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a18_40_10in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a18_40_10eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a18_40_10pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a18_40_10in-(@a18_40_10eg+@a18_40_10pj)) %></h6></div>
+  </div>  <hr class="separator">
+
+
+  <h6 class="celeste"> Septbre 2018 ♦ </h6>
+  <div class="row">  <!-- A18/M10, Sem 40 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Spt_40 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a18_40_09in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a18_40_09eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a18_40_09pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a18_40_09in-(@a18_40_09eg+@a18_40_09pj)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- A18/M09, Sem 39 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Sep_39 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a18_39_in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a18_39_eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a18_39_pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a18_39_in-(@a18_39_eg+@a18_39_pj)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- A18/M09, Sem 38 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Sep_38 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a18_38_in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a18_38_eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a18_38_pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a18_38_in-(@a18_38_eg+@a18_38_pj)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- A18/M09, Sem 37 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Sep_37 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a18_37_in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a18_37_eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a18_37_pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a18_37_in-(@a18_37_eg+@a18_37_pj)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- A18/M09, Sem 36 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Sep_36 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a18_36_in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a18_36_eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a18_36_pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a18_36_in-(@a18_36_eg+@a18_36_pj)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- A18/M09, Sem 35 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Sep_35 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a18_35_09in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a18_35_09eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a18_35_09pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a18_35_09in-(@a18_35_09eg+@a18_35_09pj)) %></h6></div>
+  </div> <hr class="separator">
+
+
+  <h6 class="celeste"> Agosto 2018 ♦ </h6>
+  <div class="row">  <!-- A18/M8, Sem 35 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Ago_35 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a18_35_08in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a18_35_08eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a18_35_08pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a18_35_08in-(@a18_35_08eg+@a18_35_08pj)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- A18/M8, Sem 34 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Ago_34 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a18_34_in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a18_34_eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a18_34_pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a18_34_in-(@a18_34_eg+@a18_34_pj)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- A18/M8, Sem 33 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Ago_33 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a18_33_in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a18_33_eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a18_33_pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a18_33_in-(@a18_33_eg+@a18_33_pj)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- A18/M8, Sem 32 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Ago_32 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a18_32_in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a18_32_eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a18_32_pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a18_32_in-(@a18_32_eg+@a18_32_pj)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- A18/M8, Sem 31 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Ago_31 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a18_31_08in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a18_31_08eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a18_31_08pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a18_31_08in-(@a18_31_08eg+@a18_31_08pj)) %></h6></div>
+  </div> <hr class="separator">
+
+
+  <h6 class="celeste"> Julio 2018 ♦ </h6>
+  <div class="row">  <!-- A18/M7, Sem 31 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Jul_31 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a18_31_07in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a18_31_07eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a18_31_07pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a18_31_07in-(@a18_31_07eg+@a18_31_07pj)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- A18/M7, Sem 30 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Jul_30 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a18_30_in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a18_30_eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a18_30_pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a18_30_in-(@a18_30_eg+@a18_30_pj)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- A18/M7, Sem 29 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Jul_29 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a18_29_in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a18_29_eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a18_29_pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a18_29_in-(@a18_29_eg+@a18_29_pj)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- A18/M7, Sem 28 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Jul_28 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a18_28_in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a18_28_eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a18_28_pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a18_28_in-(@a18_28_eg+@a18_28_pj)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- A18/M7, Sem 27 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Jul_27 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a18_27_in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a18_27_eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a18_27_pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a18_27_in-(@a18_27_eg+@a18_27_pj)) %></h6></div>
+  </div> <hr class="separator">
+
+  <h6 class="celeste"> Junio 2018 ♦ </h6>
+  <div class="row">  <!-- A18/M6, Sem 26 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Jun 26 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a18_26_in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a18_26_eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a18_26_pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a18_26_in-(@a18_26_eg+@a18_26_pj)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- A18/M6, Sem 25 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Jun 25 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a18_25_in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a18_25_eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a18_25_pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a18_25_in-(@a18_25_eg+@a18_25_pj)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- A18/M6, Sem 24 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Jun 24 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a18_24_in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a18_24_eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a18_24_pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a18_24_in-(@a18_24_eg+@a18_24_pj)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- A18/M6, Sem 23 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Jun 23 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a18_23_in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a18_23_eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a18_23_pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a18_23_in-(@a18_23_eg+@a18_23_pj)) %></h6></div>
+  </div>
+  <div class="row">  <!-- A18/M6, Sem 22 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Jun 22 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a18_22_06in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a18_22_06eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a18_22_06pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a18_22_06in-(@a18_22_06eg+@a18_22_06pj)) %></h6></div>
+  </div> <hr class="separator">
+
+
+  <h6 class="celeste"> Mayo 2018 ♦ </h6>
+  <div class="row">  <!-- A18/M5, Sem 22 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> May 22 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a18_22_05in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a18_22_05eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a18_22_05pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a18_22_05in-(@a18_22_05eg+@a18_22_05pj)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- A18/M5, Sem 21 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> May_21 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a18_21_in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a18_21_eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a18_21_pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a18_21_in-(@a18_21_eg+@a18_21_pj)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- A18/M5, Sem 20 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> May_20 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a18_20_in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a18_20_eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a18_20_pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a18_20_in-(@a18_20_eg+@a18_20_pj)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- A18/M5, Sem 19 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> May_19 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a18_19_in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a18_19_eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a18_19_pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a18_19_in-(@a18_19_eg+@a18_19_pj)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- A18/M5, Sem 18 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> May_18 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a18_18_05in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a18_18_05eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a18_18_05pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a18_18_05in-(@a18_18_05eg+@a18_18_05pj)) %></h6></div>
+  </div> <hr class="separator">
+
+
+  <h6 class="celeste"> Abril 2018 ♦ </h6>
+  <div class="row">  <!-- A18/M4, Sem 18 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Abr_18 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a18_18_04in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a18_18_04eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a18_18_04pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a18_18_04in-(@a18_18_04eg+@a18_18_04pj)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- A18/M4, Sem 17 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Abr_17 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a18_17_in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a18_17_eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a18_17_pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a18_17_in-(@a18_17_eg+@a18_17_pj)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- A18/M4, Sem 16 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Abr_16 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a18_16_in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a18_16_eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a18_16_pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a18_16_in-(@a18_16_eg+@a18_16_pj)) %></h6></div>
+  </div>
+  <div class="row">  <!-- A18/M4, Sem 15 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Abr_15 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a18_15_in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a18_15_eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a18_15_pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a18_15_in-(@a18_15_eg+@a18_15_pj)) %></h6></div>
+  </div>
+  <div class="row">  <!-- A18/M4, Sem 14 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Abr_14 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a18_14_in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a18_14_eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a18_14_pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a18_14_in-(@a18_14_eg+@a18_14_pj)) %></h6></div>
+  </div> <hr class="separator">
+
+  <h6 class="celeste"> Marzo 2018 ♦ </h6>
+  <div class="row">  <!-- A18/M3, Sem 13 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Mar_13 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a18_13_in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a18_13_eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a18_13_pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a18_13_in-(@a18_13_eg+@a18_13_pj)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- A18/M3, Sem 12 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Mar_12 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a18_12_in) %></h6></div>
+    <div class="col-xs-2 green2"><h6><%= to_currency(@a18_12_eg) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a18_12_pj) %></h6></div>
+    <div class="col-xs-3 green "><h6><%= to_currency(@a18_12_in-(@a18_12_eg+@a18_12_pj)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- A18/M3, Sem 11 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Mar_11 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a18_11_in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a18_11_eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a18_11_pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a18_11_in-(@a18_11_eg+@a18_11_pj)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- A18/M3, Sem 10 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Mar_10 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a18_10_in) %></h6></div>
+    <div class="col-xs-2 green2"><h6><%= to_currency(@a18_10_eg) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a18_10_pj) %></h6></div>
+    <div class="col-xs-3 green "><h6><%= to_currency(@a18_10_in-(@a18_10_eg+@a18_10_pj)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- A18/M3, Sem 9 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Mar_09 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a18_09_03in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a18_09_03eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a18_09_03pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a18_09_03in-(@a18_09_03eg+@a18_09_03pj)) %></h6></div>
+  </div> <hr class="separator">
+
+
+  <h6 class="celeste"> Febrero 2018 ♦ </h6>
+  <div class="row">  <!-- A18/M2, Sem 9 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Feb_09 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a18_09_02in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a18_09_02eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a18_09_02pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a18_09_02in-(@a18_09_02eg+@a18_09_02pj)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- A18/M2, Sem 8 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Feb_08 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a18_08_in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a18_08_eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a18_08_pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a18_08_in-(@a18_08_eg+@a18_08_pj)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- A18/M2, Sem 7 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Feb_07 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a18_07_in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a18_07_eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a18_07_pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a18_07_in-(@a18_07_eg+@a18_07_pj)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- A18/M2, Sem 6 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Feb_06 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a18_06_in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a18_06_eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a18_06_pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a18_06_in-(@a18_06_eg+@a18_06_pj)) %></h6></div>
+  </div>
+  <!--  Febrero 2018 -->
+  <div class="row">  <!-- A18/M2, Sem 5 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Feb_05 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a18_05_02in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a18_05_02eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a18_05_02pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a18_05_02in-(@a18_05_02eg+@a18_05_02pj)) %></h6></div>
+  </div><hr class="separator">
+
+
+  <h6 class="celeste"> Enero 2018 ♦ </h6>
+  <div class="row">  <!-- A18/M1, Sem 5 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Ene_05 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a18_05_01in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a18_05_01eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a18_05_01pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a18_05_01in-(@a18_05_01eg+@a18_05_01pj)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- A18/M1, Sem 4 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Ene_04 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a18_04_in) %></h6></div>
+    <div class="col-xs-2 green2"><h6><%= to_currency(@a18_04_eg) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a18_04_pj) %></h6></div>
+    <div class="col-xs-3 green "><h6><%= to_currency(@a18_04_in-(@a18_04_eg+@a18_04_pj)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- A18/M1, Sem 3 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Ene_03 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a18_03_in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a18_03_eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a18_03_pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a18_03_in-(@a18_03_eg+@a18_03_pj)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- A18/M1, Sem 2 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Ene_02 </div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a18_02_in) %></h6></div>
+    <div class="col-xs-2 green2"><h6><%= to_currency(@a18_02_eg) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a18_02_pj) %></h6></div>
+    <div class="col-xs-3 green "><h6><%= to_currency(@a18_02_in-(@a18_02_eg+@a18_02_pj)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- A18/M1, Sem 1 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Ene_01 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a18_01_in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a18_01_eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a18_01_pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a18_01_in-(@a18_01_eg+@a18_01_pj)) %></h6></div>
+  </div> <hr class="separator"> <hr class="separator">
+
+
+  <!-- 2017 -->
+  <h6 class="celeste"> Diciembre 2017 ♦ </h6>
+  <div class="row">  <!-- Mes 12, Sem 53 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Dic_53</h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a17_53_in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a17_53_eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a17_53_pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a17_53_in-(@a17_53_eg+@a17_53_pj)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- Mes 12, Sem 52 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Dic_52 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a17_52_in) %></h6></div>
+    <div class="col-xs-2 green2"><h6><%= to_currency(@a17_52_eg) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a17_52_pj) %></h6></div>
+    <div class="col-xs-3 green "><h6><%= to_currency(@a17_52_in-(@a17_52_eg+@a17_52_pj)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- Mes 12, Sem 51 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Dic_51 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a17_51_in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a17_51_eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a17_51_pj) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a17_51_in-(@a17_51_eg+@a17_51_pj)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- Mes 12, Sem 50 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Dic_50 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a17_50_in) %></h6></div>
+    <div class="col-xs-2 green2"><h6><%= to_currency(@a17_50_eg) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a17_50_pj) %></h6></div>
+    <div class="col-xs-3 green "><h6><%= to_currency(@a17_50_in-(@a17_50_eg+@a17_50_pj)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- Mes 12, Sem 49 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Dic_49 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a17_49_in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a17_49_eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a17_49_ct) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a17_49_in-(@a17_49_eg+@a17_49_ct)) %></h6></div>
+  </div>
+  <div class="row">  <!-- Mes 12, Sem 48 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Dic_48 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a17_48_12in) %></h6></div>
+    <div class="col-xs-2 green2"><h6><%= to_currency(@a17_48_12eg) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a17_48_12ct) %></h6></div>
+    <div class="col-xs-3 green "><h6><%= to_currency(@a17_48_12in-(@a17_48_12eg+@a17_48_12ct)) %></h6></div>
+  </div>
+  <div class="row">  <!-- Total N° Mes actual -->
+    <div class="col-xs-2 darkgreen"><h6> A17_Dic♦ </h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a17_dc_in ) %></h6></div>
+    <div class="col-xs-2 darkgreen"><h6><%= to_currency(@a17_dc_eg) %></h6></div>
+    <div class="col-xs-2 darkgreen"><h6><%= to_currency(@a17_dc_ct) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a17_dc_in-(@a17_dc_eg+@a17_dc_ct))%></h6></div>
+  </div> <hr class="separator">
+
+  <h6 class="celeste"> Noviembre 2017 ♦ </h6>
+  <div class="row">  <!-- Mes 11, Sem 48 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Nov_48 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a17_48_11in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a17_48_11eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a17_48_11ct) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a17_48_11in-(@a17_48_11eg+@a17_48_11ct)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- Mes 11, Sem 47 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Nov_47 </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a17_47_in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a17_47_eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a17_47_ct) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a17_47_in-(@a17_47_eg+@a17_47_ct)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- Mes 11, Sem 46 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Nov_46 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a17_46_in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a17_46_eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a17_46_ct) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a17_46_in-(@a17_46_eg+@a17_46_ct)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- Mes 11, Sem 45 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Nov_45 </h6></div>
+    <div class="col-xs-3 green3"><h6><%= to_currency(@a17_45_in) %></h6></div>
+    <div class="col-xs-2 green1"><h6><%= to_currency(@a17_45_eg) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a17_45_ct) %></h6></div>
+    <div class="col-xs-3 green "><h6><%= to_currency(@a17_45_in-(@a17_45_eg+@a17_45_ct)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- Mes 11, Sem 44 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Nov_44 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a17_44_11in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a17_44_11eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a17_44_11ct) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a17_44_11in-(@a17_44_11eg+@a17_44_11ct)) %></h6></div>
+  </div>
+  <div class="row">  <!-- Total N° Mes actual -->
+    <div class="col-xs-2 darkgreen"><h6> A17_Nov♦ </h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a17_nv_in ) %></h6></div>
+    <div class="col-xs-2 darkgreen"><h6><%= to_currency(@a17_nv_eg) %></h6></div>
+    <div class="col-xs-2 darkgreen"><h6><%= to_currency(@a17_nv_ct) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a17_nv_in-(@a17_nv_eg+@a17_nv_ct))%></h6></div>
+  </div> <hr class="separator">
+
+  <h6 class="celeste"> Octubre 2017 ♦ </h6>
+  <div class="row">  <!-- Mes 10/11, Sem 44* -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Oct_44 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a17_44_10in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a17_44_10eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a17_44_10ct) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a17_44_10in-(@a17_44_10eg+@a17_44_10ct)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- Mes 10, Sem 43 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Oct_43 </h6></div>
+    <div class="col-xs-3 green3"><h6><%= to_currency(@a17_43_in) %></h6></div>
+    <div class="col-xs-2 green1"><h6><%= to_currency(@a17_43_eg) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a17_43_ct) %></h6></div>
+    <div class="col-xs-3 green "><h6><%= to_currency(@a17_43_in-(@a17_43_eg+@a17_43_ct)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- Mes 10, Sem 42 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Oct_42 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a17_42_in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a17_42_eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a17_42_ct) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a17_42_in-(@a17_42_eg+@a17_42_ct)) %></h6></div>
+  </div>
+
+  <div class="row">  <!-- Mes 10, Sem 41 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Oct_41 </h6></div>
+    <div class="col-xs-3 green3"><h6><%= to_currency(@a17_41_in) %></h6></div>
+    <div class="col-xs-2 green1"><h6><%= to_currency(@a17_41_eg) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a17_41_ct) %></h6></div>
+    <div class="col-xs-3 green "><h6><%= to_currency(@a17_41_in-(@a17_41_eg+@a17_41_ct))%></h6></div>
+  </div>
+
+  <div class="row">  <!-- Mes 10, Sem 40 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Oct_40 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a17_40_in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a17_40_eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a17_40_ct) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a17_40_in-(@a17_40_eg+@a17_40_ct))%></h6></div>
+  </div>
+
+  <div class="row">  <!-- Total N° Mes actual -->
+    <div class="col-xs-2 darkgreen"><h6> A17_Oct♦ </h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a17_oc_in ) %></h6></div>
+    <div class="col-xs-2 darkgreen"><h6><%= to_currency(@a17_oc_eg) %></h6></div>
+    <div class="col-xs-2 darkgreen"><h6><%= to_currency(@a17_oc_ct) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a17_oc_in-(@a17_oc_eg+@a17_oc_ct))%></h6></div>
+  </div> <hr class="separator">
+
+  <h6 class="celeste"> Septiembre 2017 ♦ </h6>
+  <div class="row">  <!-- Mes 09, Sem 39 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Sep_39 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a17_39_in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a17_39_eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a17_39_ct) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a17_39_in-(@a17_39_eg+@a17_39_ct))%></h6></div>
+  </div>
+
+  <div class="row">  <!-- Mes 09, Sem 38 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Sep_38 </h6></div>
+    <div class="col-xs-3 green3"><h6><%= to_currency(@a17_38_in) %></h6></div>
+    <div class="col-xs-2 green1"><h6><%= to_currency(@a17_38_eg) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a17_38_ct) %></h6></div>
+    <div class="col-xs-3 green "><h6><%= to_currency(@a17_38_in-(@a17_38_eg+@a17_38_ct))%></h6></div>
+  </div>
+
+  <div class="row">  <!-- Mes 09, Sem 37 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Sep_37 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a17_37_in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a17_37_eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a17_37_ct) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a17_37_in-(@a17_37_eg+@a17_37_ct))%></h6></div>
+  </div>
+
+  <div class="row">  <!-- Mes 09, Sem 36 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Sep_36 </h6></div>
+    <div class="col-xs-3 green3"><h6><%= to_currency(@a17_36_in) %></h6></div>
+    <div class="col-xs-2 green1"><h6><%= to_currency(@a17_36_eg) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a17_36_ct) %></h6></div>
+    <div class="col-xs-3 green "><h6><%= to_currency(@a17_36_in-(@a17_36_eg+@a17_36_ct))%></h6></div>
+  </div>
+
+  <div class="row">  <!-- Mes 09, Sem 35 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Sep_35 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a17_35_09in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a17_35_09eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a17_35_09ct) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a17_35_09in-(@a17_35_09eg+@a17_35_09ct))%></h6></div>
+  </div>
+
+  <div class="row">  <!-- Total N° Mes actual -->
+    <div class="col-xs-2 darkgreen"><h6> A17_Sep♦ </h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a17_sp_in ) %></h6></div>
+    <div class="col-xs-2 darkgreen"><h6><%= to_currency(@a17_sp_eg) %></h6></div>
+    <div class="col-xs-2 darkgreen"><h6><%= to_currency(@a17_sp_ct) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a17_sp_in-(@a17_sp_eg+@a17_sp_ct))%></h6></div>
+  </div> <hr class="separator">
+
+  <h6 class="celeste"> Agosto 2017 ♦ </h6>
+  <div class="row">  <!-- Mes 08/9, Sem 35 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Ago_35 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a17_35_08in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a17_35_08eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a17_35_08ct) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a17_35_08in-(@a17_35_08eg+@a17_35_08ct))%></h6></div>
+  </div>
+
+  <div class="row">  <!-- Mes 08, Sem 34 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Ago_34 </h6></div>
+    <div class="col-xs-3 green3"><h6><%= to_currency(@a17_34_in) %></h6></div>
+    <div class="col-xs-2 green1"><h6><%= to_currency(@a17_34_eg) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a17_34_ct) %></h6></div>
+    <div class="col-xs-3 green "><h6><%= to_currency(@a17_34_in-(@a17_34_eg+@a17_34_ct))%></h6></div>
+  </div>
+
+  <div class="row">  <!-- Mes 08, Sem 33 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Ago_33 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a17_33_in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a17_33_eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a17_33_ct) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a17_33_in-(@a17_33_eg+@a17_33_ct))%></h6></div>
+  </div>
+
+  <div class="row">  <!-- Mes 08, Sem 32 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Ago_32 </h6></div>
+    <div class="col-xs-3 green3"><h6><%= to_currency(@a17_32_in) %></h6></div>
+    <div class="col-xs-2 green1"><h6><%= to_currency(@a17_32_eg) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a17_32_ct) %></h6></div>
+    <div class="col-xs-3 green "><h6><%= to_currency(@a17_32_in-(@a17_32_eg+@a17_32_ct))%></h6></div>
+  </div>
+
+  <div class="row">  <!-- Mes 08, Sem 31 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Ago_31 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a17_31_08in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a17_31_08eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a17_31_08ct) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a17_31_08in-(@a17_31_08eg+@a17_31_08ct))%></h6></div>
+  </div>
+
+  <div class="row">  <!-- Total N° Mes actual -->
+    <div class="col-xs-2 darkgreen"><h6> A17_Ago♦ </h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a17_ag_in ) %></h6></div>
+    <div class="col-xs-2 darkgreen"><h6><%= to_currency(@a17_ag_eg) %></h6></div>
+    <div class="col-xs-2 darkgreen"><h6><%= to_currency(@a17_ag_ct) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a17_ag_in-(@a17_ag_eg+@a17_ag_ct))%></h6></div>
+  </div> <hr class="separator">
+
+  <h6 class="celeste"> Julio 2017 ♦ </h6>
+  <div class="row">  <!-- Mes 07, Sem 31 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Jul 31 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a17_31_07in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a17_31_07eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a17_31_07ct) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a17_31_07in-(@a17_31_07eg+@a17_31_07ct))%></h6></div>
+  </div>
+
+  <div class="row">  <!-- Mes 07, Sem 30-->
+    <div class="col-xs-2 olive2"><h6 class="black"> Jul 30 </h6></div>
+    <div class="col-xs-3 green3"><h6><%= to_currency(@a17_30_in) %></h6></div>
+    <div class="col-xs-2 green1"><h6><%= to_currency(@a17_30_eg) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a17_30_ct) %></h6></div>
+    <div class="col-xs-3 green "><h6><%= to_currency(@a17_30_in-(@a17_30_eg+@a17_30_ct))%></h6></div>
+  </div>
+
+  <div class="row">  <!-- Mes 07, Sem 29 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Jul 29 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a17_29_in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a17_29_eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a17_29_ct) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a17_29_in-(@a17_29_eg+@a17_29_ct))%></h6></div>
+  </div>
+
+  <div class="row">  <!-- Mes 07, Sem 28-->
+    <div class="col-xs-2 olive2"><h6 class="black"> Jul 28 </h6></div>
+    <div class="col-xs-3 green3"><h6><%= to_currency(@a17_28_in) %></h6></div>
+    <div class="col-xs-2 green1"><h6><%= to_currency(@a17_28_eg) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a17_28_ct) %></h6></div>
+    <div class="col-xs-3 green "><h6><%= to_currency(@a17_28_in-(@a17_28_eg+@a17_28_ct))%></h6></div>
+  </div>
+
+  <div class="row">  <!-- Mes 07, Sem 27 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Jul 27 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a17_27_in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a17_27_eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a17_27_ct) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a17_27_in-(@a17_27_eg+@a17_27_ct))%></h6></div>
+  </div>
+
+  <div class="row">  <!-- Mes 07, Sem 26-->
+    <div class="col-xs-2 olive2"><h6 class="black"> Jul 26 </h6></div>
+    <div class="col-xs-3 green3"><h6><%= to_currency(@a17_26_07in) %></h6></div>
+    <div class="col-xs-2 green1"><h6><%= to_currency(@a17_26_07eg) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a17_26_07ct) %></h6></div>
+    <div class="col-xs-3 green "><h6><%= to_currency(@a17_26_07in-(@a17_26_07eg+@a17_26_07ct))%></h6></div>
+  </div>
+
+  <div class="row">  <!-- Total N° Mes actual -->
+    <div class="col-xs-2 darkgreen"><h6> A17_Jul♦ </h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a17_jl_in ) %></h6></div>
+    <div class="col-xs-2 darkgreen"><h6><%= to_currency(@a17_jl_eg) %></h6></div>
+    <div class="col-xs-2 darkgreen"><h6><%= to_currency(@a17_jl_ct) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a17_jl_in-(@a17_jl_eg+@a17_jl_ct))%></h6></div>
+  </div> <hr class="separator">
+
+  <h6 class="celeste"> Junio 2017 ♦ </h6>
+  <div class="row">  <!-- Mes 6, Sem 26 -->
+    <div class="col-xs-2 yellow"><h6 class="black">  Jun 26  </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a17_26_06in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a17_26_06eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a17_26_06ct) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a17_26_06in-(@a17_26_06eg+@a17_26_06ct))%></h6></div>
+  </div>
+
+  <div class="row">  <!-- Mes 06, Sem 25 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Jun 25 </h6></div>
+    <div class="col-xs-3 green3"><h6><%= to_currency(@a17_25_in) %></h6></div>
+    <div class="col-xs-2 green1"><h6><%= to_currency(@a17_25_eg) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a17_25_ct) %></h6></div>
+    <div class="col-xs-3 green "><h6><%= to_currency(@a17_25_in-(@a17_25_eg+@a17_25_ct))%></h6></div>
+  </div>
+
+  <div class="row">  <!-- Mes 06, Sem 24 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Jun 24 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a17_24_in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a17_24_eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a17_24_ct) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a17_24_in-(@a17_24_eg+@a17_24_ct))%></h6></div>
+  </div>
+
+  <div class="row">  <!-- Mes 06, Sem 23 -->
+    <div class="col-xs-2 olive2"><h6 class="black"> Jun 23 </h6></div>
+    <div class="col-xs-3 green3"><h6><%= to_currency(@a17_23_in) %></h6></div>
+    <div class="col-xs-2 green1"><h6><%= to_currency(@a17_23_eg) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a17_23_ct) %></h6></div>
+    <div class="col-xs-3 green "><h6><%= to_currency(@a17_23_in-(@a17_23_eg+@a17_23_ct))%></h6></div>
+  </div>
+
+  <div class="row">  <!-- Mes 06, Sem 22 -->
+    <div class="col-xs-2 yellow"><h6 class="black"> Jun 22 </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@a17_22_in) %></h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@a17_22_eg) %></h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@a17_22_ct) %></h6></div>
+    <div class="col-xs-3 olive0"><h6><%= to_currency(@a17_22_in-(@a17_22_eg+@a17_22_ct))%></h6></div>
+  </div>
+
+  <div class="row">  <!-- Total N° Mes actual -->
+    <div class="col-xs-2 darkgreen"><h6> A17_Jun </h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a17_jn_in ) %></h6></div>
+    <div class="col-xs-2 darkgreen"><h6><%= to_currency(@a17_jn_eg) %></h6></div>
+    <div class="col-xs-2 darkgreen"><h6><%= to_currency(@a17_jn_ct) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a17_jn_in-(@a17_jn_eg+@a17_jn_ct))%></h6></div>
+  </div> <hr class="separator">
+
+
+  <P> <!-- ****  Mostrar Estados Mensuales Consolidados  **** -->
+  <div class="row padding: 17" >
+    <center><h4> STW313 - 2019 -- ♦ <%= Time.now.strftime("%b") %> </h4></center>
+    <div class="col-xs-2 blue0"><h6>2019</h6></div>
+    <div class="col-xs-3 blue0"><h6>Produc</h6></div>
+    <div class="col-xs-2 blue0"><h6>Comb</h6></div>
+    <div class="col-xs-2 blue0"><h6>Ctas</h6></div>
+    <div class="col-xs-3 blue0"><h6>Neto</h6></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 yellow"><h6 class="black"> Dic </h6></div>
+    <div class="col-xs-3 green0"><h6><%= to_currency(@a19dc_in) %></h6></div>
+    <div class="col-xs-2 forestgreen"><h6><%= to_currency(@a19dc_eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a19dc_pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a19dc_in-(@a19dc_eg+@a19dc_pj)) %></h6></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 yellow"><h6 class="black">Nov </h6></div>
+    <div class="col-xs-3 green3"><h6><%= to_currency(@a19nv_in) %></h6></div>
+    <div class="col-xs-2 green1"><h6><%= to_currency(@a19nv_eg) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a19nv_pj) %></h6></div>
+    <div class="col-xs-3 forestgreen"><h6><%= to_currency(@a19nv_in-(@a19nv_eg+@a19nv_pj)) %></h6></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 yellow"><h6 class="black">Oct </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a19oc_in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a19oc_eg) %></h6></div>
+    <div class="col-xs-2 forestgreen"><h6><%= to_currency(@a19oc_pj) %></h6></div>
+    <div class="col-xs-3 green "><h6><%= to_currency(@a19oc_in-(@a19oc_eg+@a19oc_pj)) %></h6></div>
+  </div> <hr class="separator">
+
+  <div class="row">
+    <div class="col-xs-2 yellow"><h6 class="black">Sep </h6></div>
+    <div class="col-xs-3 green0"><h6><%= to_currency(@a19sp_in) %></h6></div>
+    <div class="col-xs-2 forestgreen"><h6><%= to_currency(@a19sp_eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a19sp_pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a19sp_in-(@a19sp_eg+@a19sp_pj)) %></h6></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 yellow"><h6 class="black">Ago </h6></div>
+    <div class="col-xs-3 green3"><h6><%= to_currency(@a19ag_in) %></h6></div>
+    <div class="col-xs-2 green1"><h6><%= to_currency(@a19ag_eg) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a19ag_pj) %></h6></div>
+    <div class="col-xs-3 forestgreen"><h6><%= to_currency(@a19ag_in-(@a19ag_eg+@a19ag_pj)) %></h6></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 yellow"><h6 class="black">Jul </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a19jl_in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a19jl_eg) %></h6></div>
+    <div class="col-xs-2 forestgreen"><h6><%= to_currency(@a19jl_pj) %></h6></div>
+    <div class="col-xs-3 green "><h6><%= to_currency(@a19jl_in-(@a19jl_eg+@a19jl_pj)) %></h6></div>
+  </div> <hr class="separator">
+
+  <div class="row">
+    <div class="col-xs-2 yellow"><h6 class="black">Jun </h6></div>
+    <div class="col-xs-3 green0"><h6><%= to_currency(@a19jn_in) %></h6></div>
+    <div class="col-xs-2 forestgreen"><h6><%= to_currency(@a19jn_eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a19jn_pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a19jn_in-(@a19jn_eg+@a19jn_pj)) %></h6></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 yellow"><h6 class="black">May </h6></div>
+    <div class="col-xs-3 green3"><h6><%= to_currency(@a19my_in) %></h6></div>
+    <div class="col-xs-2 green1"><h6><%= to_currency(@a19my_eg) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a19my_pj) %></h6></div>
+    <div class="col-xs-3 forestgreen"><h6><%= to_currency(@a19my_in-(@a19my_eg+@a19my_pj)) %></h6></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 yellow"><h6 class="black">Abr </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a19ab_in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a19ab_eg) %></h6></div>
+    <div class="col-xs-2 forestgreen"><h6><%= to_currency(@a19ab_pj) %></h6></div>
+    <div class="col-xs-3 green "><h6><%= to_currency(@a19ab_in-(@a19ab_eg+@a19ab_pj)) %></h6></div>
+  </div> <hr class="separator">
+
+  <div class="row">
+    <div class="col-xs-2 yellow"><h6 class="black">Mar </h6></div>
+    <div class="col-xs-3 green0"><h6><%= to_currency(@a19mz_in) %></h6></div>
+    <div class="col-xs-2 forestgreen"><h6><%= to_currency(@a19mz_eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a19mz_pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a19mz_in-(@a19mz_eg+@a19mz_pj)) %></h6></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 yellow"><h6 class="black">Feb </h6></div>
+    <div class="col-xs-3 green3"><h6><%= to_currency(@a19fb_in) %></h6></div>
+    <div class="col-xs-2 green1"><h6><%= to_currency(@a19fb_eg) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a19fb_pj) %></h6></div>
+    <div class="col-xs-3 forestgreen"><h6><%= to_currency(@a19fb_in-(@a19fb_eg+@a19fb_pj)) %></h6></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 yellow"><h6 class="black">Ene </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a19en_in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a19en_eg) %></h6></div>
+    <div class="col-xs-2 forestgreen"><h6><%= to_currency(@a19en_pj) %></h6></div>
+    <div class="col-xs-3 green "><h6><%= to_currency(@a19en_in-(@a19en_eg+@a19en_pj)) %></h6></div>
+  </div> <hr class="separator">
+
+  <P> <!-- ****  Mostrar Estados Consolidados  **** -->
+  <div class="row padding: 17" >
+    <center> <h4> STW313 - 2017 / 2018 </h4> </center>
+    <div class="col-xs-2 blue0"><h6>2018</h6></div>
+    <div class="col-xs-3 blue0"><h6>Produc</h6></div>
+    <div class="col-xs-2 blue0"><h6>Cmb</h6></div>
+    <div class="col-xs-2 blue0"><h6>Cta</h6></div>
+    <div class="col-xs-3 blue0"><h6>Neto</h6></div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-2 yellow"><h6 class="black"> Dic </h6></div>
+    <div class="col-xs-3 green0"><h6><%= to_currency(@a18dc_in) %></h6></div>
+    <div class="col-xs-2 forestgreen"><h6><%= to_currency(@a18dc_eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a18dc_pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a18dc_in-(@a18dc_eg+@a18dc_pj)) %></h6></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 yellow"><h6 class="black">Nov </h6></div>
+    <div class="col-xs-3 green3"><h6><%= to_currency(@a18nv_in) %></h6></div>
+    <div class="col-xs-2 green1"><h6><%= to_currency(@a18nv_eg) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a18nv_pj) %></h6></div>
+    <div class="col-xs-3 forestgreen"><h6><%= to_currency(@a18nv_in-(@a18nv_eg+@a18nv_pj)) %></h6></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 yellow"><h6 class="black">Oct </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a18oc_in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a18oc_eg) %></h6></div>
+    <div class="col-xs-2 forestgreen"><h6><%= to_currency(@a18oc_pj) %></h6></div>
+    <div class="col-xs-3 green "><h6><%= to_currency(@a18oc_in-(@a18oc_eg+@a18oc_pj)) %></h6></div>
+  </div> <hr class="separator">
+
+  <div class="row">
+    <div class="col-xs-2 yellow"><h6 class="black">Sep </h6></div>
+    <div class="col-xs-3 green0"><h6><%= to_currency(@a18sp_in) %></h6></div>
+    <div class="col-xs-2 forestgreen"><h6><%= to_currency(@a18sp_eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a18sp_pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a18sp_in-(@a18sp_eg+@a18sp_pj)) %></h6></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 yellow"><h6 class="black">Ago </h6></div>
+    <div class="col-xs-3 green3"><h6><%= to_currency(@a18ag_in) %></h6></div>
+    <div class="col-xs-2 green1"><h6><%= to_currency(@a18ag_eg) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a18ag_pj) %></h6></div>
+    <div class="col-xs-3 forestgreen"><h6><%= to_currency(@a18ag_in-(@a18ag_eg+@a18ag_pj)) %></h6></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 yellow"><h6 class="black">Jul </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a18jl_in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a18jl_eg) %></h6></div>
+    <div class="col-xs-2 forestgreen"><h6><%= to_currency(@a18jl_pj) %></h6></div>
+    <div class="col-xs-3 green "><h6><%= to_currency(@a18jl_in-(@a18jl_eg+@a18jl_pj)) %></h6></div>
+  </div> <hr class="separator">
+
+  <div class="row">
+    <div class="col-xs-2 yellow"><h6 class="black">Jun </h6></div>
+    <div class="col-xs-3 green0"><h6><%= to_currency(@a18jn_in) %></h6></div>
+    <div class="col-xs-2 forestgreen"><h6><%= to_currency(@a18jn_eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a18jn_pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a18jn_in-(@a18jn_eg+@a18jn_pj)) %></h6></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 yellow"><h6 class="black">May </h6></div>
+    <div class="col-xs-3 green3"><h6><%= to_currency(@a18my_in) %></h6></div>
+    <div class="col-xs-2 green1"><h6><%= to_currency(@a18my_eg) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a18my_pj) %></h6></div>
+    <div class="col-xs-3 forestgreen"><h6><%= to_currency(@a18my_in-(@a18my_eg+@a18my_pj)) %></h6></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 yellow"><h6 class="black">Abr </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a18ab_in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a18ab_eg) %></h6></div>
+    <div class="col-xs-2 forestgreen"><h6><%= to_currency(@a18ab_pj) %></h6></div>
+    <div class="col-xs-3 green "><h6><%= to_currency(@a18ab_in-(@a18ab_eg+@a18ab_pj)) %></h6></div>
+  </div> <hr class="separator">
+
+  <div class="row">
+    <div class="col-xs-2 yellow"><h6 class="black">Mar </h6></div>
+    <div class="col-xs-3 green0"><h6><%= to_currency(@a18mz_in) %></h6></div>
+    <div class="col-xs-2 forestgreen"><h6><%= to_currency(@a18mz_eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a18mz_pj) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a18mz_in-(@a18mz_eg+@a18mz_pj)) %></h6></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 yellow"><h6 class="black">Feb </h6></div>
+    <div class="col-xs-3 green3"><h6><%= to_currency(@a18fb_in) %></h6></div>
+    <div class="col-xs-2 green1"><h6><%= to_currency(@a18fb_eg) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a18fb_pj) %></h6></div>
+    <div class="col-xs-3 forestgreen"><h6><%= to_currency(@a18fb_in-(@a18fb_eg+@a18fb_pj)) %></h6></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 yellow"><h6 class="black">Ene </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a18en_in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a18en_eg) %></h6></div>
+    <div class="col-xs-2 forestgreen"><h6><%= to_currency(@a18en_pj) %></h6></div>
+    <div class="col-xs-3 green "><h6><%= to_currency(@a18en_in-(@a18en_eg+@a18en_pj)) %></h6></div>
+  </div> <hr class="separator">
+  <!-- 2017 -->
+  <div class="row">
+    <div class="col-xs-2 yellow">      <h6 class="black">Dic </h6></div>
+    <div class="col-xs-3 green0">      <h6><%= to_currency(@a17dc_in) %></h6></div>
+    <div class="col-xs-2 forestgreen"> <h6><%= to_currency(@a17dc_eg) %></h6></div>
+    <div class="col-xs-2 green ">      <h6><%= to_currency(@a17dc_pj) %></h6></div>
+    <div class="col-xs-3 darkgreen">   <h6><%= to_currency(@a17dc_in-(@a17dc_eg+@a17dc_pj)) %></h6></div>
+  </div>
+  <div class="row" border=1>
+    <div class="col-xs-2 blue0"><h6 class="white">STW313</h6></div>
+    <div class="col-xs-3 blue0"><h6><%= to_currency(@tt_in) %></h6></div>
+    <div class="col-xs-2 blue0"><h6><%= to_currency(@tt_eg) %></h6></div>
+    <div class="col-xs-2 blue0"><h6><%= to_currency(@tt_ct) %></h6></div>
+    <div class="col-xs-3 blue0"><h6><%= to_currency(@tt_in-(@tt_eg+@tt_ct)) %></h6></div>
+  </div> <hr class="separator">
+
+
+  <P><!-- ****  Mostrar Estados Consolidados 2017 **** -->
+  <div class="row padding: 17" >
+    <center> <h4> STU379 - 2017 </h4> </center>
+    <div class="col-xs-2 blue0"><h6>2017</h6></div>
+    <div class="col-xs-3 blue0"><h6>Produc</h6></div>
+    <div class="col-xs-2 blue0"><h6>Cmb</h6></div>
+    <div class="col-xs-2 blue0"><h6>Cta</h6></div>
+    <div class="col-xs-3 blue0"><h6>Neto</h6></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 yellow"><h6 class="black">Dic </h6></div>
+    <div class="col-xs-3 green2"><h6><%= to_currency(@a1712_in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a1712_eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a1712_ct) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a1712_in-(@a1712_eg+@a1712_ct)) %></h6></div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-2 yellow"><h6 class="black">Nov </h6></div>
+    <div class="col-xs-3 green3"><h6><%= to_currency(@a1711_in) %></h6></div>
+    <div class="col-xs-2 green1"><h6><%= to_currency(@a1711_eg) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a1711_ct) %></h6></div>
+    <div class="col-xs-3 green "><h6><%= to_currency(@a1711_in-(@a1711_eg+@a1711_ct)) %></h6></div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-2 yellow"><h6 class="black">Oct </h6></div>
+    <div class="col-xs-3 green2"><h6><%= to_currency(@a1710_in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a1710_eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a1710_ct) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a1710_in-(@a1710_eg+@a1710_ct)) %></h6></div>
+  </div> <hr class="separator">
+
+  <div class="row">
+    <div class="col-xs-2 yellow"><h6 class="black">Sept </h6></div>
+    <div class="col-xs-3 green3"><h6><%= to_currency(@a1709_in) %></h6></div>
+    <div class="col-xs-2 green1"><h6><%= to_currency(@a1709_eg) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a1709_ct) %></h6></div>
+    <div class="col-xs-3 green "><h6><%= to_currency(@a1709_in-(@a1709_eg+@a1709_ct)) %></h6></div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-2 yellow"><h6 class=" black">Ago </h6></div>
+    <div class="col-xs-3 green2"><h6><%= to_currency(@a1708_in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a1708_eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a1708_ct) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a1708_in-(@a1708_eg+@a1708_ct)) %></h6></div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-2 yellow"><h6 class=" black">Julio </h6></div>
+    <div class="col-xs-3 green3"><h6><%= to_currency(@a1707_in) %></h6></div>
+    <div class="col-xs-2 green1"><h6><%= to_currency(@a1707_eg) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a1707_ct) %></h6></div>
+    <div class="col-xs-3 green "><h6><%= to_currency(@a1707_in-(@a1707_eg+@a1707_ct)) %></h6></div>
+  </div> <hr class="separator">
+
+  <div class="row">
+    <div class="col-xs-2 yellow"><h6 class=" black"> Junio </h6></div>
+    <div class="col-xs-3 green1"><h6><%= to_currency(@a1706_in) %></h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@a1706_eg) %></h6></div>
+    <div class="col-xs-2 green "><h6><%= to_currency(@a1706_ct) %></h6></div>
+    <div class="col-xs-3 darkgreen"><h6><%= to_currency(@a1706_in-(@a1706_eg+@a1706_ct)) %></h6></div>
+  </div>
+
+  <div class="row" border=1>
+    <div class="col-xs-2 blue0"><h6 class=" white">Total</h6></div>
+    <div class="col-xs-3 blue0"><h6><%= to_currency(@tt_in) %></h6></div>
+    <div class="col-xs-2 blue0"><h6><%= to_currency(@tt_eg) %></h6></div>
+    <div class="col-xs-2 blue0"><h6><%= to_currency(@tt_ct) %></h6></div>
+    <div class="col-xs-3 blue0"><h6><%= to_currency(@tt_in-(@tt_eg+@tt_ct)) %></h6></div>
+  </div>
+
+</div>

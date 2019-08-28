@@ -1,0 +1,1479 @@
+
+<!-- Solo usuario activado ? -->
+
+<div>  <!-- class="container-coltax" -->
+  <div class="header-reg">
+    <%= link_to 'Nuevo', new_movement_path %>
+    <%= link_to 'Ver', see_all_path %> <!-- Día, sems, mes, total_año -->
+
+    <%= link_to 'Datos', data_path %> <!-- Estados, Informs, imprs -->
+    <%= link_to 'Flota', tr_flota_path %>  <!-- Legal, Taller -->
+    <%= link_to 'MvM', movmed_path %> <!-- Transito Medellín -->
+
+    <%= link_to 'Red', redes_path %> <!-- Redes sociales, alertas, mensajes -->
+    <%= link_to '♪ღ♫', 'https://keep.google.com/u/0/' %> <!-- Estados, Informs, imprs -->
+    <%= link_to '?', '?' %> <!-- Ayudas, Enlaces -->
+  </div>
+
+  <table class="table table-hover table-striped datatable-plugin">
+    <thead>
+      <tr>
+        <th>Fecha</th>
+        <th> Descripciones </th>
+        <th>T</th>
+        <th>Valor</th>
+        <th>Nº</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>   <!-- Registros -->
+      <% @movements.each_with_index do |movement, index| %>
+        <tr>
+          <td><% unless movement.mov_date.nil? %>
+                <%= movement.mov_date.strftime('%m/%d') + ' ' + movement.mov_hour %>
+                <!-- <td><%= movement.created_at.strftime('%m/%d %H%M') %></td> -->
+              <% end %> </td>
+          <td><%= movement.description %></td>
+          <td><%= movement.mov_type %></td>
+          <td align="right"><%= to_currency(movement.price) %></td>
+
+          <td><%= index + 1 %></td>
+
+          <td><%= link_to 'Edit', edit_movement_path(movement) %></td>
+          <td><%= link_to 'Delete', movement, method: :delete, data: { confirm: 'Estás seguro?' } %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+  <hr class="separator" style="marin0">
+  <h6 style="display: flex; justify-content: space-between; width: 100%;">
+    <span> ♦ Ver </span> <%= link_to '◄', see_all_path %>
+    <%= link_to '►', contab_path %> <span> Contab ♦ </span> </h6>
+  <hr class="separator">
+
+  <!-- Estado general Consolidado / 2018 -->
+  <div class="row">
+    <div class="row marin1"><h5 class="text-center"> • Estado General </h5></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 col-sm-1 blue0"><h6 class="text-center">Admón • </h6></div>
+    <div class="col-xs-2 col-sm-1 blue0"><h6>Ingrs </h6></div>
+    <div class="col-xs-2 col-sm-1 blue0"><h6>Combt </h6></div>
+
+    <div class="hidden-xs col-sm-1 blue1"><h6>Peajes </h6></div>
+    <div class="hidden-xs col-sm-1 blue1"><h6>And_GP </h6></div>
+    <div class="hidden-xs col-sm-1 blue1"><h6>Dat_Mv </h6></div>
+    <div class="hidden-xs col-sm-1 blue1"><h6>Trj_Op </h6></div>
+    <div class="hidden-xs col-sm-1 blue1"><h6>Taller </h6></div>
+    <div class="hidden-xs col-sm-1 blue1"><h6>Varios </h6></div>
+
+    <div class="col-xs-2 hidden-sm hidden-md hidden-lg blue2"><h6>Otros </h6></div>
+    <div class="col-xs-3 col-sm-2 blue0"><h6>Neto¹_Op </h6></div>
+    <div class="col-xs-1 col-sm-1 blue1"><h6> $  </h6></div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black" title="Ingresos, combust, costos">
+      <span class="blue_f">O</span>perac </h6></div>
+    <div class="col-xs-2 col-sm-1 marin4"><h6><%= to_currency(@act_in) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 marin2"><h6><%= to_currency(@act_eg) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@act_pj) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@act_an) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@act_dt) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@act_tn) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@act_tr) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@act_vr) %> </h6></div>
+    <div class="col-xs-2 hidden-sm hidden-md hidden-lg marin2"><h6><%= to_currency(@act_oo) %> </h6></div>
+    <div class="col-xs-3 col-sm-2 marin0"><h6><%= to_currency(@act_na) %> </h6></div>
+    <div class="col-xs-1 col-sm-1 blue  ">
+      <h5 title="Ingresos / Egresos"> <%= sprintf('%.2f', (@act_ev)) %> </h5></div>
+  </div>
+
+  <!-- Financiación -->
+  <div class="row">
+    <div class="col-xs-2 col-sm-1 blue1"><h6 class="text-center">Finanzas • </h6></div>
+    <div class="col-xs-2 col-sm-1 blue1"><h6>Invergran </h6></div>
+    <div class="col-xs-2 col-sm-1 blue1"><h6>Intr_Fn </h6></div>
+    <div class="col-xs-2 col-sm-1 blue1"><h6>Servicréd </h6></div>
+    <div class="hidden-xs col-sm-5 blue2"><h6> ♦ </h6></div>
+    <div class="col-xs-3 col-sm-2 blue1"><h6>Subtotal² </h6></div>
+    <div class="col-xs-1 col-sm-1 blue1"><h6> %  </h6></div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black" title="Financiación, intereses, seguro_financ">
+      <span class="blue_f">C</span>uotas </h6></div>
+    <div class="col-xs-2 col-sm-1 marin4"><h6><%= to_currency(@act_fn) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 marin3"><h6><%= to_currency(@act_fi) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 marin2"><h6><%= to_currency(@act_sg) %> </h6></div>
+    <div class="hidden-xs col-sm-5 glima1"><h6><%= to_currency(@nn_n ) %> </h6></div>
+    <div class="col-xs-3 col-sm-2 marin1"><h6><%= to_currency(@act_nf) %> </h6></div>
+    <div class="col-xs-1 col-sm-1 blue  "><h6><%= sprintf('%.1f', ((@act_fn*100)/@act_in)) %></h6></div>
+  </div>  <hr class="separator">
+
+  <!-- Contab -->
+  <div class="row">
+    <div class="col-xs-2 col-sm-1 blue1"><h6 class="text-center"> Contab • </h6></div>
+    <div class="col-xs-2 col-sm-1 blue1"><h6>Prest_D </h6></div>
+    <div class="col-xs-2 col-sm-1 blue1"><h6>Pagos_C </h6></div>
+    <div class="hidden-xs col-sm-1 blue2"><h6>Imps_%↓ </h6></div>
+    <div class="hidden-xs col-sm-1 blue2"><h6>Legal </h6></div>
+    <div class="hidden-xs col-sm-1 blue2"><h6>Otros </h6></div>
+    <div class="hidden-xs col-sm-1 blue2"><h6>Home </h6></div>
+    <div class="hidden-xs col-sm-1 blue2"><h6>Persn </h6></div>
+    <div class="hidden-xs col-sm-1 blue2"><h6>Seg_Soc </h6></div>
+    <div class="col-xs-2 hidden-sm hidden-md hidden-lg blue2"><h6>Varios_%↓ </h6></div>
+    <div class="col-xs-3 col-sm-2 blue1"><h6>Neto Caja </h6></div>
+    <div class="col-xs-1 col-sm-1 blue1"><h6> ♦ </h6></div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black" title="Ingrs_Pers, Pagos, Seguridad Social">
+      Co<span class="blue_f">n</span>tab </h6></div>
+    <div class="col-xs-2 col-sm-1 glima4"><h6><%= to_currency(@act_cd) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 marin4"><h6><%= to_currency(@act_cc) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@act_im) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@act_lg) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@act_ot) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@act_hm) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@act_ps) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@act_ss) %> </h6></div>
+    <div class="col-xs-2 hidden-sm hidden-md hidden-lg marin2"><h6><%= to_currency(@act_vs) %> </h6></div>
+    <div class="col-xs-3 col-sm-2 marin1"><h6><%= to_currency(@act_nc) %> </h6></div>
+    <div class="col-xs-1 col-sm-1 blue  "><h5><%= to_currency(@nn_n  ) %> </h5></div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black" title="Préstamos, Pagos, Costos_Financ">
+      <span class="blue_f">F</span>inanz_2 </h6></div>
+    <div class="col-xs-2 col-sm-1 glima2"><h6><%= to_currency(@act_fp) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 marin2"><h6><%= to_currency(@act_fg) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 marin1"><h6><%= to_currency(@act_fr) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@nn_n ) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@nn_n ) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@nn_n ) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@nn_n ) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@nn_n ) %> </h6></div>
+    <div class="col-xs-3 col-sm-2 marin0"><h6><%= to_currency(@act_fz) %> </h6></div>
+    <div class="col-xs-1 col-sm-1 blue1 "><h5><%= to_currency(@nn_n  ) %> </h5></div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black" title="Consignacs, Retiros, Costos-finanz">
+      <span class="blue_f">B</span>ancos </h6></div>
+    <div class="col-xs-2 col-sm-1 glima0"><h6><%= to_currency(@act_bd) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 marin0"><h6><%= to_currency(@act_bc) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 marin0"><h6><%= to_currency(@act_bk) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@nn_n ) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@nn_n ) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@nn_n ) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@nn_n ) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@nn_n ) %> </h6></div>
+    <div class="col-xs-3 col-sm-2 marina"><h6><%= to_currency(@act_tb) %> </h6></div>
+    <div class="col-xs-1 col-sm-1 blue  "><h6><%= to_currency(@nn_n  ) %> </h6></div>
+  </div>
+
+  <!-- Mostrar Estados diarios-->
+  <hr class="separator">
+  <h6 style="display: flex; justify-content: space-between; width: 100%;">
+    <span> ♦ Ver </span> <%= link_to '◄', see_all_path %>
+    <%= link_to '►', contab_path %> <span> Contab ♦ </span> </h6>
+  <hr class="separator">
+
+  <div class="row">
+    <div class="row marina"><h5 class="text-center"> • Operación </h5></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 col-sm-1 blue0"><h6 class="text-center">Estado • </h6></div>
+    <div class="col-xs-2 col-sm-1 blue0"><h6>Día </h6></div>
+    <div class="col-xs-2 col-sm-1 blue0"><h6>Sem </h6></div>
+    <div class="col-xs-2 col-sm-1 blue0"><h6>Mes </h6></div>
+    <div class="hidden-xs col-sm-1 blue2"><h6>Jl_Dc/17 </h6></div>
+    <div class="hidden-xs col-sm-1 blue2"><h6>En_Jn/18 </h6></div>
+    <div class="hidden-xs col-sm-1 blue2"><h6>Jl_Dc/18 </h6></div>
+    <div class="hidden-xs col-sm-1 blue2"><h6>En_Jn/19 </h6></div>
+    <div class="hidden-xs col-sm-1 blue1"><h6>Jl_Dc/19 </h6></div>
+    <div class="col-xs-3 col-sm-2 blue0"><h6>Total </h6></div>
+    <div class="col-xs-1 col-sm-1 blue1"><h6>Mil ♦ </h6></div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black" title="Ingresos">
+      <span class="blue_f">I</span>ngresos </h6></div>
+    <div class="col-xs-2 col-sm-1 fuchs4"><h6><%= to_currency(@ad_in) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 glima4"><h6><%= to_currency(@aw_in) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 marin4"><h6><%= to_currency(@am_in) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a17a_in) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18a_in) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18b_in) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19a_in) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19b_in) %> </h6></div>
+    <div class="col-xs-3 col-sm-2 marin3"><h6><%= to_currency(@ay_in) %> </h6></div>
+    <div class="col-xs-1 col-sm-1 blue  ">
+      <h5 title="Día promedio en miles"> <%= sprintf('%.0f', (@am_iv)) %> </h5></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black" title="Combustible">
+      <span class="blue_f">E</span>gresos </h6></div>
+    <div class="col-xs-2 col-sm-1 fuchs3"><h6><%= to_currency(@ad_eg) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 glima3"><h6><%= to_currency(@aw_eg) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 marin3"><h6><%= to_currency(@am_eg) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a17a_eg) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18a_eg) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18b_eg) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19a_eg) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19b_eg) %> </h6></div>
+    <div class="col-xs-3 col-sm-2 marin2"><h6><%= to_currency(@ay_eg) %> </h6></div>
+    <div class="col-xs-1 col-sm-1 blue1 "><h5><%= (@am_ev).round(0) %> </h5></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black" title="Gast_Oper/les">
+      Pea<span class="blue_f">j</span>es </h6></div>
+    <div class="col-xs-2 col-sm-1 fuchs2"><h6><%= to_currency(@ad_pj) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 glima2"><h6><%= to_currency(@aw_pj) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 marin2"><h6><%= to_currency(@am_pj) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a17a_pj) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18a_pj) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18b_pj) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19a_pj) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19b_pj) %> </h6></div>
+    <div class="col-xs-3 col-sm-2 marin1"><h6><%= to_currency(@ay_pj) %> </h6></div>
+    <div class="col-xs-1 col-sm-1 blue  "><h6> <%= (@am_iv/1000).round(1) %> </h6></div>
+  </div>  <p>
+
+  <div class="row">
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black" title="Admon y GPS">
+      <span class="blue_f">A</span>ndaluz </h6></div>
+    <div class="col-xs-2 col-sm-1 fuchs1"><h6><%= to_currency(@ad_an) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 glima1"><h6><%= to_currency(@aw_an) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 marin1"><h6><%= to_currency(@am_an) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a17a_an) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18a_an) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18b_an) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19a_an) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19b_an) %> </h6></div>
+
+    <div class="col-xs-3 col-sm-2 marin0"><h6><%= to_currency(@ay_an) %> </h6></div>
+    <div class="col-xs-1 col-sm-1 blue1 "><h5><%= (@ay_av).round(2) %> </h5></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black" title="Datos Móviles">
+      <span class="blue_f">D</span>atos </h6></div>
+    <div class="col-xs-2 col-sm-1 fuchs1"><h6><%= to_currency(@ad_dt) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 glima1"><h6><%= to_currency(@aw_dt) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 marin1"><h6><%= to_currency(@am_dt) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a17a_dt) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18a_dt) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18b_dt) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19a_dt) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19b_dt) %> </h6></div>
+    <div class="col-xs-3 col-sm-2 marin0"><h6><%= to_currency(@ay_dt) %> </h6></div>
+    <div class="col-xs-1 col-sm-1 blue  "><h6><%= ((@ay_dt*100)/@ay_in).round(2) %> </h6></div>
+  </div>
+  <div class="row" border=1>
+    <div class="col-xs-2 col-sm-1 marina"><h6 class="white text-center">Neto¹ •</h6></div>
+    <div class="col-xs-2 col-sm-1 marina"><h6><%= to_currency(@ad_ea) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 marina"><h6><%= to_currency(@aw_ea) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 marina"><h6><%= to_currency(@am_ea) %> </h6></div>
+    <div class="hidden-xs col-sm-1 marin1"><h6><%= to_currency(@a17a_ea) %> </h6></div>
+    <div class="hidden-xs col-sm-1 marin2"><h6><%= to_currency(@a18a_ea) %> </h6></div>
+    <div class="hidden-xs col-sm-1 marin1"><h6><%= to_currency(@a18b_ea) %> </h6></div>
+    <div class="hidden-xs col-sm-1 marin2"><h6><%= to_currency(@a19a_ea) %> </h6></div>
+    <div class="hidden-xs col-sm-1 marin1"><h6><%= to_currency(@a19b_ea) %> </h6></div>
+    <div class="col-xs-3 col-sm-2 marina"><h6><%= to_currency(@ay_ea) %> </h6></div>
+    <div class="col-xs-1 col-sm-1 blue1 "><h6><%= to_currency(@nn_n ) %> </h6></div>
+  </div> <p>
+
+  <!-- Costos Fijos -->
+  <div class="row">
+    <div class="row marina"><h5 class="text-center marina"> • Mintransporte </h5></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black"><span class="blue_f">S</span>OAT </h6></div>
+    <div class="col-xs-2 col-sm-1 fuchs1"><h6><%= to_currency(@ad_so) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 glima1"><h6><%= to_currency(@aw_so) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 marin1"><h6><%= to_currency(@am_so) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a17a_so) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18a_so) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18b_so) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19a_so) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19b_so) %> </h6></div>
+    <div class="col-xs-3 col-sm-2 marin0"><h6><%= to_currency(@ay_so) %> </h6></div>
+    <div class="col-xs-1 col-sm-1 blue  "><h5><%= to_currency(@nn_n ) %> </h5></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black" title="Tarjeta de Operación">
+      Tar<span class="blue_f">j</span>_Opr </h6></div>
+    <div class="col-xs-2 col-sm-1 fuchs1"><h6><%= to_currency(@ad_to) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 glima1"><h6><%= to_currency(@aw_to) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 marin1"><h6><%= to_currency(@am_to) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a17a_to) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18a_to) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18b_to) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19a_to) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19b_to) %> </h6></div>
+    <div class="col-xs-3 col-sm-2 marin0"><h6><%= to_currency(@ay_to) %> </h6></div>
+    <div class="col-xs-1 col-sm-1 blue1 "><h5><%= to_currency(@nn_n ) %> </h5></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black" title="Cambio de Tarifa">
+      Ta<span class="blue_f">x</span>ímet </h6></div>
+    <div class="col-xs-2 col-sm-1 fuchs1"><h6><%= to_currency(@ad_tx) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 glima1"><h6><%= to_currency(@aw_tx) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 marin1"><h6><%= to_currency(@am_tx) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a17a_tx) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18a_tx) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18b_tx) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19a_tx) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19b_tx) %> </h6></div>
+    <div class="col-xs-3 col-sm-2 marin0"><h6><%= to_currency(@ay_tx) %> </h6></div>
+    <div class="col-xs-1 col-sm-1 blue  "><h5><%= to_currency(@nn_n ) %> </h5></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black">Téc_<span class="blue_f">M</span>ec </h6></div>
+    <div class="col-xs-2 col-sm-1 fuchs1"><h6><%= to_currency(@ad_tm) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 glima1"><h6><%= to_currency(@aw_tm) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 marin1"><h6><%= to_currency(@am_tm) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a17a_tm) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18a_tm) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18b_tm) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19a_tm) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19b_tm) %> </h6></div>
+    <div class="col-xs-3 col-sm-2 marin0"><h6><%= to_currency(@ay_tm) %> </h6></div>
+    <div class="col-xs-1 col-sm-1 blue1 "><h6><%= to_currency(@nn_n ) %> </h6></div>
+  </div> <p>
+
+  <div class="row">
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black"><span class="blue_f">T</span>aller </h6></div>
+    <div class="col-xs-2 col-sm-1 fuchs0"><h6><%= to_currency(@ad_tr) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 glima0"><h6><%= to_currency(@aw_tr) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 marin1"><h6><%= to_currency(@am_tr) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a17a_tr) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18a_tr) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18b_tr) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19a_tr) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19b_tr) %> </h6></div>
+    <div class="col-xs-3 col-sm-2 marina"><h6><%= to_currency(@ay_tr) %> </h6></div>
+    <div class="col-xs-1 col-sm-1 blue  "><h5><%= (@ay_tv).round(2) %> </h5></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black"><span class="blue_f">V</span>arios </h6></div>
+    <div class="col-xs-2 col-sm-1 fuchsi"><h6><%= to_currency(@ad_vr) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 glima "><h6><%= to_currency(@aw_vr) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 marin0"><h6><%= to_currency(@am_vr) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a17a_vr) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18a_vr) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18b_vr) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19a_vr) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19b_vr) %> </h6></div>
+    <div class="col-xs-3 col-sm-2 marina"><h6><%= to_currency(@ay_vr) %> </h6></div>
+    <div class="col-xs-1 col-sm-1 blue1 "><h6><%= (@ay_vv).round(2) %> </h6></div>
+  </div>
+  <div class="row" border=1>
+    <div class="col-xs-2 col-sm-1 blue1"><h6 class="white text-center">Neto² </h6></div>
+    <div class="col-xs-2 col-sm-1 blue1"><h6><%= to_currency(@ad_na) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 blue1"><h6><%= to_currency(@aw_na) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 blue1"><h6><%= to_currency(@am_na) %> </h6></div>
+    <div class="hidden-xs col-sm-1 blue2"><h6><%= to_currency(@a17a_na) %> </h6></div>
+    <div class="hidden-xs col-sm-1 blue2"><h6><%= to_currency(@a18a_na) %> </h6></div>
+    <div class="hidden-xs col-sm-1 blue2"><h6><%= to_currency(@a18b_na) %> </h6></div>
+    <div class="hidden-xs col-sm-1 blue2"><h6><%= to_currency(@a19a_na) %> </h6></div>
+    <div class="hidden-xs col-sm-1 blue2"><h6><%= to_currency(@a19b_na) %> </h6></div>
+    <div class="col-xs-3 col-sm-2 blue1"><h6><%= to_currency(@ay_na) %> </h6></div>
+    <div class="col-xs-1 col-sm-1 blue "><h6><%= to_currency(@am_av) %> </h6></div>
+  </div> <p>
+
+  <!-- Financiera: pagos, intereses mora, seguro_crédito -->
+  <div class="row">
+    <div class="row marina"><h5 class="text-center"> • Invergran </h5></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 col-sm-1 blue0"><h6>Crédito • </h6></div>
+    <div class="col-xs-2 col-sm-1 blue0"> <h6>Dia </h6></div>
+    <div class="col-xs-2 col-sm-1 blue0"> <h6>Sem </h6></div>
+    <div class="col-xs-2 col-sm-1 blue0"> <h6>Mes </h6></div>
+    <div class="hidden-xs col-sm-1 blue1"><h6>En_Dc/17 </h6></div>
+    <div class="hidden-xs col-sm-1 blue1"><h6>En_Jn/18 </h6></div>
+    <div class="hidden-xs col-sm-1 blue1"><h6>Jl_Dc/18 </h6></div>
+    <div class="hidden-xs col-sm-1 blue1"><h6>En_Jn/19 </h6></div>
+    <div class="hidden-xs col-sm-1 blue1"><h6>Jl_Dc/19 </h6></div>
+    <div class="col-xs-3 col-sm-2 blue0"> <h6>Total </h6></div>
+    <div class="col-xs-1 col-sm-1 blue0"> <h6> % </h6></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black"><span class="blue_f">F</span>inanciera </h6></div>
+    <div class="col-xs-2 col-sm-1 fuchs1"><h6><%= to_currency(@ad_fn) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 glima2"><h6><%= to_currency(@aw_fn) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 marin1"><h6><%= to_currency(@am_fn) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a17a_fn) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18a_fn) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18b_fn) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19a_fn) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19b_fn) %> </h6></div>
+    <div class="col-xs-3 col-sm-2 marin0"><h6><%= to_currency(@ay_fn) %> </h6></div>
+    <div class="col-xs-1 col-sm-1 blue1 "><h5><%= ((@ay_fn*100)/@ay_in).round(2) %> </h5></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black">I<span class="blue_f">n</span>tereses </h6></div>
+    <div class="col-xs-2 col-sm-1 fuchs1"><h6><%= to_currency(@ad_ir) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 glima1"><h6><%= to_currency(@aw_ir) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 marin1"><h6><%= to_currency(@am_ir) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a17a_ir) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18a_ir) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18b_ir) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19a_ir) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19b_ir) %> </h6></div>
+    <div class="col-xs-3 col-sm-2 marin0"><h6><%= to_currency(@ay_ir) %> </h6></div>
+    <div class="col-xs-1 col-sm-1 blue  "><h5><%= ((@ay_ir*100)/@ay_in).round(2) %> </h5></div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black">Segu<span class="blue_f">r</span>os </h6></div>
+    <div class="col-xs-2 col-sm-1 fuchs0"><h6><%= to_currency(@ad_sg) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 glima1"><h6><%= to_currency(@aw_sg) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 marin1"><h6><%= to_currency(@am_sg) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a17a_sg) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18a_sg) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18b_sg) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19a_sg) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19b_sg) %> </h6></div>
+    <div class="col-xs-3 col-sm-2 marin0"><h6><%= to_currency(@ay_sg) %> </h6></div>
+    <div class="col-xs-1 col-sm-1 blue1 "><h6><%= ((@ay_sg*100)/@ay_in).round(2) %> </h6></div>
+  </div>
+  <!-- Neto Financiera -->
+  <div class="row" border=1>
+    <div class="col-xs-2 col-sm-1 blue0"><h6 class="white text-center">Neto³ </h6></div>
+    <div class="col-xs-2 col-sm-1 blue0"><h6><%= to_currency(@ad_nf) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 blue0"><h6><%= to_currency(@aw_nf) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 blue0"><h6><%= to_currency(@am_nf) %> </h6></div>
+    <div class="hidden-xs col-sm-1 blue1"><h6><%= to_currency(@a17a_nf) %> </h6></div>
+    <div class="hidden-xs col-sm-1 blue1"><h6><%= to_currency(@a18a_nf) %> </h6></div>
+    <div class="hidden-xs col-sm-1 blue1"><h6><%= to_currency(@a18b_nf) %> </h6></div>
+    <div class="hidden-xs col-sm-1 blue1"><h6><%= to_currency(@a19a_nf) %> </h6></div>
+    <div class="hidden-xs col-sm-1 blue1"><h6><%= to_currency(@a19b_nf) %> </h6></div>
+    <div class="col-xs-3 col-sm-2 blue0"><h6><%= to_currency(@ay_nf) %> </h6></div>
+    <div class="col-xs-1 col-sm-1 blue0"><h6><%= to_currency(@am_av) %> </h6></div>
+  </div>
+
+  <hr class="separator">
+  <h6 style="display: flex; justify-content: space-between; width: 100%;">
+    <span> ♦ Datos </span><%= link_to '◄', data_path %>
+    <%= link_to '►', contab_path %> <span> Contab <%= Time.now.strftime("%Y")%> ♦ </span>  </h6>
+  <hr class="separator">
+
+  <!-- Estados Contables -->
+  <div class="row">
+    <div class="row marina"><h5 class="text-center marina"> • Contabilidad personal </h5></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 col-sm-1 blue0"><h6>Contab • </h6></div>
+    <div class="col-xs-2 col-sm-1 blue0"><h6>Dia </h6></div>
+    <div class="col-xs-2 col-sm-1 blue0"><h6>Sem </h6></div>
+    <div class="col-xs-2 col-sm-1 blue0"><h6>Mes </h6></div>
+    <div class="hidden-xs col-sm-1 blue1"><h6>Jl_Dc/17 </h6></div>
+    <div class="hidden-xs col-sm-1 blue1"><h6>En_Jn/18 </h6></div>
+    <div class="hidden-xs col-sm-1 blue1"><h6>Jl_Dc/18 </h6></div>
+    <div class="hidden-xs col-sm-1 blue1"><h6>En_Jn/19 </h6></div>
+    <div class="hidden-xs col-sm-1 blue1"><h6>Jl_Dc/19 </h6></div>
+    <div class="col-xs-3 col-sm-2 blue0"><h6>Total </h6></div>
+    <div class="col-xs-1 col-sm-1 blue0"><h6> % </h6></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black">Caja_<span class="blue_f">D </span></h6></div>
+    <div class="col-xs-2 col-sm-1 fuchs4"><h6><%= to_currency(@ad_cd) %></h6></div>
+    <div class="col-xs-2 col-sm-1 glima4"><h6><%= to_currency(@aw_cd) %></h6></div>
+    <div class="col-xs-2 col-sm-1 marin4"><h6><%= to_currency(@am_cd) %></h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a17a_cd) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18a_cd) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18b_cd) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19a_cd) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19b_cd) %> </h6></div>
+    <div class="col-xs-3 col-sm-2 marin3"><h6><%= to_currency(@ay_cd) %></h6></div>
+    <div class="col-xs-1 col-sm-1 blue  "><h5><%= to_currency(@nn_n ) %></h5></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black">Caja_<span class="blue_f">C </span></h6></div>
+    <div class="col-xs-2 col-sm-1 fuchs4"><h6><%= to_currency(@ad_cc) %></h6></div>
+    <div class="col-xs-2 col-sm-1 glima4"><h6><%= to_currency(@aw_cc) %></h6></div>
+    <div class="col-xs-2 col-sm-1 marin4"><h6><%= to_currency(@am_cc) %></h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a17a_cc) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18a_cc) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18b_cc) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19a_cc) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19b_cc) %> </h6></div>
+    <div class="col-xs-3 col-sm-2 marin3"><h6><%= to_currency(@ay_cc) %></h6></div>
+    <div class="col-xs-1 col-sm-1 blue1 "><h6><%= to_currency(@nn_n ) %></h6></div>
+  </div> <p>
+
+  <div class="row">
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black"><span class="blue_f">C</span>réditos </h6></div>
+    <div class="col-xs-2 col-sm-1 fuchs4"><h6><%= to_currency(@ad_fd) %></h6></div>
+    <div class="col-xs-2 col-sm-1 glima4"><h6><%= to_currency(@aw_fd) %></h6></div>
+    <div class="col-xs-2 col-sm-1 marin4"><h6><%= to_currency(@am_fd) %></h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a17a_fd) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18a_fd) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18b_fd) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19a_fd) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19b_fd) %> </h6></div>
+    <div class="col-xs-3 col-sm-2 marin3"><h6><%= to_currency(@ay_fd) %></h6></div>
+    <div class="col-xs-1 col-sm-1 blue  "><h5><%= to_currency(@nn_n ) %></h5></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black"><span class="blue_f">P</span>agos </h6></div>
+    <div class="col-xs-2 col-sm-1 fuchs3"><h6><%= to_currency(@ad_fc) %></h6></div>
+    <div class="col-xs-2 col-sm-1 glima3"><h6><%= to_currency(@aw_fc) %></h6></div>
+    <div class="col-xs-2 col-sm-1 marin3"><h6><%= to_currency(@am_fc) %></h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a17a_fc) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18a_fc) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18b_fc) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19a_fc) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19b_fc) %> </h6></div>
+    <div class="col-xs-3 col-sm-2 marin2"><h6><%= to_currency(@ay_fc) %></h6></div>
+    <div class="col-xs-1 col-sm-1 blue1 "><h5><%= to_currency(@nn_n ) %></h5></div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black">I<span class="blue_f">n</span>tereses </h6></div>
+    <div class="col-xs-2 col-sm-1 fuchs2"><h6><%= to_currency(@ad_fi) %></h6></div>
+    <div class="col-xs-2 col-sm-1 glima2"><h6><%= to_currency(@aw_fi) %></h6></div>
+    <div class="col-xs-2 col-sm-1 marin2"><h6><%= to_currency(@am_fi) %></h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a17a_fi) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18a_fi) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18b_fi) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19a_fi) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19b_fi) %> </h6></div>
+    <div class="col-xs-3 col-sm-2 marin1"><h6><%= to_currency(@ay_fi) %></h6></div>
+    <div class="col-xs-1 col-sm-1 blue  "><h6><%= to_currency(@nn_n ) %></h6></div>
+  </div> <p>
+
+  <!-- Otros personales -->
+  <div class="row">
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black"><span class="blue_f">I</span>mpuestos </h6></div>
+    <div class="col-xs-2 col-sm-1 fuchs3"><h6><%= to_currency(@ad_im) %></h6></div>
+    <div class="col-xs-2 col-sm-1 glima3"><h6><%= to_currency(@aw_im) %></h6></div>
+    <div class="col-xs-2 col-sm-1 marin3"><h6><%= to_currency(@am_im) %></h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a17a_im) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18a_im) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18b_im) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19a_im) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19b_im) %> </h6></div>
+    <div class="col-xs-3 col-sm-2 marin2"><h6><%= to_currency(@ay_im) %></h6></div>
+    <div class="col-xs-1 col-sm-1 blue1 "><h5><%= to_currency(@nn_n ) %></h5></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black"><span class="blue_f">L</span>egal </h6></div>
+    <div class="col-xs-2 col-sm-1 fuchs3"><h6><%= to_currency(@ad_lg) %></h6></div>
+    <div class="col-xs-2 col-sm-1 glima3"><h6><%= to_currency(@aw_lg) %></h6></div>
+    <div class="col-xs-2 col-sm-1 marin3"><h6><%= to_currency(@am_lg) %></h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a17a_lg) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18a_lg) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18b_lg) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19a_lg) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19b_lg) %> </h6></div>
+    <div class="col-xs-3 col-sm-2 marin1"><h6><%= to_currency(@ay_lg) %></h6></div>
+    <div class="col-xs-1 col-sm-1 blue  "><h5><%= to_currency(@nn_n ) %></h5></div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black"><span class="blue_f">O</span>tros </h6></div>
+    <div class="col-xs-2 col-sm-1 fuchs2"><h6><%= to_currency(@ad_ot) %></h6></div>
+    <div class="col-xs-2 col-sm-1 glima2"><h6><%= to_currency(@aw_ot) %></h6></div>
+    <div class="col-xs-2 col-sm-1 marin2"><h6><%= to_currency(@am_ot) %></h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a17a_ot) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18a_ot) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18b_ot) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19a_ot) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19b_ot) %> </h6></div>
+    <div class="col-xs-3 col-sm-2 marin1"><h6><%= to_currency(@ay_ot) %></h6></div>
+    <div class="col-xs-1 col-sm-1 blue1 "><h6><%= to_currency(@nn_n ) %></h6></div>
+  </div> <p>
+
+  <!-- Personal -->
+  <div class="row">
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black"><span class="blue_f">H</span>ome </h6></div>
+    <div class="col-xs-2 col-sm-1 fuchs1"><h6><%= to_currency(@ad_hm) %></h6></div>
+    <div class="col-xs-2 col-sm-1 glima1"><h6><%= to_currency(@aw_hm) %></h6></div>
+    <div class="col-xs-2 col-sm-1 marin1"><h6><%= to_currency(@am_hm) %></h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a17a_hm) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18a_hm) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18b_hm) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19a_hm) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19b_hm) %> </h6></div>
+    <div class="col-xs-3 col-sm-2 marin0"><h6><%= to_currency(@ay_hm) %></h6></div>
+    <div class="col-xs-1 col-sm-1 blue  "><h5><%= to_currency(@nn_n ) %></h5></div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black">Perso<span class="blue_f">n</span>al </h6></div>
+    <div class="col-xs-2 col-sm-1 fuchs0"><h6><%= to_currency(@ad_ps) %></h6></div>
+    <div class="col-xs-2 col-sm-1 glima1"><h6><%= to_currency(@aw_ps) %></h6></div>
+    <div class="col-xs-2 col-sm-1 marin1"><h6><%= to_currency(@am_ps) %></h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a17a_ps) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18a_ps) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18b_ps) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19a_ps) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19b_ps) %> </h6></div>
+    <div class="col-xs-3 col-sm-2 marin0"><h6><%= to_currency(@ay_ps) %></h6></div>
+    <div class="col-xs-1 col-sm-1 blue1 "><h5><%= to_currency(@nn_n ) %></h5></div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black"><span class="blue_f">S</span>eg_Soc </h6></div>
+    <div class="col-xs-2 col-sm-1 fuchsi"><h6><%= to_currency(@ad_ss) %></h6></div>
+    <div class="col-xs-2 col-sm-1 glima "><h6><%= to_currency(@aw_ss) %></h6></div>
+    <div class="col-xs-2 col-sm-1 marin0"><h6><%= to_currency(@am_ss) %></h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a17a_ss) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18a_ss) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18b_ss) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19a_ss) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19b_ss) %> </h6></div>
+    <div class="col-xs-3 col-sm-2 marina"><h6><%= to_currency(@ay_ss) %></h6></div>
+    <div class="col-xs-1 col-sm-1 blue  "><h6><%= to_currency(@nn_n ) %></h6></div>
+  </div>
+
+  <div class="row" border=1>
+    <div class="col-xs-2 col-sm-1 blue1"><h6 class="white text-center">Neto</h6></div>
+    <div class="col-xs-2 col-sm-1 blue1"><h6><%= to_currency(@ad_nc) %></h6></div>
+    <div class="col-xs-2 col-sm-1 blue1"><h6><%= to_currency(@aw_nc) %></h6></div>
+    <div class="col-xs-2 col-sm-1 blue1"><h6><%= to_currency(@am_nc) %></h6></div>
+    <div class="hidden-xs col-sm-1 blue2"><h6><%= to_currency(@a17a_nc) %> </h6></div>
+    <div class="hidden-xs col-sm-1 blue2"><h6><%= to_currency(@a18a_nc) %> </h6></div>
+    <div class="hidden-xs col-sm-1 blue2"><h6><%= to_currency(@a18b_nc) %> </h6></div>
+    <div class="hidden-xs col-sm-1 blue2"><h6><%= to_currency(@a19a_nc) %> </h6></div>
+    <div class="hidden-xs col-sm-1 blue2"><h6><%= to_currency(@a19b_nc) %> </h6></div>
+    <div class="col-xs-3 col-sm-2 blue1"><h6><%= to_currency(@ay_nc) %></h6></div>
+    <div class="col-xs-1 col-sm-1 blue1"><h6><%= to_currency(@nn_n) %></h6></div>
+  </div>
+
+  <div class="row" border=1>
+    <div class="col-xs-2 col-sm-1 blue0"><h6 class="white text-center">Total</h6></div>
+    <div class="col-xs-2 col-sm-1 blue0"><h6><%= to_currency(@ad_tc) %></h6></div>
+    <div class="col-xs-2 col-sm-1 blue0"><h6><%= to_currency(@aw_tc) %></h6></div>
+    <div class="col-xs-2 col-sm-1 blue0"><h6><%= to_currency(@am_tc) %></h6></div>
+    <div class="hidden-xs col-sm-1 blue1"><h6><%= to_currency(@a17a_tc) %> </h6></div>
+    <div class="hidden-xs col-sm-1 blue1"><h6><%= to_currency(@a18a_tc) %> </h6></div>
+    <div class="hidden-xs col-sm-1 blue1"><h6><%= to_currency(@a18b_tc) %> </h6></div>
+    <div class="hidden-xs col-sm-1 blue1"><h6><%= to_currency(@a19a_tc) %> </h6></div>
+    <div class="hidden-xs col-sm-1 blue1"><h6><%= to_currency(@a19b_tc) %> </h6></div>
+    <div class="col-xs-3 col-sm-2 blue0"><h6><%= to_currency(@ay_tc) %></h6></div>
+    <div class="col-xs-1 col-sm-1 blue0"><h6><%= to_currency(@nn_n ) %></h6></div>
+  </div>
+
+
+  <!-- Última semana / Mostrar Estados Consolidados-->
+  <hr class="separator">
+  <h6 style="display: flex; justify-content: space-between; width: 100%;">
+    <span> ♦ Ver </span> <%= link_to '◄', see_all_path %>
+    <%= link_to '►', see_weeks_path %> <span> Actual <%= Time.now.strftime("A%y_%V")%></span> </h6>
+  <hr class="separator">
+
+  <!-- Estados diarios / Semana actual -->
+  <div class="row">
+    <div class="row marina"><h5 class="text-center marina"> • Semana Actual </h5></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 col-sm-1 darkgreen"><h6><%= Time.now.strftime("A%y_%b")%> </h6></div>
+    <div class="col-xs-2 col-sm-1 darkgreen"><h6>Prod </h6></div>
+    <div class="col-xs-2 col-sm-1 darkgreen"><h6>Comb </h6></div>
+    <div class="col-xs-2 hidden-sm hidden-md hidden-lg darkgreen"><h6>Peajes </h6></div>
+
+    <div class="hidden-xs col-sm-1 blue1"><h6>Peajes </h6></div>
+    <div class="hidden-xs col-sm-1 blue "><h6>And_GP </h6></div>
+    <div class="hidden-xs col-sm-1 blue1"><h6>Dat_Mv </h6></div>
+    <div class="hidden-xs col-sm-1 blue "><h6>Trj_Op </h6></div>
+    <div class="hidden-xs col-sm-1 blue1"><h6>Taller </h6></div>
+    <div class="hidden-xs col-sm-1 blue "><h6>Varios </h6></div>
+
+    <div class="col-xs-3 col-sm-2 darkgreen"><h6>Neto </h6></div>
+    <div class="col-xs-1 col-sm-1 darkgreen"><h6>♪♥♪ </h6></div>
+  </div>
+
+  <% if Time.zone.now.sunday? %>
+    <% then %>
+    <div class="row">
+      <div class="col-xs-2 col-sm-1 fuchsia"><h6><%= @wdm ? 'Dom'+(Time.now.strftime("%d")) : 'Dm'%> </h6></div>
+      <div class="col-xs-2 col-sm-1 olive3"><h6><%= to_currency(@wdm_in)%> </h6></div>
+      <div class="col-xs-2 col-sm-1 olive2"><h6><%= to_currency(@wdm_eg)%> </h6></div>
+      <div class="col-xs-2 hidden-sm hidden-md hidden-lg olive1"><h6><%= to_currency(@wdm_pj)%> </h6></div>
+
+      <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@wdm_pj) %> </h6></div>
+      <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@wdm_an) %> </h6></div>
+      <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@wdm_dt) %> </h6></div>
+      <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@wdm_nx) %> </h6></div>
+      <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@wdm_tr) %> </h6></div>
+      <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@wdm_vr) %> </h6></div>
+
+      <div class="col-xs-3 col-sm-2 olive0"><h6><%= to_currency(@wdm_in-(@wdm_eg+@wdm_pj)) %> </h6></div>
+      <div class="col-xs-1 col-sm-1 marin0"><h5><%= to_currency(@wdm_ev)%> </h5></div>
+    </div>
+  <% else %>
+    <div class="row">
+      <div class="col-xs-2 col-sm-1 yellow"><h6 class="black"><%= @adm ? 'Dom'+"!" : 'Dm'%> </h6></div>
+      <div class="col-xs-2 col-sm-1 olive3"><h6><%= to_currency(@adm_in)%> </h6></div>
+      <div class="col-xs-2 col-sm-1 olive2"><h6><%= to_currency(@adm_eg)%> </h6></div>
+      <div class="col-xs-2 hidden-sm hidden-md hidden-lg olive1"><h6><%= to_currency(@adm_pj)%> </h6></div>
+
+      <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@adm_pj) %> </h6></div>
+      <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@adm_an) %> </h6></div>
+      <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@adm_dt) %> </h6></div>
+      <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@adm_nx) %> </h6></div>
+      <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@adm_tr) %> </h6></div>
+      <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@adm_vr) %> </h6></div>
+
+      <div class="col-xs-3 col-sm-2 olive0"><h6><%= to_currency(@adm_in-(@adm_eg+@adm_pj))%> </h6></div>
+      <div class="col-xs-1 col-sm-1 marin0"><h5><%= to_currency(@adm_ev) %> </h5></div>
+    </div>
+  <% end %>
+
+  <% if Time.zone.now.monday? %>
+    <% then %>
+    <div class="row">
+      <div class="col-xs-2 col-sm-1 fuchs4"><h6><%= @wln ? 'Lun'+(Time.now.strftime("%d")):'Ln'%> </h6></div>
+      <div class="col-xs-2 col-sm-1 green3"><h6><%= to_currency(@wln_in)%> </h6></div>
+      <div class="col-xs-2 col-sm-1 green1"><h6><%= to_currency(@wln_eg)%> </h6></div>
+      <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@wln_pj) %> </h6></div>
+      <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@wln_an) %> </h6></div>
+      <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@wln_dt) %> </h6></div>
+      <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@wln_nx) %> </h6></div>
+      <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@wln_tr) %> </h6></div>
+      <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@wln_vr) %> </h6></div>
+      <div class="col-xs-2 hidden-sm hidden-md hidden-lg green0"><h6><%= to_currency(@wln_pj)%> </h6></div>
+      <div class="col-xs-3 col-sm-2 green "><h6><%= to_currency(@wln_in-(@wln_eg+@wln_pj))%> </h6></div>
+      <div class="col-xs-1 col-sm-1 marina"><h5><%= @wln_ev %> </h5></div>
+    </div>
+  <% else %>
+    <div class="row">
+      <div class="col-xs-2 col-sm-1 olive2"><h6 class="black"><%= @aln ? 'Lun'+"!" : 'Ln'%> </h6></div>
+      <div class="col-xs-2 col-sm-1 green3"><h6><%= to_currency(@aln_in)%> </h6></div>
+      <div class="col-xs-2 col-sm-1 green1"><h6><%= to_currency(@aln_eg)%> </h6></div>
+      <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@aln_pj) %> </h6></div>
+      <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@aln_an) %> </h6></div>
+      <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@aln_dt) %> </h6></div>
+      <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@aln_nx) %> </h6></div>
+      <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@aln_tr) %> </h6></div>
+      <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@aln_vr) %> </h6></div>
+      <div class="col-xs-2 hidden-sm hidden-md hidden-lg green0"><h6><%= to_currency(@aln_pj)%> </h6></div>
+      <div class="col-xs-3 col-sm-2 green "><h6><%= to_currency(@aln_in-(@aln_eg+@aln_pj))%> </h6></div>
+      <div class="col-xs-1 col-sm-1 marina"><h5><%= sprintf('%.0f', @nn_n) %> </h5></div>
+    </div>
+  <% end %>
+
+  <% if Time.zone.now.tuesday? %>
+    <% then %>
+    <div class="row">
+      <div class="col-xs-2 col-sm-1 fuchs3"><h6><%= @wma ? 'Mar'+(Time.now.strftime("%d")):'Mr'%> </h6></div>
+      <div class="col-xs-2 col-sm-1 olive3"><h6><%= to_currency(@wma_in)%> </h6></div>
+      <div class="col-xs-2 col-sm-1 olive2"><h6><%= to_currency(@wma_eg)%> </h6></div>
+      <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@wma_pj) %> </h6></div>
+      <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@wma_an) %> </h6></div>
+      <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@wma_dt) %> </h6></div>
+      <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@wma_nx) %> </h6></div>
+      <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@wma_tr) %> </h6></div>
+      <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@wma_vr) %> </h6></div>
+      <div class="col-xs-2 hidden-sm hidden-md hidden-lg olive1"><h6><%= to_currency(@wma_pj)%> </h6></div>
+      <div class="col-xs-3 col-sm-2 olive0"><h6><%= to_currency(@wma_in-(@wma_eg+@wma_pj))%> </h6></div>
+      <div class="col-xs-1 col-sm-1 marin0"><h5><%= to_currency(@nn_n ) %> </h5></div>
+    </div>
+  <% else %>
+    <div class="row">
+      <div class="col-xs-2 col-sm-1 yellow"><h6 class="black"><%= @ama ? 'Mar'+"!" : 'Mr'%> </h6></div>
+      <div class="col-xs-2 col-sm-1 olive3"><h6><%= to_currency(@ama_in)%> </h6></div>
+      <div class="col-xs-2 col-sm-1 olive2"><h6><%= to_currency(@ama_eg)%> </h6></div>
+      <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@ama_pj) %> </h6></div>
+      <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@ama_an) %> </h6></div>
+      <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@ama_dt) %> </h6></div>
+      <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@ama_nx) %> </h6></div>
+      <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@ama_tr) %> </h6></div>
+      <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@ama_vr) %> </h6></div>
+      <div class="col-xs-2 hidden-sm hidden-md hidden-lg olive1"><h6><%= to_currency(@ama_pj)%> </h6></div>
+      <div class="col-xs-3 col-sm-2 olive0"><h6><%= to_currency(@ama_in-(@ama_eg+@ama_pj))%> </h6></div>
+      <div class="col-xs-1 col-sm-1 marin0"><h5><%= to_currency(@nn_n ) %> </h5></div>
+    </div>
+  <% end %>
+
+  <% if Time.zone.now.wednesday? %>
+    <% then %>
+    <div class="row">
+      <div class="col-xs-2 col-sm-1 fuchs2"><h6><%= @wmi ? 'M/c'+(Time.now.strftime("%d")):'Mc'%> </h6></div>
+      <div class="col-xs-2 col-sm-1 green3"><h6><%= to_currency(@wmi_in)%> </h6></div>
+      <div class="col-xs-2 col-sm-1 green1"><h6><%= to_currency(@wmi_eg)%> </h6></div>
+      <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@wmi_pj) %> </h6></div>
+      <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@wmi_an) %> </h6></div>
+      <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@wmi_dt) %> </h6></div>
+      <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@wmi_nx) %> </h6></div>
+      <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@wmi_tr) %> </h6></div>
+      <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@wmi_vr) %> </h6></div>
+      <div class="col-xs-2 hidden-sm hidden-md hidden-lg green0"><h6><%= to_currency(@wmi_pj)%> </h6></div>
+      <div class="col-xs-3 col-sm-2 green "><h6><%= to_currency(@wmi_in-(@wmi_eg+@wmi_pj))%> </h6></div>
+      <div class="col-xs-1 col-sm-1 marina"><h5><%= to_currency(@nn_n ) %> </h5></div>
+    </div>
+  <% else %>
+    <div class="row">
+      <div class="col-xs-2 col-sm-1 olive2"><h6 class="black"><%= @ami ? 'M/c'+"!" : 'Mc'%> </h6></div>
+      <div class="col-xs-2 col-sm-1 green3"><h6><%= to_currency(@ami_in)%> </h6></div>
+      <div class="col-xs-2 col-sm-1 green1"><h6><%= to_currency(@ami_eg)%> </h6></div>
+      <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@ami_pj) %> </h6></div>
+      <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@ami_an) %> </h6></div>
+      <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@ami_dt) %> </h6></div>
+      <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@ami_nx) %> </h6></div>
+      <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@ami_tr) %> </h6></div>
+      <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@ami_vr) %> </h6></div>
+      <div class="col-xs-2 hidden-sm hidden-md hidden-lg green0"><h6><%= to_currency(@ami_pj)%> </h6></div>
+      <div class="col-xs-3 col-sm-2 green "><h6><%= to_currency(@ami_in-(@ami_eg+@ami_pj))%> </h6></div>
+      <div class="col-xs-1 col-sm-1 marina"><h5><%= to_currency(@nn_n ) %> </h5></div>
+    </div>
+  <% end %>
+
+  <% if Time.zone.now.thursday? %>
+    <% then %>
+    <div class="row">
+      <div class="col-xs-2 col-sm-1 fuchs1"><h6><%= @wju ? 'Jue'+(Time.now.strftime("%d")) : 'Jv'%> </h6></div>
+      <div class="col-xs-2 col-sm-1 olive3"><h6><%= to_currency(@wju_in)%> </h6></div>
+      <div class="col-xs-2 col-sm-1 olive2"><h6><%= to_currency(@wju_eg)%> </h6></div>
+      <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@wju_pj) %> </h6></div>
+      <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@wju_an) %> </h6></div>
+      <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@wju_dt) %> </h6></div>
+      <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@wju_nx) %> </h6></div>
+      <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@wju_tr) %> </h6></div>
+      <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@wju_vr) %> </h6></div>
+      <div class="col-xs-2 hidden-sm hidden-md hidden-lg olive1"><h6><%= to_currency(@wju_pj)%> </h6></div>
+      <div class="col-xs-3 col-sm-2 olive0"><h6><%= to_currency(@wju_in-(@wju_eg+@wju_pj))%> </h6></div>
+      <div class="col-xs-1 col-sm-1 marin0"><h5><%= to_currency(@nn_n ) %> </h5></div>
+    </div>
+  <% else %>
+    <div class="row">
+      <div class="col-xs-2 col-sm-1 yellow"><h6 class="black"><%= @aju ? 'Jue'+"!" : 'Mv'%> </h6></div>
+      <div class="col-xs-2 col-sm-1 olive3"><h6><%= to_currency(@aju_in)%> </h6></div>
+      <div class="col-xs-2 col-sm-1 olive2"><h6><%= to_currency(@aju_eg)%> </h6></div>
+      <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@aju_pj) %> </h6></div>
+      <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@aju_an) %> </h6></div>
+      <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@aju_dt) %> </h6></div>
+      <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@aju_nx) %> </h6></div>
+      <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@aju_tr) %> </h6></div>
+      <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@aju_vr) %> </h6></div>
+      <div class="col-xs-2 hidden-sm hidden-md hidden-lg olive1"><h6><%= to_currency(@aju_pj)%> </h6></div>
+      <div class="col-xs-3 col-sm-2 olive0"><h6><%= to_currency(@aju_in-(@aju_eg+@aju_pj))%> </h6></div>
+      <div class="col-xs-1 col-sm-1 marin0"><h5><%= to_currency(@nn_n ) %> </h5></div>
+    </div>
+  <% end %>
+
+  <% if Time.zone.now.friday? %>
+    <% then %>
+    <div class="row">
+      <div class="col-xs-2 col-sm-1 fuchs0"><h6><%= @wvi ? 'Vie'+(Time.now.strftime("%d")) : 'Vn!'%> </h6></div>
+      <div class="col-xs-2 col-sm-1 green3"><h6><%= to_currency(@wvi_in)%> </h6></div>
+      <div class="col-xs-2 col-sm-1 green1"><h6><%= to_currency(@wvi_eg)%> </h6></div>
+      <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@wvi_pj)%> </h6></div>
+      <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@wvi_an)%> </h6></div>
+      <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@wvi_dt)%> </h6></div>
+      <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@wvi_nx)%> </h6></div>
+      <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@wvi_tr)%> </h6></div>
+      <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@wvi_vr)%> </h6></div>
+      <div class="col-xs-2 hidden-sm hidden-md hidden-lg green0"><h6><%= to_currency(@wvi_pj)%> </h6></div>
+      <div class="col-xs-3 col-sm-2 green "><h6><%= to_currency(@wvi_in-(@wvi_eg+@wvi_pj))%> </h6></div>
+      <div class="col-xs-1 col-sm-1 marina"><h5><%= to_currency(@nn_n )%> </h5></div>
+    </div>
+  <% else %>
+    <div class="row">
+      <div class="col-xs-2 col-sm-1 olive2"><h6 class="black"><%= @avi ? 'Vie'+"!" : 'Vn!'%> </h6></div>
+      <div class="col-xs-2 col-sm-1 green3"><h6><%= to_currency(@avi_in)%> </h6></div>
+      <div class="col-xs-2 col-sm-1 green1"><h6><%= to_currency(@avi_eg)%> </h6></div>
+      <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@avi_pj)%> </h6></div>
+      <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@avi_an)%> </h6></div>
+      <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@avi_dt)%> </h6></div>
+      <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@avi_nx)%> </h6></div>
+      <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@avi_tr)%> </h6></div>
+      <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@avi_vr)%> </h6></div>
+      <div class="col-xs-2 hidden-sm hidden-md hidden-lg green0"><h6><%= to_currency(@avi_pj)%> </h6></div>
+      <div class="col-xs-3 col-sm-2 green "><h6><%= to_currency(@avi_in-(@avi_eg+@avi_pj))%> </h6></div>
+      <div class="col-xs-1 col-sm-1 marina"><h5><%= to_currency(@nn_n )%> </h5></div>
+    </div>
+  <% end %>
+
+  <% if Time.zone.now.saturday? %>
+    <% then %>
+    <div class="row">
+      <div class="col-xs-2 col-sm-1 fuchsi"><h6><%= @wsa ? 'Sab'+(Time.now.strftime("%d")) : 'Sb'%> </h6></div>
+      <div class="col-xs-2 col-sm-1 olive3"><h6><%= to_currency(@wsa_in)%> </h6></div>
+      <div class="col-xs-2 col-sm-1 olive2"><h6><%= to_currency(@wsa_eg)%> </h6></div>
+      <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@wsa_pj)%> </h6></div>
+      <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@wsa_an)%> </h6></div>
+      <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@wsa_dt)%> </h6></div>
+      <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@wsa_nx)%> </h6></div>
+      <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@wsa_tr)%> </h6></div>
+      <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@wsa_vr)%> </h6></div>
+      <div class="col-xs-2 hidden-sm hidden-md hidden-lg olive1"><h6><%= to_currency(@wsa_pj)%> </h6></div>
+      <div class="col-xs-3 col-sm-2 olive0"><h6><%= to_currency(@wsa_in-(@wsa_eg+@wsa_pj)) %> </h6></div>
+      <div class="col-xs-1 col-sm-1 marin0"><h5><%= to_currency(@nn_n )%> </h5></div>
+    </div>
+  <% else %>
+    <div class="row">
+      <div class="col-xs-2 col-sm-1 yellow"><h6 class="black"><%= @asa ? 'Sab'+"!" : 'Sb'%> </h6></div>
+      <div class="col-xs-2 col-sm-1 olive3"><h6><%= to_currency(@asa_in)%> </h6></div>
+      <div class="col-xs-2 col-sm-1 olive2"><h6><%= to_currency(@asa_eg)%> </h6></div>
+      <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@asa_pj)%> </h6></div>
+      <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@asa_an)%> </h6></div>
+      <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@asa_dt)%> </h6></div>
+      <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@asa_nx)%> </h6></div>
+      <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@asa_tr)%> </h6></div>
+      <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@asa_vr)%> </h6></div>
+      <div class="col-xs-2 hidden-sm hidden-md hidden-lg olive1"><h6><%= to_currency(@asa_pj)%> </h6></div>
+      <div class="col-xs-3 col-sm-2 olive0"><h6><%= to_currency(@asa_in-(@asa_eg+@asa_pj))%> </h6></div>
+      <div class="col-xs-1 col-sm-1 marin0"><h5><%= to_currency(@nn_n )%> </h5></div>
+    </div>
+  <% end %>
+
+  <div class="row">  <!-- Imprimir N° Semana actual -->
+    <div class="col-xs-2 col-sm-1 darkgreen"><h6><%= Time.now.strftime("%b_%V")%> </h6></div>
+    <div class="col-xs-2 col-sm-1 darkgreen"><h6><%= to_currency(@wmv_in)%> </h6></div>
+    <div class="col-xs-2 col-sm-1 darkgreen"><h6><%= to_currency(@wmv_eg)%> </h6></div>
+    <div class="hidden-xs col-sm-1 glima0"><h6><%= to_currency(@wmv_pj)%> </h6></div>
+    <div class="hidden-xs col-sm-1 glima "><h6><%= to_currency(@wmv_an)%> </h6></div>
+    <div class="hidden-xs col-sm-1 glima0"><h6><%= to_currency(@wmv_dt)%> </h6></div>
+    <div class="hidden-xs col-sm-1 glima "><h6><%= to_currency(@wmv_nx)%> </h6></div>
+    <div class="hidden-xs col-sm-1 glima0"><h6><%= to_currency(@wmv_tr)%> </h6></div>
+    <div class="hidden-xs col-sm-1 glima "><h6><%= to_currency(@wmv_vr)%> </h6></div>
+    <div class="col-xs-2 hidden-sm hidden-md hidden-lg darkgreen"><h6><%= to_currency(@wmv_pj)%> </h6></div>
+    <div class="col-xs-3 col-sm-2 darkgreen"><h6><%= to_currency(@wmv_in-(@wmv_eg+@wmv_pj))%> </h6></div>
+    <div class="col-xs-1 col-sm-1 glima "><h6 title='Día'><%= to_currency(sprintf('%.1f', (@wmv_in/7) ))%> </h6></div>
+  </div>
+  <hr class="separator">
+
+
+  <div class="row">  <!-- Ensayo temporal -->
+    <div class="col-xs-3 col-sm-3 green0"><h6> Dom = <%= (@dom)%></h6></div>
+
+    <div class="hidden-xs col-sm-5 glima2"><h6><%= to_currency(@nn_n ) %> </h6></div>
+    <div class="col-xs-5 hidden-sm hidden-md hidden-lg green ">
+      <h6> <center> Hoy es el <%= Time.zone.now.wday %>° día <br> de la semana </center> </h6></div>
+
+    <div class="col-xs-3 col-sm-3 green0"><h6> Sab = <%= (@sab)%></h6></div>
+    <div class="col-xs-1 col-sm-1 glima2"><h6><%= to_currency(@nn_n  ) %> </h6></div>
+  </div>
+  <hr class="separator">
+
+
+  <div>
+    <h6 style="display: flex; justify-content: space-between; width: 100%;">
+    <span> ♦ Andaluz </span> <%= link_to '◄', vx_andaluz_path %>
+    <%= link_to '►', vx_athos_path %> <span> STW313 ♦ </span> </h6>
+  </div>  <hr class="separator">
+
+  <!-- Mostrar Estados Consolidados-->
+  <div class="row">
+    <div class="row glima "><h5 class="text-center glima "> • 2019 • </h5></div>
+  </div>
+
+  <div class="row">  <!-- Actual / Títulos -->
+    <div class="col-xs-2 col-sm-1 blue0"><h6><%= Time.now.strftime("%Y") %> • </h6></div>
+    <div class="col-xs-2 col-sm-1 blue0"><h6>Prod° </h6></div>
+    <div class="col-xs-2 col-sm-1 blue0"><h6>Comb° </h6></div>
+    <div class="col-xs-2 hidden-sm hidden-md hidden-lg blue0"><h6>Peajes° </h6></div>
+
+    <div class="hidden-xs col-sm-1 blue1"><h6>Peajes </h6></div>
+    <div class="hidden-xs col-sm-1 blue "><h6>And_GP </h6></div>
+    <div class="hidden-xs col-sm-1 blue1"><h6>Dat_Mv </h6></div>
+    <div class="hidden-xs col-sm-1 blue "><h6>Trj_Op </h6></div>
+    <div class="hidden-xs col-sm-1 blue1"><h6>Taller </h6></div>
+    <div class="hidden-xs col-sm-1 blue "><h6>Varios </h6></div>
+    <div class="hidden-xs col-sm-2 blue0"><h6>Netoª </h6></div>
+
+    <div class="col-xs-3 hidden-sm hidden-md hidden-lg blue0"><h6><u>Neto° </u></h6></div>
+    <div class="col-xs-1 col-sm-1 navy "><h5> % </h5></div>
+  </div>
+
+  <div class="row">  <!-- Mayo /19 -->
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black"> Sept </h6></div>
+    <div class="col-xs-2 col-sm-1 green3"><h6><%= to_currency(@a19sp_in) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 green1"><h6><%= to_currency(@a19sp_eg) %> </h6></div>
+    <div class="col-xs-2 hidden-sm hidden-md hidden-lg green0"><h6><%= to_currency(@a19sp_pj) %> </h6></div>
+
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19sp_pj) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19sp_an) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19sp_dt) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19sp_nx) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19sp_tr) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19sp_vr) %> </h6></div>
+    <div class="hidden-xs col-sm-2 green "><h6><%= to_currency(@a19sp_nt) %> </h6></div>
+
+    <div class="col-xs-3 hidden-sm hidden-md hidden-lg green "><h6><%= to_currency(@a19sp_ov) %> </h6></div>
+    <div class="col-xs-1 col-sm-1 glima "><h5 title='A19_Sept'><%= (sprintf('%.1f',(@a19sp_ev) )) %> </h5></div>
+  </div>
+
+  <div class="row">  <!-- Agosto /19 -->
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black"> <%= Time.now.strftime("%b") %>! </h6></div>
+    <div class="col-xs-2 col-sm-1 olive3"><h6><%= to_currency(@a19ag_in) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 olive2"><h6><%= to_currency(@a19ag_eg) %> </h6></div>
+    <div class="col-xs-2 hidden-sm hidden-md hidden-lg olive1"><h6><%= to_currency(@a19my_pj) %> </h6></div>
+
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19ag_pj) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19ag_an) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19ag_dt) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19ag_nx) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19ag_tr) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19ag_vr) %> </h6></div>
+    <div class="hidden-xs col-sm-2 green2"><h6><%= to_currency(@a19ag_nt) %> </h6></div>
+
+    <div class="col-xs-3 hidden-sm hidden-md hidden-lg olive0"><h6><%= to_currency(@a19ag_ov) %> </h6></div>
+    <div class="col-xs-1 col-sm-1 glima0"><h5 title='A19_Ago'><%= (sprintf('%.1f',(@a19ag_ev) )) %> </h5></div>
+  </div>
+
+  <div class="row">  <!-- Julio /19 -->
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black"> Julio </h6></div>
+    <div class="col-xs-2 col-sm-1 green3"><h6><%= to_currency(@a19jl_in) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 green1"><h6><%= to_currency(@a19jl_eg) %> </h6></div>
+    <div class="col-xs-2 hidden-sm hidden-md hidden-lg green0"><h6><%= to_currency(@a19jl_pj) %> </h6></div>
+
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19jl_pj) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19jl_an) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19jl_dt) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19jl_nx) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19jl_tr) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19jl_vr) %> </h6></div>
+    <div class="hidden-xs col-sm-2 green "><h6><%= to_currency(@a19jl_nt) %> </h6></div>
+
+    <div class="col-xs-3 hidden-sm hidden-md hidden-lg green "><h6><%= to_currency(@a19jl_ov) %> </h6></div>
+    <div class="col-xs-1 col-sm-1 glima "><h6 title='A19_Jul'><%= (sprintf('%.2f',(@a19ab_ev) )) %> </h6></div>
+  </div>
+
+  <hr class="separator">
+  <div class="row">  <!-- Junio /19 -->
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black"> Junio </h6></div>
+    <div class="col-xs-2 col-sm-1 olive3"><h6><%= to_currency(@a19jn_in) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 olive2"><h6><%= to_currency(@a19jn_eg) %> </h6></div>
+    <div class="col-xs-2 hidden-sm hidden-md hidden-lg olive1"><h6><%= to_currency(@a19jn_pj) %> </h6></div>
+
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19jn_pj) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19jn_an) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19jn_dt) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19jn_nx) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19jn_tr) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19jn_vr) %> </h6></div>
+    <div class="hidden-xs col-sm-2 green2"><h6><%= to_currency(@a19jn_nt) %> </h6></div>
+
+    <div class="col-xs-3 hidden-sm hidden-md hidden-lg olive0"><h6><%= to_currency(@a19jn_ov) %> </h6></div>
+    <div class="col-xs-1 col-sm-1 glima0"><h5 title='A19_Jun'><%= (sprintf('%.1f',(@a19jn_ev) )) %> </h5></div>
+  </div>
+
+  <div class="row">  <!-- Mayo /19 -->
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black"> Mayo </h6></div>
+    <div class="col-xs-2 col-sm-1 green3"><h6><%= to_currency(@a19my_in) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 green1"><h6><%= to_currency(@a19my_eg) %> </h6></div>
+    <div class="col-xs-2 hidden-sm hidden-md hidden-lg green0"><h6><%= to_currency(@a19my_pj) %> </h6></div>
+
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19my_pj) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19my_an) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19my_dt) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19my_nx) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19my_tr) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19my_vr) %> </h6></div>
+    <div class="hidden-xs col-sm-2 green "><h6><%= to_currency(@a19my_nt) %> </h6></div>
+
+    <div class="col-xs-3 hidden-sm hidden-md hidden-lg green "><h6><%= to_currency(@a19my_ov) %> </h6></div>
+    <div class="col-xs-1 col-sm-1 glima "><h5 title='A19_May'><%= (sprintf('%.1f',(@a19my_ev) )) %> </h5></div>
+  </div>
+
+  <div class="row">  <!-- Abril /19 -->
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black"> Abr </h6></div>
+    <div class="col-xs-2 col-sm-1 olive3"><h6><%= to_currency(@a19ab_in) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 olive2"><h6><%= to_currency(@a19ab_eg) %> </h6></div>
+    <div class="col-xs-2 hidden-sm hidden-md hidden-lg olive1"><h6><%= to_currency(@a19ab_pj) %> </h6></div>
+
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19ab_pj) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19ab_an) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19ab_dt) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19ab_nx) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19ab_tr) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19ab_vr) %> </h6></div>
+    <div class="hidden-xs col-sm-2 green2"><h6><%= to_currency(@a19ab_nt) %> </h6></div>
+
+    <div class="col-xs-3 hidden-sm hidden-md hidden-lg olive0"><h6><%= to_currency(@a19ab_ov) %> </h6></div>
+    <div class="col-xs-1 col-sm-1 glima0"><h6 title='A19_Abr'><%= (sprintf('%.2f',(@a19ab_ev) )) %> </h6></div>
+  </div><hr class="separator">
+
+  <div class="row">  <!-- Marzo /19 -->
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black"> Mar </h6></div>
+    <div class="col-xs-2 col-sm-1 green3"><h6><%= to_currency(@a19mz_in) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 green1"><h6><%= to_currency(@a19mz_eg) %> </h6></div>
+    <div class="col-xs-2 hidden-sm hidden-md hidden-lg green0"><h6><%= to_currency(@a19mz_pj) %> </h6></div>
+
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19mz_pj) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19mz_an) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19mz_dt) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19mz_nx) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19mz_tr) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19mz_vr) %> </h6></div>
+    <div class="hidden-xs col-sm-2 green "><h6><%= to_currency(@a19mz_nt) %> </h6></div>
+
+    <div class="col-xs-3 hidden-sm hidden-md hidden-lg green "><h6><%= to_currency(@a19mz_ov) %> </h6></div>
+    <div class="col-xs-1 col-sm-1 glima "><h5 title='A19/Mar'><%= (sprintf('%.1f',(@a19mz_ev) )) %> </h5></div>
+  </div>
+
+  <div class="row">  <!-- Feb /19 -->
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black"> Feb </h6></div>
+    <div class="col-xs-2 col-sm-1 olive3"><h6><%= to_currency(@a19fb_in) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 olive2"><h6><%= to_currency(@a19fb_eg) %> </h6></div>
+    <div class="col-xs-2 hidden-sm hidden-md hidden-lg olive1"><h6><%= to_currency(@a19fb_pj) %> </h6></div>
+
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19fb_pj) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19fb_an) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19fb_dt) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19fb_nx) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19fb_tr) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19fb_vr) %> </h6></div>
+    <div class="hidden-xs col-sm-2 green2 "><h6><%= to_currency(@a19fb_nt) %> </h6></div>
+
+    <div class="col-xs-3 hidden-sm hidden-md hidden-lg olive0"><h6><%= to_currency(@a19fb_ov) %> </h6></div>
+    <div class="col-xs-1 col-sm-1 glima0"><h5 title='A19_Feb'><%= (sprintf('%.2f',(@a19fb_ev) )) %> </h5></div>
+  </div>
+
+  <div class="row">  <!-- Ene /19 -->
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black"> Ene </h6></div>
+    <div class="col-xs-2 col-sm-1 green3"><h6><%= to_currency(@a19en_in) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 green1"><h6><%= to_currency(@a19en_eg) %> </h6></div>
+    <div class="col-xs-2 hidden-sm hidden-md hidden-lg green0"><h6><%= to_currency(@a19en_pj) %> </h6></div>
+
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19en_pj) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19en_an) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19en_dt) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19en_nx) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a19en_tr) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a19en_vr) %> </h6></div>
+    <div class="hidden-xs col-sm-2 green "><h6><%= to_currency(@a19en_nt) %> </h6></div>
+
+    <div class="col-xs-3 hidden-sm hidden-md hidden-lg green "><h6><%= to_currency(@a19en_ov) %> </h6></div>
+    <div class="col-xs-1 col-sm-1 glima "><h6 title='A19_Ene'><%= (sprintf('%.2f',(@a19en_ev) )) %> </h6></div>
+  </div>
+
+  <div class="row">
+    <div class="row" border=1>  <!-- Total 2019 / Ene - hoy // S3 -->
+    <div class="col-xs-2 col-sm-1 blue0"><h6> <%= Time.now.strftime("%Y") %> </h6></div>
+    <div class="col-xs-2 col-sm-1 blue0"><h6><%= to_currency(@a19tt_in) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 blue0"><h6><%= to_currency(@a19tt_eg) %> </h6></div>
+    <div class="col-xs-2 hidden-sm hidden-md hidden-lg blue0"><h6><%= to_currency(@a19tt_pj) %> </h6></div>
+
+    <div class="hidden-xs col-sm-1 blue1"><h6><%= to_currency(@a19tt_pj) %> </h6></div>
+    <div class="hidden-xs col-sm-1 blue "><h6><%= to_currency(@a19tt_an) %> </h6></div>
+    <div class="hidden-xs col-sm-1 blue1"><h6><%= to_currency(@a19tt_dt) %> </h6></div>
+    <div class="hidden-xs col-sm-1 blue "><h6><%= to_currency(@a19tt_nx) %> </h6></div>
+    <div class="hidden-xs col-sm-1 blue1"><h6><%= to_currency(@a19tt_tr) %> </h6></div>
+    <div class="hidden-xs col-sm-1 blue "><h6><%= to_currency(@a19tt_vr) %> </h6></div>
+    <div class="hidden-xs col-sm-2 blue1"><h6><%= to_currency(@a19tt_nt) %> </h6></div>
+
+    <div class="col-xs-3 hidden-sm hidden-md hidden-lg blue0"><h6><%= to_currency(@a19tt_ot) %> </h6></div>
+    <div class="col-xs-1 col-sm-1 navy "><h6 title='A19tt/avg'><%= (sprintf('%.2f',(@a19tt_ev) ))%> </h6></div>
+  </div>
+
+  <hr class="separator">
+  <div class="row">
+    <div class="row glima "><h5 class="text-center glima "> • 2018 </h5></div>
+  </div>
+  <!-- <hr class="separator"> -->
+  <div class="row">  <!-- Actual / Títulos -->
+    <div class="col-xs-2 col-sm-1 blue0"><h6>2018 • </h6></div>
+    <div class="col-xs-2 col-sm-1 blue0"><h6>Prod </h6></div>
+    <div class="col-xs-2 col-sm-1 blue0"><h6>Comb </h6></div>
+
+    <div class="hidden-xs col-sm-1 blue1"><h6>Peajes </h6></div>
+    <div class="hidden-xs col-sm-1 blue "><h6>And_GP </h6></div>
+    <div class="hidden-xs col-sm-1 blue1"><h6>Dat_Mv </h6></div>
+    <div class="hidden-xs col-sm-1 blue "><h6>Trj_Op </h6></div>
+    <div class="hidden-xs col-sm-1 blue1"><h6>Taller </h6></div>
+    <div class="hidden-xs col-sm-1 blue "><h6>Varios </h6></div>
+
+    <div class="col-xs-2 hidden-sm hidden-md hidden-lg blue0"><h6>Peajes </h6></div>
+    <div class="col-xs-3 col-sm-2 blue0"><h6>Neto </h6></div>
+    <div class="col-xs-1 col-sm-1 navy "><h5> % </h5></div>
+  </div>
+
+  <div class="row">  <!-- Dic /18 -->
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black"> Dic </h6></div>
+    <div class="col-xs-2 col-sm-1 olive3"><h6><%= to_currency(@a18dc_in) %></h6></div>
+    <div class="col-xs-2 col-sm-1 olive2"><h6><%= to_currency(@a18dc_eg) %></h6></div>
+    <div class="col-xs-2 hidden-sm hidden-md hidden-lg olive1"><h6><%= to_currency(@a18dc_pj) %></h6></div>
+
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18dc_pj) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18dc_an) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18dc_dt) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18dc_nx) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18dc_tr) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18dc_vr) %> </h6></div>
+
+    <div class="col-xs-3 col-sm-2 olive0"><h6><%= to_currency(@a18dc_in-(@a18dc_eg+@a18dc_pj)) %></h6></div>
+    <div class="col-xs-1 col-sm-1 glima0"><h5 title='A18_Dic'>
+      <%= (sprintf('%.2f',(@a18dc_in/(@a18dc_eg)) )) %></h5></div>
+  </div>
+
+  <div class="row">  <!-- Nov /18 -->
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black"> Nov </h6></div>
+    <div class="col-xs-2 col-sm-1 green3"><h6><%= to_currency(@a18nv_in) %></h6></div>
+    <div class="col-xs-2 col-sm-1 green1"><h6><%= to_currency(@a18nv_eg) %></h6></div>
+
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18nv_pj) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18nv_an) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18nv_dt) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18nv_nx) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18nv_tr) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18nv_vr) %> </h6></div>
+
+    <div class="col-xs-2 hidden-sm hidden-md hidden-lg green0"><h6><%= to_currency(@a18nv_pj) %></h6></div>
+    <div class="col-xs-3 col-sm-2 green "><h6><%= to_currency(@a18nv_in-(@a18nv_eg+@a18nv_pj)) %></h6></div>
+    <div class="col-xs-1 col-sm-1 glima "><h5><%= to_currency(@nn_n ) %></h5></div>
+  </div>
+
+  <div class="row">  <!-- Oct /18 -->
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black"> Oct </h6></div>
+    <div class="col-xs-2 col-sm-1 olive3"><h6><%= to_currency(@a18oc_in) %></h6></div>
+    <div class="col-xs-2 col-sm-1 olive2"><h6><%= to_currency(@a18oc_eg) %></h6></div>
+
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18oc_pj) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18oc_an) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18oc_dt) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18oc_nx) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18oc_tr) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18oc_vr) %> </h6></div>
+
+    <div class="col-xs-2 hidden-sm hidden-md hidden-lg olive1"><h6><%= to_currency(@a18oc_pj) %></h6></div>
+    <div class="col-xs-3 col-sm-2 olive0"><h6><%= to_currency(@a18oc_in-(@a18oc_eg+@a18oc_pj)) %></h6></div>
+    <div class="col-xs-1 col-sm-1 glima0"><h6><%= to_currency(@nn_n ) %></h6></div>
+  </div> <hr class="separator">
+
+  <div class="row">  <!-- Sep /18 -->
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black"> Sep </h6></div>
+    <div class="col-xs-2 col-sm-1 green3"><h6><%= to_currency(@a18sp_in) %></h6></div>
+    <div class="col-xs-2 col-sm-1 green1"><h6><%= to_currency(@a18sp_eg) %></h6></div>
+
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18sp_pj) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18sp_an) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18sp_dt) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18sp_nx) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18sp_tr) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18sp_vr) %> </h6></div>
+
+    <div class="col-xs-2 hidden-sm hidden-md hidden-lg green0"><h6><%= to_currency(@a18sp_pj) %></h6></div>
+    <div class="col-xs-3 col-sm-2 green "><h6><%= to_currency(@a18sp_in-(@a18sp_eg+@a18sp_pj)) %></h6></div>
+    <div class="col-xs-1 col-sm-1 glima "><h5><%= to_currency(@nn_n ) %></h5></div>
+  </div>
+
+  <div class="row">  <!-- Ago /18 -->
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black"> Ago </h6></div>
+    <div class="col-xs-2 col-sm-1 olive3"><h6><%= to_currency(@a18ag_in) %></h6></div>
+    <div class="col-xs-2 col-sm-1 olive2"><h6><%= to_currency(@a18ag_eg) %></h6></div>
+
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18ag_pj) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18ag_an) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18ag_dt) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18ag_nx) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18ag_tr) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18ag_vr) %> </h6></div>
+
+    <div class="col-xs-2 hidden-sm hidden-md hidden-lg olive1"><h6><%= to_currency(@a18ag_pj) %></h6></div>
+    <div class="col-xs-3 col-sm-2 olive0"><h6><%= to_currency(@a18ag_in-(@a18ag_eg+@a18ag_pj)) %></h6></div>
+    <div class="col-xs-1 col-sm-1 glima0"><h5><%= to_currency(@nn_n ) %></h5></div>
+  </div>
+
+  <div class="row">  <!-- Jul /18 -->
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black"> Jul </h6></div>
+    <div class="col-xs-2 col-sm-1 green3"><h6><%= to_currency(@a18jl_in) %></h6></div>
+    <div class="col-xs-2 col-sm-1 green1"><h6><%= to_currency(@a18jl_eg) %></h6></div>
+
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18jl_pj) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18jl_an) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18jl_dt) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18jl_nx) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18jl_tr) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18jl_vr) %> </h6></div>
+
+    <div class="col-xs-2 hidden-sm hidden-md hidden-lg green0"><h6><%= to_currency(@a18jl_pj) %></h6></div>
+    <div class="col-xs-3 col-sm-2 green "><h6><%= to_currency(@a18jl_in-(@a18jl_eg+@a18jl_pj)) %></h6></div>
+    <div class="col-xs-1 col-sm-1 glima "><h6><%= to_currency(@nn_n ) %></h6></div>
+  </div> <hr class="separator">
+
+  <div class="row">  <!-- Jun /18 -->
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black"> Jun </h6></div>
+    <div class="col-xs-2 col-sm-1 olive3"><h6><%= to_currency(@a18jn_in) %></h6></div>
+    <div class="col-xs-2 col-sm-1 olive2"><h6><%= to_currency(@a18jn_eg) %></h6></div>
+
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18jn_pj) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18jn_an) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18jn_dt) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18jn_nx) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18jn_tr) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18jn_vr) %> </h6></div>
+
+    <div class="col-xs-2 hidden-sm hidden-md hidden-lg olive1"><h6><%= to_currency(@a18jn_pj) %></h6></div>
+    <div class="col-xs-3 col-sm-2 olive0"><h6><%= to_currency(@a18jn_in-(@a18jn_eg+@a18jn_pj)) %></h6></div>
+    <div class="col-xs-1 col-sm-1 glima0"><h5><%= to_currency(@nn_n ) %></h5></div>
+  </div>
+
+  <div class="row">  <!-- Mayo /18 -->
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black"> May </h6></div>
+    <div class="col-xs-2 col-sm-1 green3"><h6><%= to_currency(@a18my_in) %></h6></div>
+    <div class="col-xs-2 col-sm-1 green1"><h6><%= to_currency(@a18my_eg) %></h6></div>
+
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18my_pj) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18my_an) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18my_dt) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18my_nx) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18my_tr) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18my_vr) %> </h6></div>
+
+    <div class="col-xs-2 hidden-sm hidden-md hidden-lg green0"><h6><%= to_currency(@a18my_pj) %></h6></div>
+    <div class="col-xs-3 col-sm-2 green "><h6><%= to_currency(@a18my_in-(@a18my_eg+@a18my_pj)) %></h6></div>
+    <div class="col-xs-1 col-sm-1 glima "><h5><%= to_currency(@nn_n ) %></h5></div>
+  </div>
+
+  <div class="row">  <!-- Abr /18 -->
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black"> Abr </h6></div>
+    <div class="col-xs-2 col-sm-1 olive3"><h6><%= to_currency(@a18ab_in) %></h6></div>
+    <div class="col-xs-2 col-sm-1 olive2"><h6><%= to_currency(@a18ab_eg) %></h6></div>
+
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18ab_pj) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18ab_an) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18ab_dt) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18ab_nx) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18ab_tr) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18ab_vr) %> </h6></div>
+
+    <div class="col-xs-2 hidden-sm hidden-md hidden-lg olive1"><h6><%= to_currency(@a18ab_pj) %></h6></div>
+    <div class="col-xs-3 col-sm-2 olive0"><h6><%= to_currency(@a18ab_in-(@a18ab_eg+@a18ab_pj)) %></h6></div>
+    <div class="col-xs-1 col-sm-1 glima0"><h6><%= to_currency(@nn_n ) %></h6></div>
+  </div>
+  <hr class="separator">
+
+  <div class="row">  <!-- Marzo /18 -->
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black"> Mar </h6></div>
+    <div class="col-xs-2 col-sm-1 green3"><h6><%= to_currency(@a18mz_in) %></h6></div>
+    <div class="col-xs-2 col-sm-1 green1"><h6><%= to_currency(@a18mz_eg) %></h6></div>
+
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18mz_pj) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18mz_an) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18mz_dt) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18mz_nx) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18mz_tr) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18mz_vr) %> </h6></div>
+
+    <div class="col-xs-2 hidden-sm hidden-md hidden-lg green0"><h6><%= to_currency(@a18mz_pj) %></h6></div>
+    <div class="col-xs-3 col-sm-2 green "><h6><%= to_currency(@a18mz_in-(@a18mz_eg+@a18mz_pj)) %></h6></div>
+    <div class="col-xs-1 col-sm-1 glima "><h5><%= to_currency(@nn_n ) %></h5></div>
+  </div>
+
+  <div class="row">  <!-- Feb /18 -->
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black"> Feb</h6></div>
+    <div class="col-xs-2 col-sm-1 olive3"><h6><%= to_currency(@a18fb_in) %></h6></div>
+    <div class="col-xs-2 col-sm-1 olive2"><h6><%= to_currency(@a18fb_eg) %></h6></div>
+
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18fb_pj) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18fb_an) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18fb_dt) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18fb_nx) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18fb_tr) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18fb_vr) %> </h6></div>
+
+    <div class="col-xs-2 hidden-sm hidden-md hidden-lg olive1"><h6><%= to_currency(@a18fb_pj) %></h6></div>
+    <div class="col-xs-3 col-sm-2 olive0"><h6><%= to_currency(@a18fb_in-(@a18fb_eg+@a18fb_pj)) %></h6></div>
+    <div class="col-xs-1 col-sm-1 glima0"><h5><%= to_currency(@nn_n ) %></h5></div>
+  </div>
+
+  <div class="row">  <!-- Ene /18 -->
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black"> Ene </h6></div>
+    <div class="col-xs-2 col-sm-1 green3"><h6><%= to_currency(@a18en_in) %></h6></div>
+    <div class="col-xs-2 col-sm-1 green1"><h6><%= to_currency(@a18en_eg) %></h6></div>
+
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18en_pj) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18en_an) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18en_dt) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18en_nx) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a18en_tr) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a18en_vr) %> </h6></div>
+
+    <div class="col-xs-2 hidden-sm hidden-md hidden-lg green0"><h6><%= to_currency(@a18en_pj) %></h6></div>
+    <div class="col-xs-3 col-sm-2 green "><h6><%= to_currency(@a18en_in-(@a18en_eg+@a18en_pj)) %></h6></div>
+    <div class="col-xs-1 col-sm-1 glima "><h6><%= to_currency(@nn_n ) %></h6></div>
+  </div>
+
+  <div class="row">
+    <div class="row" border=1>  <!-- Total 2017-8 / Dic - hoy // S3 -->
+    <div class="col-xs-2 col-sm-1 blue0"><h6> • 2018 </h6></div>
+    <div class="col-xs-2 col-sm-1 blue0"><h6><%= to_currency(@tt3_in) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 blue0"><h6><%= to_currency(@tt3_eg) %> </h6></div>
+
+    <div class="hidden-xs col-sm-1 blue1"><h6><%= to_currency(@tt3_pj) %> </h6></div>
+    <div class="hidden-xs col-sm-1 blue "><h6><%= to_currency(@tt3_an) %> </h6></div>
+    <div class="hidden-xs col-sm-1 blue1"><h6><%= to_currency(@tt3_dt) %> </h6></div>
+    <div class="hidden-xs col-sm-1 blue "><h6><%= to_currency(@tt3_nx) %> </h6></div>
+    <div class="hidden-xs col-sm-1 blue1"><h6><%= to_currency(@tt3_tr) %> </h6></div>
+    <div class="hidden-xs col-sm-1 blue "><h6><%= to_currency(@tt3_vr) %> </h6></div>
+
+    <div class="col-xs-2 hidden-sm hidden-md hidden-lg blue0"><h6><%= to_currency(@tt3_pj) %> </h6></div>
+    <div class="col-xs-3 col-sm-2 blue0"><h6><%= to_currency(@tt3_in-(@tt3_eg+@tt3_pj)) %> </h6></div>
+    <div class="col-xs-1 col-sm-1 navy "><h6><%= to_currency(@nn_n ) %> </h6></div>
+  </div>
+
+  <hr class="separator">
+  <div class="row">
+    <div class="row glima "><h5 class="text-center glima "> ♦ 2017 ♦ </h5></div>
+  </div>
+  <!-- <hr class="separator"> -->
+
+  <div class="row">  <!-- Actual / Títulos -->
+    <div class="col-xs-2 col-sm-1 blue0"><h6> • 2017 </h6></div>
+    <div class="col-xs-2 col-sm-1 blue0"><h6>Prod </h6></div>
+    <div class="col-xs-2 col-sm-1 blue0"><h6>Comb </h6></div>
+
+    <div class="hidden-xs col-sm-1 blue1"><h6>Peajes </h6></div>
+    <div class="hidden-xs col-sm-1 blue "><h6>And_GP </h6></div>
+    <div class="hidden-xs col-sm-1 blue1"><h6>Dat_Mv </h6></div>
+    <div class="hidden-xs col-sm-1 blue "><h6>Trj_Op </h6></div>
+    <div class="hidden-xs col-sm-1 blue1"><h6>Taller </h6></div>
+    <div class="hidden-xs col-sm-1 blue "><h6>Varios </h6></div>
+
+    <div class="col-xs-2 hidden-sm hidden-md hidden-lg blue0"><h6>Peajes </h6></div>
+    <div class="col-xs-3 col-sm-2 blue0"><h6>Neto </h6></div>
+    <div class="col-xs-1 col-sm-1 navy "><h5> % </h5></div>
+  </div>
+
+  <div class="row">  <!-- 2017 / Dic // S3 -->
+    <div class="col-xs-2 col-sm-1 yellow"><h6 class="black"> W3_Dc </h6></div>
+    <div class="col-xs-2 col-sm-1 olive3"><h6><%= to_currency(@a17dc_in) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 olive2"><h6><%= to_currency(@a17dc_eg) %> </h6></div>
+
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a17dc_pj) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a17dc_an) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a17dc_dt) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a17dc_nx) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima4"><h6><%= to_currency(@a17dc_tr) %> </h6></div>
+    <div class="hidden-xs col-sm-1 glima2"><h6><%= to_currency(@a17dc_vr) %> </h6></div>
+
+    <div class="col-xs-2 hidden-sm hidden-md hidden-lg olive1"><h6><%= to_currency(@a17dc_pj) %> </h6></div>
+    <div class="col-xs-3 col-sm-2 olive0"><h6><%= to_currency(@a17dc_in-(@a17dc_eg+@a17dc_pj)) %> </h6></div>
+    <div class="col-xs-1 col-sm-1 glima0"><h6><%= to_currency(@nn_n ) %> </h6></div>
+  </div>
+
+  <div class="row">
+    <div class="row" border=1>  <!-- Total 2017-8 / Dic - hoy // S3 -->
+    <div class="col-xs-2 col-sm-1 blue0"><h6> <%= Time.now.strftime("%Y") %> </h6></div>
+    <div class="col-xs-2 col-sm-1 blue0"><h6><%= to_currency(@tt3_in) %> </h6></div>
+    <div class="col-xs-2 col-sm-1 blue0"><h6><%= to_currency(@tt3_eg) %> </h6></div>
+
+    <div class="hidden-xs col-sm-1 blue1"><h6><%= to_currency(@tt3_pj) %> </h6></div>
+    <div class="hidden-xs col-sm-1 blue "><h6><%= to_currency(@tt3_an) %> </h6></div>
+    <div class="hidden-xs col-sm-1 blue1"><h6><%= to_currency(@tt3_dt) %> </h6></div>
+    <div class="hidden-xs col-sm-1 blue "><h6><%= to_currency(@tt3_nx) %> </h6></div>
+    <div class="hidden-xs col-sm-1 blue1"><h6><%= to_currency(@tt3_tr) %> </h6></div>
+    <div class="hidden-xs col-sm-1 blue "><h6><%= to_currency(@tt3_vr) %> </h6></div>
+
+    <div class="col-xs-2 hidden-sm hidden-md hidden-lg blue0"><h6><%= to_currency(@tt3_pj) %> </h6></div>
+    <div class="col-xs-3 col-sm-2 blue0"><h6><%= to_currency(@tt3_in-(@tt3_eg+@tt3_pj)) %> </h6></div>
+    <div class="col-xs-1 col-sm-1 navy "><h6><%= to_currency(@nn_n ) %> </h6></div>
+  </div>
+
+  <hr class="separator">
+  <div class="row">
+    <div class="row blue0"><h5 class="text-center blue0"> • Estados Consolidados </h5></div>
+  </div>
+  <hr class="separator">
+ </div>

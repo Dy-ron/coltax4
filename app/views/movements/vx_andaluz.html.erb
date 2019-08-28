@@ -1,0 +1,69 @@
+
+<nav class="header-reg">
+  <%= link_to 'Nuevo', new_movement_path %>
+  <%= link_to 'Día', movements_path %> <!-- Día, nuevo, consolidados -->
+
+  <%= link_to 'Autocab', '#' %>   <!-- ... -->
+  <%= link_to 'Taxis', vx_taxis_path %>   <!-- ... -->
+</nav>
+
+
+<div> <center>
+  <h3 style="display: flex; justify-content: space-between; width: 100%;">
+    <span>Autos / Andaluz</span> <%= link_to 'Back', data_path %> <span>Coltax OnLine</span> </h3>
+  <h4> Andaluz </h4> </center>
+
+  <table class="table table-hover table-striped datatable-plugin">
+    <thead>
+      <tr>
+        <th>Fecha</th>
+        <th> Descripciones </th>
+        <th>T</th>
+        <th>Valor</th>
+        <th>Nº</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <!-- Registros Taller  -->
+    <tbody>
+      <% @movements.each_with_index do |movement, index| %>
+        <tr>
+          <td><% unless movement.mov_date.nil? %>
+                <%= movement.mov_date.strftime('%m/%d') + ' ' + movement.mov_hour %>
+                <!-- <td><%= movement.created_at.strftime('%m/%d %H%M') %></td> -->
+              <% end %> </td>
+          <td><%= movement.description %></td>
+          <td><%= movement.mov_type %></td>
+          <td align="right"><%= to_currency(movement.price) %></td>
+
+          <td><%= index + 1 %></td>
+
+          <td><%= link_to 'Edit', edit_movement_path(movement) %></td>
+          <td><%= link_to 'Delete', movement, method: :delete, data: { confirm: 'Estás seguro?' } %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+  <hr class="separator" style="marin0">
+  <h6 style="display: flex; justify-content: space-between; width: 100%;">
+    <span> ♦ Ver </span> <%= link_to '◄', see_all_path %>
+    <%= link_to '►', contab_path %> <span> Contab ♦ </span> </h6>
+  <hr class="separator">
+
+  <!-- Estado general Consolidado / 2018 -->
+
+  <P>
+  <nav>
+    <ul><li> ----------------- </li>
+        <li> Andaluz 1 </li>
+        <li> Autocab </li>
+        <li>   </li>
+        <li> Cursos </li>
+        <li>   </li>
+    </ul>
+  </nav>
+
+</div>

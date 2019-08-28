@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  code: 
+  name: MyString
+  puc_type: MyString
+  detail: MyText
+  puc_class: MyString
+  category: MyString
+
+two:
+  code: 
+  name: MyString
+  puc_type: MyString
+  detail: MyText
+  puc_class: MyString
+  category: MyString

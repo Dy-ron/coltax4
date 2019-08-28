@@ -1,0 +1,99 @@
+
+<nav class="header-reg">
+  <%= link_to 'Nuevo', new_movement_path %>
+  <%= link_to 'Ver', see_all_path %>   <!-- Día, sems, mes, total_año -->
+
+  <%= link_to 'Dimax', vc_dimax__path %>   <!-- ... -->
+
+  <%= link_to '?', '#' %>    <!-- Notas -->
+
+</nav>
+
+
+<div> <center>
+  <h6 style="display: flex; justify-content: space-between; width: 100%;">
+    <span> ♦ Index  </span>
+    <%= link_to '◄', movements_path %>
+    <%= link_to '►', movmed_path %>
+    <span> Mov_Med ♦ </span>
+  </h6>
+  <H4> Coltrans - Operación Nacional </h4> </center>
+
+  <P>
+  <nav>
+    <ul><li> ----------------- </li>
+        <li> Redes 1 </li>
+        <li> Redes 2 </li>
+        <li> ----------------- </li>
+        <li> Redes 3 </li>
+        <li> Redes 4 </li>
+        <li> ----------------- </li>
+
+    </ul>
+  </nav>
+
+
+  <P>
+  <nav>
+    <ul><li> Otros 1 </li>
+        <li> Otros 2 </li>
+        <li> ----------------- </li>
+    </ul>
+  </nav>
+
+
+
+
+  <!-- Si @var_num no es nula y @var_num no es 0 -->
+  <!-- if (!@var_num.nil? and @var_num.nonzero?) -->
+
+  <!-- Formatos de fecha -->
+  <!-- <%= Time.now.strftime("%a") %> <%= Time.now.strftime("%j") %>  -->
+
+
+
+
+  # def mesActual
+  # @ad_in = Movement.where(mov_type: 'I', mov_date: (Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)).sum(:price)
+  # @aw_in = Movement.where(mov_type: 'I', mov_date: (Time.zone.now.beginning_of_week..Time.zone.now.end_of_week)).sum(:price)
+  # @ad_av = @aw_in/(7*1000)
+  # @am_in = Movement.where(mov_type: 'I', mov_date: (Time.zone.now.beginning_of_month..Time.zone.now.end_of_month)).sum(:price)
+  #
+  # @ad_eg = Movement.where(mov_type: 'E', mov_date: (Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)).sum(:price)
+  # @aw_eg = Movement.where(mov_type: 'E', mov_date: (Time.zone.now.beginning_of_week..Time.zone.now.end_of_week)).sum(:price)
+  # @aw_av = @aw_eg.nonzero? ? @aw_in/@aw_eg : 0
+  # @am_eg = Movement.where(mov_type: 'E', mov_date: (Time.zone.now.beginning_of_month..Time.zone.now.end_of_month)).sum(:price)
+  #
+  # @ad_op = Movement.where(mov_type: 'O', mov_date: (Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)).sum(:price)
+  # @aw_op = Movement.where(mov_type: 'O', mov_date: (Time.zone.now.beginning_of_week..Time.zone.now.end_of_week)).sum(:price)
+  # @am_op = Movement.where(mov_type: 'O', mov_date: (Time.zone.now.beginning_of_month..Time.zone.now.end_of_month)).sum(:price)
+  #
+  # @ad_lg = Movement.where(mov_type: 'L', mov_date: (Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)).sum(:price)
+  # @aw_lg = Movement.where(mov_type: 'L', mov_date: (Time.zone.now.beginning_of_week..Time.zone.now.end_of_week)).sum(:price)
+  # @am_lg = Movement.where(mov_type: 'L', mov_date: (Time.zone.now.beginning_of_month..Time.zone.now.end_of_month)).sum(:price)
+  #
+  # @ad_sg = Movement.where(mov_type: 'S', mov_date: (Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)).sum(:price)
+  # @aw_sg = Movement.where(mov_type: 'S', mov_date: (Time.zone.now.beginning_of_week..Time.zone.now.end_of_week)).sum(:price)
+  # @am_sg = Movement.where(mov_type: 'S', mov_date: (Time.zone.now.beginning_of_month..Time.zone.now.end_of_month)).sum(:price)
+  #
+  # @ad_an = Movement.where(mov_type: 'A', mov_date: (Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)).sum(:price)
+  # @aw_an = Movement.where(mov_type: 'A', mov_date: (Time.zone.now.beginning_of_week..Time.zone.now.end_of_week)).sum(:price)
+  # @am_an = Movement.where(mov_type: 'A', mov_date: (Time.zone.now.beginning_of_month..Time.zone.now.end_of_month)).sum(:price)
+  #
+  # @ad_tr = Movement.where(mov_type: 'T', mov_date: (Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)).sum(:price)
+  # @aw_tr = Movement.where(mov_type: 'T', mov_date: (Time.zone.now.beginning_of_week..Time.zone.now.end_of_week)).sum(:price)
+  # @am_tr = Movement.where(mov_type: 'T', mov_date: (Time.zone.now.beginning_of_month..Time.zone.now.end_of_month)).sum(:price)
+  #
+  # @ad_ot = Movement.where(mov_type: 'V', mov_date: (Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)).sum(:price)
+  # @aw_ot = Movement.where(mov_type: 'V', mov_date: (Time.zone.now.beginning_of_week..Time.zone.now.end_of_week)).sum(:price)
+  # @am_ot = Movement.where(mov_type: 'V', mov_date: (Time.zone.now.beginning_of_month..Time.zone.now.end_of_month)).sum(:price)
+  #
+  # @ad_hm = Movement.where(mov_type: 'H', mov_date: (Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)).sum(:price)
+  # @aw_hm = Movement.where(mov_type: 'H', mov_date: (Time.zone.now.beginning_of_week..Time.zone.now.end_of_week)).sum(:price)
+  # @am_hm = Movement.where(mov_type: 'H', mov_date: (Time.zone.now.beginning_of_month..Time.zone.now.end_of_month)).sum(:price)
+  #
+  # @am_av = @am_eg.nonzero? ? @am_in/@am_eg : 0
+  # @nn_n = 0
+
+
+</div>

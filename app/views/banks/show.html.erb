@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Puc:</strong>
+  <%= @bank.puc %>
+</p>
+
+<p>
+  <strong>Trans type:</strong>
+  <%= @bank.trans_type %>
+</p>
+
+<p>
+  <strong>Detail:</strong>
+  <%= @bank.detail %>
+</p>
+
+<p>
+  <strong>Trans value:</strong>
+  <%= @bank.trans_value %>
+</p>
+
+<p>
+  <strong>Balance:</strong>
+  <%= @bank.balance %>
+</p>
+
+<p>
+  <strong>Bank:</strong>
+  <%= @bank.bank_id %>
+</p>
+
+<p>
+  <strong>Bank:</strong>
+  <%= @bank.bank %>
+</p>
+
+<p>
+  <strong>Users:</strong>
+  <%= @bank.users %>
+</p>
+
+<p>
+  <strong>Verified:</strong>
+  <%= @bank.verified %>
+</p>
+
+<%= link_to 'Edit', edit_bank_path(@bank) %> |
+<%= link_to 'Back', banks_path %>

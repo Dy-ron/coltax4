@@ -1,0 +1,26 @@
+
+<div style = "background-color: green; align: left;">
+  <%= image_tag 'public/favicon.png', id:''%>
+</div>
+
+<%= nav_bar brand: "Coltax°", brand_link: root_path, responsive: true do %>
+  <% menu_group pull: :right do %>
+    <%= menu_item " • Quienes somos", '#' %>
+    <%= menu_item " • Contactos", '#'  %>
+    <%= menu_item " • Foros", "https://foro.online/" %>
+    <%= menu_item " • Servicios", '#' %>
+    <%= menu_item " ? ", '#'  %>
+    <!-- <%= menu_item ' Iniciar sesión', admin_path %> -->
+  <% end %>
+<% end %>
+
+  <center>
+  <div style = "background-color: black;">
+    <br><%= image_tag 'horse.jpg', id:'horse'%><br>
+  </div> <br>
+
+  <div style = "background-color: blue" width="50%">
+    <!--  Views/aplic/home -->
+    <h4 class="yellow"><%= link_to 'Iniciar sesión', admin_path %> </H4>
+  </div>
+  </center>

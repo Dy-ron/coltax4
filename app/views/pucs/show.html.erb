@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @puc.code %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @puc.name %>
+</p>
+
+<p>
+  <strong>Puc type:</strong>
+  <%= @puc.puc_type %>
+</p>
+
+<p>
+  <strong>Detail:</strong>
+  <%= @puc.detail %>
+</p>
+
+<p>
+  <strong>Puc class:</strong>
+  <%= @puc.puc_class %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @puc.category %>
+</p>
+
+<%= link_to 'Edit', edit_puc_path(@puc) %> |
+<%= link_to 'Back', pucs_path %>

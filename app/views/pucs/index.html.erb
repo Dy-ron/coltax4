@@ -1,0 +1,59 @@
+
+<div class="container-coltax">
+  <div class="header-reg">
+    <%= link_to 'New!', new_puc_path %>
+    <%= link_to 'Cuentas', '#' %>    <!-- Ver PUC completo -->
+    <%= link_to 'Balance', '#' %>  <!-- Balance General / partida doble -->
+    <%= link_to 'Resultados', '#' %>  <!-- Reultados: Ingresos y Egresos -->
+
+    <%= link_to 'Red', redes_path %>   <!-- Redes sociales, alertas, mensajes -->
+    <%= link_to '?', '#' %>   <!-- Ayuda -->
+  </div>
+
+  <div> <center>
+    <h3 style="display: flex; justify-content: space-between; width: 100%;">
+      <span> PUC </span> <%= link_to 'Back', contab_path %>
+      <span> Coltax OnLine </span> </h3>
+    <h4> Plan Único de Cuentas </h4> </center>
+  </div>  <!-- <h4><I><U></U></I></h4> -->
+
+  <table class="table table-hover table-striped datatable-plugin">
+    <thead>  <!-- Registros -->
+      <tr>
+        <th>Class</th>
+        <th>Cat</th>
+        <th>Code</th>
+        <th>Name</th>
+        <th>T</th>
+        <th>Detail</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+  <tbody>
+    <% @pucs.each_with_index do |puc, index| %>
+      <tr>
+        <td><%= puc.puc_class %></td>
+        <td><%= puc.category %></td>
+        <td><%= puc.code %></td>
+        <td><%= puc.name %></td>
+        <td><%= puc.puc_type %></td>
+        <td><%= puc.detail %></td>
+
+        <!-- <td><%= index + 1 %></td> -->
+        <!-- <td><%= link_to 'Show', puc %></td> -->
+        <td><%= link_to 'Edit', edit_puc_path(puc) %></td>
+        <td><%= link_to 'Destroy', puc, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Puc', new_puc_path %><P>
+
+
+<!-- <br>   -->
+
+<p id="notice"><%= notice %></p>
+
+</div>

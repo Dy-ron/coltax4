@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  puc: 
+  tran_type: MyString
+  detail: MyText
+  trans_value: 
+  balance: 
+  bank_id: MyString
+  bank: MyString
+  users: one
+  verified: false
+
+two:
+  puc: 
+  tran_type: MyString
+  detail: MyText
+  trans_value: 
+  balance: 
+  bank_id: MyString
+  bank: MyString
+  users: two
+  verified: false

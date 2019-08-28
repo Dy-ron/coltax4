@@ -1,0 +1,432 @@
+
+<nav class="header-reg">
+  <%= link_to 'Nuevo', new_movement_path %>
+  <%= link_to 'Día', movements_path %>  <!-- Día, nuevo, consolidados -->
+
+  <%= link_to 'Autos', vc_autos_path %>  <!-- General  -->
+  <%= link_to 'Andaluz', vx_andaluz_path %>  <!-- Andaluz... -->
+  <%= link_to 'Coltrans', tr_coltrans_path %>   <!-- Legal, Taller -->
+  <%= link_to 'Taller', tr_taller_path %>   <!-- Estados, Informs, imprs -->
+</nav>
+
+<hr class="separator">
+<div> <center>
+  <h6 style="display: flex; justify-content: space-between; width: 100%;">
+  <span> ♦ Indice¹ </span> <%= link_to '◄', movements_path %>
+  <%= link_to '►', data_path %> <span> Datos </span> </h6>
+</center>
+<hr class="separator">
+
+<!-- Mostrar Estados diarios-->
+<div class="row">
+  <div class="col-xs-2 blue0"><h6>Estado </h6></div>
+  <div class="col-xs-2 blue0"><h6>Dia </h6></div>
+  <div class="col-xs-2 blue0"><h6>Sem </h6></div>
+  <div class="col-xs-2 blue0"><h6>Mes </h6></div>
+  <div class="col-xs-3 blue0"><h6>Año </h6></div>
+  <div class="col-xs-1 blue0"><h6>% </h6></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">I</span>ngresos </h6></div>
+  <div class="col-xs-2 fuchs4"><h6><%= to_currency(@ad_in)%> </h6></div>
+  <div class="col-xs-2 glima4"><h6><%= to_currency(@aw_in)%> </h6></div>
+  <div class="col-xs-2 marin4"><h6><%= to_currency(@am_in)%> </h6></div>
+  <div class="col-xs-3 marin3"><h6><%= to_currency(@ay_in)%> </h6></div>
+  <div class="col-xs-1 blue  "><h5><%= to_currency(@am_iv)%> </h5></div>
+</div>
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">E</span>gresos </h6></div>
+  <div class="col-xs-2 fuchs3"><h6><%= to_currency(@ad_eg)%> </h6></div>
+  <div class="col-xs-2 glima3"><h6><%= to_currency(@aw_eg)%> </h6></div>
+  <div class="col-xs-2 marin3"><h6><%= to_currency(@am_eg)%> </h6></div>
+  <div class="col-xs-3 marin2"><h6><%= to_currency(@ay_eg)%> </h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@am_ev)%> </h5></div>
+</div>
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">P</span>eajes </h6></div>
+  <div class="col-xs-2 fuchs2"><h6><%= to_currency(@ad_pj)%> </h6></div>
+  <div class="col-xs-2 glima2"><h6><%= to_currency(@aw_pj)%> </h6></div>
+  <div class="col-xs-2 marin2"><h6><%= to_currency(@am_pj)%> </h6></div>
+  <div class="col-xs-3 marin1"><h6><%= to_currency(@ay_pj)%> </h6></div>
+  <div class="col-xs-1 blue  "><h6><%= to_currency(@am_pv)%> </h6></div>
+</div> <p>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">A</span>ndaluz </h6></div>
+  <div class="col-xs-2 fuchs1"><h6><%= to_currency(@ad_an)%> </h6></div>
+  <div class="col-xs-2 glima1"><h6><%= to_currency(@aw_an)%> </h6></div>
+  <div class="col-xs-2 marin1"><h6><%= to_currency(@am_an)%> </h6></div>
+  <div class="col-xs-3 marin0"><h6><%= to_currency(@ay_an)%> </h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@am_av)%> </h5></div>
+</div>
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black">Dat_<span class="blue_f">M</span>óv </h6></div>
+  <div class="col-xs-2 fuchs1"><h6><%= to_currency(@ad_dt)%> </h6></div>
+  <div class="col-xs-2 glima1"><h6><%= to_currency(@aw_dt)%> </h6></div>
+  <div class="col-xs-2 marin1"><h6><%= to_currency(@am_dt)%> </h6></div>
+  <div class="col-xs-3 marin0"><h6><%= to_currency(@ay_dt)%> </h6></div>
+  <div class="col-xs-1 blue  "><h6><%= to_currency(@am_dv)%> </h6></div>
+</div>
+
+<div class="row" border=1>
+  <div class="col-xs-2 blue1 "><h6 class="white text-center">Neto¹ </h6></div>
+  <div class="col-xs-2 blue1 "><h6><%= to_currency(@ad_ea)%> </h6></div>
+  <div class="col-xs-2 blue1 "><h6><%= to_currency(@aw_ea)%> </h6></div>
+  <div class="col-xs-2 blue1 "><h6><%= to_currency(@am_ea)%> </h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@ay_ea)%> </h6></div>
+  <div class="col-xs-1 blue1 "><h6><%= to_currency(@nn_n )%> </h6></div>
+</div> <p>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black">S<span class="blue_f">O</span>AT </h6></div>
+  <div class="col-xs-2 fuchs0"><h6><%= to_currency(@ad_so)%> </h6></div>
+  <div class="col-xs-2 glima0"><h6><%= to_currency(@aw_so)%> </h6></div>
+  <div class="col-xs-2 marin0"><h6><%= to_currency(@am_so)%> </h6></div>
+  <div class="col-xs-3 marina"><h6><%= to_currency(@ay_so)%> </h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n )%> </h5></div>
+</div>
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">T</span>arj_Oper </h6></div>
+  <div class="col-xs-2 fuchs0"><h6><%= to_currency(@ad_to)%> </h6></div>
+  <div class="col-xs-2 glima0"><h6><%= to_currency(@aw_to)%> </h6></div>
+  <div class="col-xs-2 marin0"><h6><%= to_currency(@am_to)%> </h6></div>
+  <div class="col-xs-3 marina"><h6><%= to_currency(@ay_to)%> </h6></div>
+  <div class="col-xs-1 blue  "><h5><%= to_currency(@am_tv)%> </h5></div>
+</div>
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black">Ta<span class="blue_f">x</span>ímetro </h6></div>
+  <div class="col-xs-2 fuchs0"><h6><%= to_currency(@ad_tx)%> </h6></div>
+  <div class="col-xs-2 glima0"><h6><%= to_currency(@aw_tx)%> </h6></div>
+  <div class="col-xs-2 marin0"><h6><%= to_currency(@am_tx)%> </h6></div>
+  <div class="col-xs-3 marina"><h6><%= to_currency(@ay_tx)%> </h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n )%> </h5></div>
+</div>
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black">Téc_<span class="blue_f">M</span>ec </h6></div>
+  <div class="col-xs-2 fuchs0"><h6><%= to_currency(@ad_tm)%> </h6></div>
+  <div class="col-xs-2 glima0"><h6><%= to_currency(@aw_tm)%> </h6></div>
+  <div class="col-xs-2 marin0"><h6><%= to_currency(@am_tm)%> </h6></div>
+  <div class="col-xs-3 marina"><h6><%= to_currency(@ay_tm)%> </h6></div>
+  <div class="col-xs-1 blue  "><h6><%= to_currency(@nn_n )%> </h6></div>
+</div> <p>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">T</span>aller </h6></div>
+  <div class="col-xs-2 fuchsi"><h6><%= to_currency(@ad_tr)%> </h6></div>
+  <div class="col-xs-2 glima "><h6><%= to_currency(@aw_tr)%> </h6></div>
+  <div class="col-xs-2 marin0"><h6><%= to_currency(@am_tr)%> </h6></div>
+  <div class="col-xs-3 marina"><h6><%= to_currency(@ay_tr)%> </h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n )%> </h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">V</span>arios </h6></div>
+  <div class="col-xs-2 fuchsi"><h6><%= to_currency(@ad_vr)%> </h6></div>
+  <div class="col-xs-2 glima "><h6><%= to_currency(@aw_vr)%> </h6></div>
+  <div class="col-xs-2 marin0"><h6><%= to_currency(@am_vr)%> </h6></div>
+  <div class="col-xs-3 marina"><h6><%= to_currency(@ay_vr)%> </h6></div>
+  <div class="col-xs-1 blue  "><h6><%= to_currency(@nn_n )%> </h6></div>
+</div>
+
+<div class="row" border=1>
+  <div class="col-xs-2 blue1 "><h6 class="white text-center">Neto² </h6></div>
+  <div class="col-xs-2 blue1 "><h6><%= to_currency(@ad_na)%> </h6></div>
+  <div class="col-xs-2 blue1 "><h6><%= to_currency(@aw_na)%> </h6></div>
+  <div class="col-xs-2 blue1 "><h6><%= to_currency(@am_na)%> </h6></div>
+  <div class="col-xs-3 blue1 "><h6><%= to_currency(@ay_na)%> </h6></div>
+  <div class="col-xs-1 blue1 "><h6><%= to_currency(@nn_n )%> </h6></div>
+</div> <p>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">F</span>inanciera </h6></div>
+  <div class="col-xs-2 fuchs1"><h6><%= to_currency(@ad_fn)%> </h6></div>
+  <div class="col-xs-2 glima1"><h6><%= to_currency(@aw_fn)%> </h6></div>
+  <div class="col-xs-2 marin1"><h6><%= to_currency(@am_fn)%> </h6></div>
+  <div class="col-xs-3 marin0"><h6><%= to_currency(@ay_fn)%> </h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n )%> </h5></div>
+</div>
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black">Segu<span class="blue_f">r</span>os </h6></div>
+  <div class="col-xs-2 fuchs1"><h6><%= to_currency(@ad_sg)%> </h6></div>
+  <div class="col-xs-2 glima1"><h6><%= to_currency(@aw_sg)%> </h6></div>
+  <div class="col-xs-2 marin1"><h6><%= to_currency(@am_sg)%> </h6></div>
+  <div class="col-xs-3 marin0"><h6><%= to_currency(@ay_sg)%> </h6></div>
+  <div class="col-xs-1 blue  "><h5><%= to_currency(@nn_n )%> </h5></div>
+</div>
+
+<div class="row" border=1>
+  <div class="col-xs-2 blue0"><h6 class="white text-center">Neto³ </h6></div>
+  <div class="col-xs-2 blue0"><h6><%= to_currency(@ad_nf)%> </h6></div>
+  <div class="col-xs-2 blue0"><h6><%= to_currency(@aw_nf)%> </h6></div>
+  <div class="col-xs-2 blue0"><h6><%= to_currency(@am_nf)%> </h6></div>
+  <div class="col-xs-3 blue0"><h6><%= to_currency(@am_nf)%> </h6></div>
+  <div class="col-xs-1 blue1"><h6><%= to_currency(@nn_n )%> </h6></div>
+</div>  <p>
+
+<hr class="separator">
+
+<!-- Estados Contables -->
+<div class="row">
+  <div class="col-xs-2 blue0"><h6>Contab </h6></div>
+  <div class="col-xs-2 blue0"><h6>Dia </h6></div>
+  <div class="col-xs-2 blue0"><h6>Sem </h6></div>
+  <div class="col-xs-2 blue0"><h6>Mes </h6></div>
+  <div class="col-xs-3 blue0"><h6>Año </h6></div>
+  <div class="col-xs-1 blue0"><h6>% </h6></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black">Caja_<span class="blue_f">D </span></h6></div>
+  <div class="col-xs-2 fuchs4"><h6><%= to_currency(@ad_cd)%> </h6></div>
+  <div class="col-xs-2 glima4"><h6><%= to_currency(@aw_cd)%> </h6></div>
+  <div class="col-xs-2 marin4"><h6><%= to_currency(@am_cd)%> </h6></div>
+  <div class="col-xs-3 marin3"><h6><%= to_currency(@ay_cd)%> </h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n )%> </h5></div>
+</div>
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black">Caja_<span class="blue_f">C </span></h6></div>
+  <div class="col-xs-2 fuchs3"><h6><%= to_currency(@ad_cc)%> </h6></div>
+  <div class="col-xs-2 glima3"><h6><%= to_currency(@aw_cc)%> </h6></div>
+  <div class="col-xs-2 marin3"><h6><%= to_currency(@am_cc)%> </h6></div>
+  <div class="col-xs-3 marin2"><h6><%= to_currency(@ay_cc)%> </h6></div>
+  <div class="col-xs-1 blue1 "><h6><%= to_currency(@nn_n )%> </h6></div>
+</div>  <p>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">P</span>résts </h6></div>
+  <div class="col-xs-2 fuchs1"><h6><%= to_currency(@ad_fd)%> </h6></div>
+  <div class="col-xs-2 glima1"><h6><%= to_currency(@aw_fd)%> </h6></div>
+  <div class="col-xs-2 marin1"><h6><%= to_currency(@am_fd)%> </h6></div>
+  <div class="col-xs-3 marin0"><h6><%= to_currency(@ay_fd)%> </h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n )%> </h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">P</span>agos </h6></div>
+  <div class="col-xs-2 fuchs1"><h6><%= to_currency(@ad_fc)%> </h6></div>
+  <div class="col-xs-2 glima1"><h6><%= to_currency(@aw_fc)%> </h6></div>
+  <div class="col-xs-2 marin1"><h6><%= to_currency(@am_fc)%> </h6></div>
+  <div class="col-xs-3 marin0"><h6><%= to_currency(@ay_fc)%> </h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n )%> </h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">O</span>tros </h6></div>
+  <div class="col-xs-2 fuchs1"><h6><%= to_currency(@ad_ot)%> </h6></div>
+  <div class="col-xs-2 glima1"><h6><%= to_currency(@aw_ot)%> </h6></div>
+  <div class="col-xs-2 marin1"><h6><%= to_currency(@am_ot)%> </h6></div>
+  <div class="col-xs-3 marin0"><h6><%= to_currency(@ay_ot)%> </h6></div>
+  <div class="col-xs-1 blue1 "><h6><%= to_currency(@nn_n )%> </h6></div>
+</div>  <p>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">I</span>mpuestos </h6></div>
+  <div class="col-xs-2 fuchs2"><h6><%= to_currency(@ad_im)%> </h6></div>
+  <div class="col-xs-2 glima2"><h6><%= to_currency(@aw_im)%> </h6></div>
+  <div class="col-xs-2 marin2"><h6><%= to_currency(@am_im)%> </h6></div>
+  <div class="col-xs-3 marin1"><h6><%= to_currency(@ay_im)%> </h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n )%> </h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">L</span>egal </h6></div>
+  <div class="col-xs-2 fuchs2"><h6><%= to_currency(@ad_lg)%> </h6></div>
+  <div class="col-xs-2 glima2"><h6><%= to_currency(@aw_lg)%> </h6></div>
+  <div class="col-xs-2 marin2"><h6><%= to_currency(@am_lg)%> </h6></div>
+  <div class="col-xs-3 marin1"><h6><%= to_currency(@ay_lg)%> </h6></div>
+  <div class="col-xs-1 blue1 "><h6><%= to_currency(@nn_n )%> </h6></div>
+</div>  <p>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">H</span>ome </h6></div>
+  <div class="col-xs-2 fuchsi"><h6><%= to_currency(@ad_hm)%> </h6></div>
+  <div class="col-xs-2 glima "><h6><%= to_currency(@aw_hm)%> </h6></div>
+  <div class="col-xs-2 marina"><h6><%= to_currency(@am_hm)%> </h6></div>
+  <div class="col-xs-3 marina"><h6><%= to_currency(@ay_hm)%> </h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n )%> </h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">P</span>ersonal </h6></div>
+  <div class="col-xs-2 fuchsi"><h6><%= to_currency(@ad_ps)%> </h6></div>
+  <div class="col-xs-2 glima "><h6><%= to_currency(@aw_ps)%> </h6></div>
+  <div class="col-xs-2 marina"><h6><%= to_currency(@am_ps)%> </h6></div>
+  <div class="col-xs-3 marina"><h6><%= to_currency(@ay_ps)%> </h6></div>
+  <div class="col-xs-1 blue1 "><h5><%= to_currency(@nn_n )%> </h5></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 yellow"><h6 class="black"><span class="blue_f">S</span>eg_Soc </h6></div>
+  <div class="col-xs-2 fuchs1"><h6><%= to_currency(@ad_ss)%> </h6></div>
+  <div class="col-xs-2 glima1"><h6><%= to_currency(@aw_ss)%> </h6></div>
+  <div class="col-xs-2 marin1"><h6><%= to_currency(@am_ss)%> </h6></div>
+  <div class="col-xs-3 marin0"><h6><%= to_currency(@ay_ss)%> </h6></div>
+  <div class="col-xs-1 blue1 "><h6><%= to_currency(@nn_n )%> </h6></div>
+</div>
+
+<div class="row" border=1>
+  <div class="col-xs-2 blue0"><h6 class="white text-center">Neto° </h6></div>
+  <div class="col-xs-2 blue0"><h6><%= to_currency(@ad_nc)%> </h6></div>
+  <div class="col-xs-2 blue0"><h6><%= to_currency(@aw_nc)%> </h6></div>
+  <div class="col-xs-2 blue0"><h6><%= to_currency(@am_nc)%> </h6></div>
+  <div class="col-xs-3 blue0"><h6><%= to_currency(@ay_nc)%> </h6></div>
+  <div class="col-xs-1 blue0"><h6><%= to_currency(@nn_n )%> </h6></div>
+</div>  <p>
+
+<hr class="separator">
+
+<!-- Estados diarios / Semana actual -->
+<div class="row">
+  <div class="col-xs-2 darkgreen"><h5><%= Time.now.strftime("S%V")%> </h5></div>
+  <div class="col-xs-3 darkgreen"><h5>Prod </h5></div>
+  <div class="col-xs-2 darkgreen"><h5>Comb </h5></div>
+  <div class="col-xs-2 darkgreen"><h5>Peajes </h5></div>
+  <div class="col-xs-3 darkgreen"><h5>Neto </h5></div>
+</div>
+
+<% if Time.zone.now.sunday? %>
+  <% then %>
+  <div class="row">
+    <div class="col-xs-2 fuchsia"><h6><%= @wdm ? 'Dom'+(Time.now.strftime("%d")):'Dm'%> </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@wdm_in)%> </h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@wdm_eg)%> </h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@wdm_pj)%> </h6></div>
+    <div class="col-xs-3 olive0"><h5><%= to_currency(@wdm_nt)%> </h5></div>
+  </div>
+<% else %>
+  <div class="row">
+    <div class="col-xs-2 yellow"><h6 class="black">
+      <%= @adm ? 'Dom' + (Time.now.strftime("!")) : 'Dm'%> </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@adm_in)%> </h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@adm_eg)%> </h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@adm_pj)%> </h6></div>
+    <div class="col-xs-3 olive0"><h5><%= to_currency(@adm_nt)%> </h5></div>
+  </div>
+<% end %>
+
+<% if Time.zone.now.monday? %>
+  <% then %>
+  <div class="row">
+    <div class="col-xs-2 fuchs3"><h6><%= @wln ? 'Lun'+(Time.now.strftime("%d")):'Lxn'%> </h6></div>
+    <div class="col-xs-3 green3"><h6><%= to_currency(@wln_in)%> </h6></div>
+    <div class="col-xs-2 green1"><h6><%= to_currency(@wln_eg)%> </h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@wln_pj)%> </h6></div>
+    <div class="col-xs-3 green "><h5><%= to_currency(@wln_nt)%> </h5></div>
+  </div>
+<% else %>
+  <div class="row">
+    <div class="col-xs-2 olive2"><h6><%= @aln ? 'Lun'+(Time.now.strftime("!")):'LuD'%> </h6></div>
+    <div class="col-xs-3 green3"><h6><%= to_currency(@aln_in)%> </h6></div>
+    <div class="col-xs-2 green1"><h6><%= to_currency(@aln_eg)%> </h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@aln_pj)%> </h6></div>
+    <div class="col-xs-3 green "><h5><%= to_currency(@aln_nt)%> </h5></div>
+  </div>
+<% end %>
+
+<% if Time.zone.now.tuesday? %>
+  <% then %>
+  <div class="row">
+    <div class="col-xs-2 fuchs4"><h6><%= @wma ? 'Mar'+(Time.now.strftime("%d")):'Max'%> </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@wma_in)%> </h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@wma_eg)%> </h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@wma_pj)%> </h6></div>
+    <div class="col-xs-3 olive0"><h5><%= to_currency(@wma_nt)%> </h5></div>
+  </div>
+<% else %>
+  <div class="row">
+    <div class="col-xs-2 yellow"><h6 class="black"><%= @ama ? 'Mar' + (Time.now.strftime("!")) : 'MxrD'%> </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@ama_in)%> </h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@ama_eg)%> </h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@ama_pj)%> </h6></div>
+    <div class="col-xs-3 olive0"><h5><%= to_currency(@ama_nt)%> </h5></div>
+  </div>
+<% end %>
+
+<% if Time.zone.now.wednesday? %>
+  <% then %>
+  <div class="row">
+    <div class="col-xs-2 fuchs1"><h6><%= @wmi ? 'M/c'+(Time.now.strftime("%d")):'M/c'%> </h6></div>
+    <div class="col-xs-3 green3"><h6><%= to_currency(@wmi_in)%> </h6></div>
+    <div class="col-xs-2 green1"><h6><%= to_currency(@wmi_eg)%> </h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@wmi_pj)%> </h6></div>
+    <div class="col-xs-3 green "><h5><%= to_currency(@wmi_nt)%> </h5></div>
+  </div>
+<% else %>
+  <div class="row">
+    <div class="col-xs-2 olive2"><h6 class="black"><%= @ami ? 'M/c' + (Time.now.strftime("!")) : 'MxrD'%> </h6></div>
+    <div class="col-xs-3 green3"><h6><%= to_currency(@ami_in)%> </h6></div>
+    <div class="col-xs-2 green1"><h6><%= to_currency(@ami_eg)%> </h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@ami_pj)%> </h6></div>
+    <div class="col-xs-3 green "><h5><%= to_currency(@ami_nt)%> </h5></div>
+  </div>
+<% end %>
+
+<% if Time.zone.now.thursday? %>
+  <% then %>
+  <div class="row">
+    <div class="col-xs-2 fuchs2"><h6><%= @wju ? 'Jue'+(Time.now.strftime("%d")):'Jue'%> </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@wju_in)%> </h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@wju_eg)%> </h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@wju_pj)%> </h6></div>
+    <div class="col-xs-3 olive0"><h5><%= to_currency(@wju_nt)%> </h5></div>
+  </div>
+<% else %>
+  <div class="row">
+    <div class="col-xs-2 yellow"><h6 class="black"><%= @aju ? 'Jue' + (Time.now.strftime("!")) : 'MxrD'%> </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@aju_in)%> </h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@aju_eg)%> </h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@aju_pj)%> </h6></div>
+    <div class="col-xs-3 olive0"><h5><%= to_currency(@aju_nt)%> </h5></div>
+  </div>
+<% end %>
+
+<% if Time.zone.now.friday? %>
+  <% then %>
+  <div class="row">
+    <div class="col-xs-2 fuchsi"><h6><%= @wvi ? 'Vie'+(Time.now.strftime("%d")):'Vn!'%> </h6></div>
+    <div class="col-xs-3 green3"><h6><%= to_currency(@wvi_in)%> </h6></div>
+    <div class="col-xs-2 green1"><h6><%= to_currency(@wvi_eg)%> </h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@wvi_pj)%> </h6></div>
+    <div class="col-xs-3 green "><h5><%= to_currency(@wvi_nt)%> </h5></div>
+  </div>
+<% else %>
+  <div class="row">
+    <div class="col-xs-2 olive2"><h6 class="black"><%= @avi ? 'Vie' + (Time.now.strftime("!")) : 'Vn!!'%> </h6></div>
+    <div class="col-xs-3 green3"><h6><%= to_currency(@avi_in)%> </h6></div>
+    <div class="col-xs-2 green1"><h6><%= to_currency(@avi_eg)%> </h6></div>
+    <div class="col-xs-2 green0"><h6><%= to_currency(@avi_pj)%> </h6></div>
+    <div class="col-xs-3 green "><h5><%= to_currency(@avi_nt)%> </h5></div>
+  </div>
+<% end %>
+
+<% if Time.zone.now.saturday? %>
+  <% then %>
+  <div class="row">
+    <div class="col-xs-2 fuchs0"><h6><%= @wsa ? 'Sab'+(Time.now.strftime("%d")):'Sb'%> </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@wsa_in)%> </h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@wsa_eg)%> </h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@wsa_pj)%> </h6></div>
+    <div class="col-xs-3 olive0"><h5><%= to_currency(@wsa_nt)%> </h5></div>
+  </div>
+<% else %>
+  <div class="row">
+    <div class="col-xs-2 yellow"><h6 class="black"><%= @asa ? 'Sab' + (Time.now.strftime("!")) : 'Sb'%> </h6></div>
+    <div class="col-xs-3 olive3"><h6><%= to_currency(@asa_in)%> </h6></div>
+    <div class="col-xs-2 olive2"><h6><%= to_currency(@asa_eg)%> </h6></div>
+    <div class="col-xs-2 olive1"><h6><%= to_currency(@asa_pj)%> </h6></div>
+    <div class="col-xs-3 olive0"><h5><%= to_currency(@asa_nt)%> </h5></div>
+  </div>
+<% end %>
+
+<div class="row">  <!-- Imprimir N° Semana actual -->
+  <div class="col-xs-2 darkgreen"><h6><%= Time.now.strftime("S%V")%> </h6></div>
+  <div class="col-xs-3 darkgreen"><h6><%= to_currency(@wmv_in)%> </h6></div>
+  <div class="col-xs-2 darkgreen"><h6><%= to_currency(@wmv_eg)%> </h6></div>
+  <div class="col-xs-2 darkgreen"><h6><%= to_currency(@wmv_pj)%> </h6></div>
+  <div class="col-xs-3 darkgreen"><h6><%= to_currency(@wmv_nt)%> </h6></div>
+</div>
+
+<hr class="separator">
+
+</div>

@@ -1,0 +1,47 @@
+<%= form_for(puc) do |f| %>
+  <% if puc.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(puc.errors.count, "error") %> prohibited this puc from being saved:</h2>
+
+      <ul>
+      <% puc.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :code %>
+    <%= f.text_field :code %>
+  </div>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :puc_type %>
+    <%= f.text_field :puc_type %>
+  </div>
+
+  <div class="field">
+    <%= f.label :detail %>
+    <%= f.text_area :detail %>
+  </div>
+
+  <div class="field">
+    <%= f.label :puc_class %>
+    <%= f.text_field :puc_class %>
+  </div>
+
+  <div class="field">
+    <%= f.label :category %>
+    <%= f.text_field :category %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

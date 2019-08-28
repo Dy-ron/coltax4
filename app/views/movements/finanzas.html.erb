@@ -1,0 +1,59 @@
+
+<nav class="header-reg">
+  <!-- <%= link_to 'Nuevo', new_movement_path %> -->
+  <%= link_to 'Día', movements_path %> <!-- Día, nuevo, consolidados -->
+
+  <%= link_to 'Créditos', credit_path %> <!-- Créditos, -->
+  <%= link_to 'Pagos', '#' %>  <!-- Pagos -->
+  <%= link_to 'Asesorías', '#' %>    <!-- Ayudas, Asesorías, Notas -->
+  <%= link_to '?', '#' %>  <!-- .. -->
+</nav>
+
+<div>  <center>
+  <h3 style="display: flex; justify-content: space-between; width: 100%;">
+    <span> Datos / Finanzas </span> <%= link_to 'Back', data_path %>
+    <span> Coltax OnLine </span> </h3>
+  <h4> Finanzas </h4>  </center>
+</div>
+
+
+<br><br><br>
+
+
+<h3.blue>Footer</h3>
+
+  <h3 style="display: flex; justify-content: space-between; width: 100%;">
+    <span> Footer </span> <%= link_to 'Back', data_path %> <span> Datos / Coltax </span> </h3>
+
+<table width=100%>
+  <tr>
+      <td class="olive3">
+          <nav class="header-reg">
+            <ul><li> Créditos </li>
+                <li> Inversiones </li>
+                <li> Libre Inversión </li>
+            </ul>
+          </nav>
+      </td>
+
+      <td> ' '</td>
+      <td class="olive3">
+          <nav class="header-reg">
+            <ul><li> Leasing </li>
+                <li> Vivienda </li>
+                <li> Otros  </li>
+            </ul>
+          </nav>
+      </td>
+  </tr>
+
+  <tr>
+      <td class="darkgreen" colspan=6>
+          <nav class="header-reg green">
+            <ul><li> Cooperativa de Ahorros de Antioquia </li>
+            </ul>
+          </nav>
+      </td>
+  </tr>
+</table>
+<span><%= link_to 'Return Finances', finanzas_path %></span>
