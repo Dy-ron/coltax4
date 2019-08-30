@@ -8,56 +8,56 @@ class MovementsController < ApplicationController
   def index
     @movements = Movement.where(mov_date: (Time.zone.now.beginning_of_day..Time.zone.now.end_of_day))
 
-    # Resumen general actual
-    @act_in = Movement.where(mov_type: 'I', mov_date: (Date.new(2017,014,11)..Time.zone.now.end_of_year )).sum(:price)
-    @act_eg = Movement.where(mov_type: 'E', mov_date: (Date.new(2017,014,11)..Time.zone.now.end_of_year )).sum(:price)
+    # Estado general actual
+    @act_in = Movement.where(mov_type: 'I', mov_date: (Date.new(2017,014,11)..Time.zone.now.end_of_day )).sum(:price)
+    @act_eg = Movement.where(mov_type: 'E', mov_date: (Date.new(2017,014,11)..Time.zone.now.end_of_day )).sum(:price)
     @act_ev = @act_eg.nonzero? ? @act_in/@act_eg : 0
-    @act_pj = Movement.where(mov_type: 'J', mov_date: (Date.new(2017,014,11)..Time.zone.now.end_of_year )).sum(:price)
+    @act_pj = Movement.where(mov_type: 'J', mov_date: (Date.new(2017,014,11)..Time.zone.now.end_of_day )).sum(:price)
 
-    @act_an = Movement.where(mov_type: 'Aª', mov_date: (Date.new(2017,014,11)..Time.zone.now.end_of_year )).sum(:price)
-    @act_dt = Movement.where(mov_type: 'A°', mov_date: (Date.new(2017,014,11)..Time.zone.now.end_of_year )).sum(:price)
+    @act_an = Movement.where(mov_type: 'Aª', mov_date: (Date.new(2017,014,11)..Time.zone.now.end_of_day )).sum(:price)
+    @act_dt = Movement.where(mov_type: 'A°', mov_date: (Date.new(2017,014,11)..Time.zone.now.end_of_day )).sum(:price)
 
-    @act_so = Movement.where(mov_type: 'S°', mov_date: (Date.new(2017,014,11)..Time.zone.now.end_of_year )).sum(:price)
-    @act_to = Movement.where(mov_type: 'T°', mov_date: (Date.new(2017,014,11)..Time.zone.now.end_of_year )).sum(:price)
-    @act_tx = Movement.where(mov_type: 'T×', mov_date: (Date.new(2017,014,11)..Time.zone.now.end_of_year )).sum(:price)
-    @act_tm = Movement.where(mov_type: 'T™', mov_date: (Date.new(2017,014,11)..Time.zone.now.end_of_year )).sum(:price)
+    @act_so = Movement.where(mov_type: 'S°', mov_date: (Date.new(2017,014,11)..Time.zone.now.end_of_day )).sum(:price)
+    @act_to = Movement.where(mov_type: 'T°', mov_date: (Date.new(2017,014,11)..Time.zone.now.end_of_day )).sum(:price)
+    @act_tx = Movement.where(mov_type: 'T×', mov_date: (Date.new(2017,014,11)..Time.zone.now.end_of_day )).sum(:price)
+    @act_tm = Movement.where(mov_type: 'T™', mov_date: (Date.new(2017,014,11)..Time.zone.now.end_of_day )).sum(:price)
     @act_tn = @act_so + @act_to + @act_tx + @act_tm
 
-    @act_tr = Movement.where(mov_type: 'T', mov_date: (Date.new(2017,014,11)..Time.zone.now.end_of_year )).sum(:price)
-    @act_vr = Movement.where(mov_type: 'V', mov_date: (Date.new(2017,014,11)..Time.zone.now.end_of_year )).sum(:price)
+    @act_tr = Movement.where(mov_type: 'T', mov_date: (Date.new(2017,014,11)..Time.zone.now.end_of_day )).sum(:price)
+    @act_vr = Movement.where(mov_type: 'V', mov_date: (Date.new(2017,014,11)..Time.zone.now.end_of_day )).sum(:price)
     @act_oo = @act_pj + @act_an+@act_dt + @act_so+@act_to+@act_tx+@act_tm + @act_tr+@act_vr
     @act_na = @act_in - (@act_eg + @act_oo)
 
     # Financiera - Cuotas, inter_mora, seguro_crédito
-    @act_fn = Movement.where(mov_type: 'Fª', mov_date: (Date.new(2017,014,11)..Time.zone.now.end_of_year )).sum(:price)
-    @act_fi = Movement.where(mov_type: 'F°', mov_date: (Date.new(2017,014,11)..Time.zone.now.end_of_year )).sum(:price)
-    @act_sg = Movement.where(mov_type: 'F×', mov_date: (Date.new(2017,014,11)..Time.zone.now.end_of_year )).sum(:price)
+    @act_fn = Movement.where(mov_type: 'Fª', mov_date: (Date.new(2017,014,11)..Time.zone.now.end_of_day )).sum(:price)
+    @act_fi = Movement.where(mov_type: 'F°', mov_date: (Date.new(2017,014,11)..Time.zone.now.end_of_day )).sum(:price)
+    @act_sg = Movement.where(mov_type: 'F×', mov_date: (Date.new(2017,014,11)..Time.zone.now.end_of_day )).sum(:price)
     @act_nf = @act_na - (@act_fn + @act_fi + @act_sg)
 
     # Contabilidad personal general
-    @act_cd = Movement.where(mov_type: 'D', mov_date: (Date.new(2017,014, 1)..Time.zone.now.end_of_year )).sum(:price)
-    @act_cc = Movement.where(mov_type: 'C', mov_date: (Date.new(2017,014, 1)..Time.zone.now.end_of_year )).sum(:price)
+    @act_cd = Movement.where(mov_type: 'D', mov_date: (Date.new(2017,014, 1)..Time.zone.now.end_of_day )).sum(:price)
+    @act_cc = Movement.where(mov_type: 'C', mov_date: (Date.new(2017,014, 1)..Time.zone.now.end_of_day )).sum(:price)
 
-    @act_im = Movement.where(mov_type: 'M', mov_date: (Date.new(2017,014, 1)..Time.zone.now.end_of_year )).sum(:price)
-    @act_lg = Movement.where(mov_type: 'L', mov_date: (Date.new(2017,014, 1)..Time.zone.now.end_of_year )).sum(:price)
-    @act_ot = Movement.where(mov_type: 'O', mov_date: (Date.new(2017,014, 1)..Time.zone.now.end_of_year )).sum(:price)
+    @act_im = Movement.where(mov_type: 'M', mov_date: (Date.new(2017,014, 1)..Time.zone.now.end_of_day )).sum(:price)
+    @act_lg = Movement.where(mov_type: 'L', mov_date: (Date.new(2017,014, 1)..Time.zone.now.end_of_day )).sum(:price)
+    @act_ot = Movement.where(mov_type: 'O', mov_date: (Date.new(2017,014, 1)..Time.zone.now.end_of_day )).sum(:price)
 
-    @act_hm = Movement.where(mov_type: 'H', mov_date: (Date.new(2017,014,11)..Time.zone.now.end_of_year )).sum(:price)
-    @act_ps = Movement.where(mov_type: 'P', mov_date: (Date.new(2017,014,11)..Time.zone.now.end_of_year )).sum(:price)
-    @act_ss = Movement.where(mov_type: 'S', mov_date: (Date.new(2017,014,11)..Time.zone.now.end_of_year )).sum(:price)
+    @act_hm = Movement.where(mov_type: 'H', mov_date: (Date.new(2017,014,11)..Time.zone.now.end_of_day )).sum(:price)
+    @act_ps = Movement.where(mov_type: 'P', mov_date: (Date.new(2017,014,11)..Time.zone.now.end_of_day )).sum(:price)
+    @act_ss = Movement.where(mov_type: 'S', mov_date: (Date.new(2017,014,11)..Time.zone.now.end_of_day )).sum(:price)
     @act_vs = @act_im + @act_lg + @act_ot + @act_hm + @act_ps + @act_ss
     @act_nc = (@act_nf + @act_cd) - (@act_cc + @act_vs)
 
     # Finanzas2 - Créditos(Préstamos2), pagos, intereses
-    @act_fp = Movement.where(mov_type: 'F¹', mov_date: (Date.new(2017,014, 1)..Time.zone.now.end_of_year )).sum(:price)
-    @act_fg = Movement.where(mov_type: 'F²', mov_date: (Date.new(2017,014, 1)..Time.zone.now.end_of_year )).sum(:price)
-    @act_fr = Movement.where(mov_type: 'F³', mov_date: (Date.new(2017,014, 1)..Time.zone.now.end_of_year )).sum(:price)
+    @act_fp = Movement.where(mov_type: 'F¹', mov_date: (Date.new(2017,014, 1)..Time.zone.now.end_of_day )).sum(:price)
+    @act_fg = Movement.where(mov_type: 'F²', mov_date: (Date.new(2017,014, 1)..Time.zone.now.end_of_day )).sum(:price)
+    @act_fr = Movement.where(mov_type: 'F³', mov_date: (Date.new(2017,014, 1)..Time.zone.now.end_of_day )).sum(:price)
     @act_fz = (@act_nc + @act_fp) - (@act_fg + @act_fr)
 
     # Bancos - Estado Operaciones en [Contab]
-    @act_bd = Movement.where(mov_type: 'Bd', mov_date: (Date.new(2017,014, 1)..Time.zone.now.end_of_year )).sum(:price)
-    @act_bc = Movement.where(mov_type: 'Bc', mov_date: (Date.new(2017,014, 1)..Time.zone.now.end_of_year )).sum(:price)
-    @act_bk = Movement.where(mov_type: 'ß',  mov_date: (Date.new(2017,014, 1)..Time.zone.now.end_of_year )).sum(:price)
+    @act_bd = Movement.where(mov_type: 'Bd', mov_date: (Date.new(2017,014, 1)..Time.zone.now.end_of_day )).sum(:price)
+    @act_bc = Movement.where(mov_type: 'Bc', mov_date: (Date.new(2017,014, 1)..Time.zone.now.end_of_day )).sum(:price)
+    @act_bk = Movement.where(mov_type: 'ß',  mov_date: (Date.new(2017,014, 1)..Time.zone.now.end_of_day )).sum(:price)
     @act_tb = (@act_fz + @act_bc) - (@act_bd + @act_bk)
     # Nota: se invierten bd(consig_bank=ret_caja) y bc(ret_bank=reinteg_caja)
 
@@ -66,7 +66,7 @@ class MovementsController < ApplicationController
     # Estado Actual - // Día / Sem / Mes / Año //
     # ----------------------------------------------
     @ad_in = Movement.where(mov_type: 'I', mov_date: (Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)).sum(:price)
-    @aw_in = Movement.where(mov_type: 'I', mov_date: (Time.zone.now.beginning_of_week-1..Time.zone.now.end_of_week-1)).sum(:price)
+    @aw_in = Movement.where(mov_type: 'I', mov_date: (Time.zone.now.beginning_of_week-1.day..Time.zone.now.end_of_week-1.day)).sum(:price)
     @am_in = Movement.where(mov_type: 'I', mov_date: (Time.zone.now.beginning_of_month..Time.zone.now.end_of_month)).sum(:price)
     @ay_in = Movement.where(mov_type: 'I', mov_date: (Date.new(2017,014,11)..Time.zone.now.end_of_month)).sum(:price)
     @am_iv = @am_in/30
